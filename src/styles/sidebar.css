@@ -1,0 +1,25 @@
+.side-container {
+  border: 1px solid black;
+  height: 100vh;
+  width: 80px;
+  position: fixed;
+  top: 0;
+  background-color: #f1f3f5;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.side-container .logo {
+  margin-top: 20px;
+}
+.side-container .side-wrapper {
+  padding-top: 16px;
+  outline: 1px solid blue;
+  margin-top: 15px;
+}
+.side-container .side-wrapper .icon {
+  padding: 12px;
+}
+.side-container .side-wrapper .setting {
+  margin-top: 55px;
+}/*# sourceMappingURL=sidebar.css.map */
