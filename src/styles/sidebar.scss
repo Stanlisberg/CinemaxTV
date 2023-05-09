@@ -1,7 +1,59 @@
 //----variables
 $bg-color:#f1f3f5;
 
-.side-container {
+.sidebar-open {
+    border:1px solid black;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    background-color: $bg-color;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    .logo-open {
+        margin-top: 20px;
+    }
+
+    .side-wrapper-open {
+        outline: 1px solid blue;
+        margin-bottom: 35px;
+
+        .icon-open {
+            padding: 13px;
+            width: 200px;
+            margin-top:3px;
+            outline: 1px solid tomato;
+            // background: #dee2e6;
+        }
+         &:hover {
+            background: #dee2e6;
+            outline: 1px solid green;
+         }
+
+        //  div {
+
+        //  }
+        //  &:hover {
+        //     background: #dee2e6;
+        //  }
+
+        .arrow {
+            display: none;
+        }
+    }
+
+    .setting-open {
+        padding: 12px;
+        outline: 1px solid red;
+        width: 200px;
+        margin-top: 55px;
+    }
+}
+
+
+.sidebar-close{
     border:1px solid black;
     height: 100vh;
     width: 80px;

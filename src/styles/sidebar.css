@@ -1,4 +1,42 @@
-.side-container {
+.sidebar-open {
+  border: 1px solid black;
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  background-color: #f1f3f5;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar-open .logo-open {
+  margin-top: 20px;
+}
+.sidebar-open .side-wrapper-open {
+  outline: 1px solid blue;
+  margin-bottom: 35px;
+}
+.sidebar-open .side-wrapper-open .icon-open {
+  padding: 13px;
+  width: 200px;
+  margin-top: 3px;
+  outline: 1px solid tomato;
+}
+.sidebar-open .side-wrapper-open:hover {
+  background: #dee2e6;
+  outline: 1px solid green;
+}
+.sidebar-open .side-wrapper-open .arrow {
+  display: none;
+}
+.sidebar-open .setting-open {
+  padding: 12px;
+  outline: 1px solid red;
+  width: 200px;
+  margin-top: 55px;
+}
+
+.sidebar-close {
   border: 1px solid black;
   height: 100vh;
   width: 80px;
@@ -9,17 +47,17 @@
   justify-content: center;
   align-items: center;
 }
-.side-container .logo {
+.sidebar-close .logo {
   margin-top: 20px;
 }
-.side-container .side-wrapper {
+.sidebar-close .side-wrapper {
   padding-top: 16px;
   outline: 1px solid blue;
   margin-top: 15px;
 }
-.side-container .side-wrapper .icon {
+.sidebar-close .side-wrapper .icon {
   padding: 12px;
 }
-.side-container .side-wrapper .setting {
+.sidebar-close .side-wrapper .setting {
   margin-top: 55px;
 }/*# sourceMappingURL=sidebar.css.map */
