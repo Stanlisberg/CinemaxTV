@@ -12,6 +12,9 @@ import { TbTriangleSquareCircle } from "react-icons/tb";
 import "../../styles/sidebar.css";
 
 function Sidebar() {
+
+
+  //-----------Open sidebar state
   const [openSidebar, setOpenSidebar] = useState(false);
   const [arrowHover, setArrowHover] = useState(false);
   const [searchHover, setSearchHover] = useState(false);
@@ -23,11 +26,19 @@ function Sidebar() {
   const [settingHover, setSettingHover] = useState(false);
   
 
+  //-----------Active  Button State
+  const[ activeButton, setActiveButton] = useState<number | null>(null)
 
+  const handleActiveButton = (id: number) => [
+    setActiveButton(id)
+  ]
+
+//----------HandleSidebar Function
   const handleSidebar = () => {
     setOpenSidebar(true);
   };
 
+//-----------Hover Function
   const handleArrowHoverEnter = () => {
     setArrowHover(true)
   }
@@ -106,15 +117,20 @@ function Sidebar() {
                 onClick={handleSidebar}
                 className='icon'
             />
-            {arrowHover ? <p className='icon-name'>Expand</p> : ''} 
+            {arrowHover ? <p className='icon-name-close icon-name-open'>Expand</p> : ''} 
           </div>
           <div 
             className={openSidebar?  "icon-open" : 'icon-close'}
             onMouseOver={handleSearchHoverEnter}
             onMouseLeave={handleSearchHoverLeave}
+            onClick={() => handleActiveButton(1) }
             >
-            <BiSearchAlt size={25} className="search icon" />
-            {searchHover && <p className='icon-name hey'>Search</p>} 
+            <BiSearchAlt 
+            size={25} 
+            onClick={handleSidebar}
+            className={activeButton === 1 ? 'active search' : 'search'}
+             />
+            {searchHover && <p className='icon-name-close icon-name-open'>Search</p>} 
             {openSidebar && (
               <div className="input-div">
                 <input
@@ -126,19 +142,26 @@ function Sidebar() {
             )}
           </div>
           <div 
-           className={openSidebar?  "icon-open" : 'icon-close'}
+           className={openSidebar ? "icon-open" : 'icon-close'}
            onMouseOver={handleHomeHoverEnter}
-           onMouseLeave={handleHomeHoverLeave}>
-            <BiHome size={25}  className='icon'/>
-            {homeHover ? <p className='icon-name'>Home</p> : ''} 
+           onMouseLeave={handleHomeHoverLeave}
+           onClick={() => handleActiveButton(2) }>
+            <BiHome 
+              size={25}  
+              className={activeButton === 2 ? 'active' : ''}  
+            />
+            {homeHover ? <p className='icon-name-close icon-name-open'>Home</p> : ''} 
             {openSidebar && <p className="icon-open-text">Home</p>}
           </div>
           <div 
            className={openSidebar?  "icon-open" : 'icon-close'}
            onMouseOver={handleTrendingHoverEnter}
-           onMouseLeave={handleTrendingHoverLeave}>
-            <AiOutlineFire size={25}  className='icon'/>
-            {trendingHover ? <p className='icon-name'>Trending</p> : ''} 
+           onMouseLeave={handleTrendingHoverLeave}
+           onClick={() => handleActiveButton(3) }>
+            <AiOutlineFire 
+             size={25}  
+             className={activeButton === 3 ? 'active' : ''} />
+            {trendingHover ? <p className='icon-name-close icon-name-open'>Trending</p> : ''} 
             {openSidebar && <p className="icon-open-text">Trending</p>}
           </div>
           <div 
@@ -146,7 +169,7 @@ function Sidebar() {
           onMouseOver={handleMovieHoverEnter}
           onMouseLeave={handleMovieHoverLeave}>
             <BiCameraMovie size={25}  className='icon'/>
-            {movieHover ? <p className='icon-name'>Movies</p> : ''} 
+            {movieHover ? <p className='icon-name-close icon-name-open'>Movies</p> : ''} 
             {openSidebar && <p className="icon-open-text">Movies</p>}
           </div>
           <div 
@@ -154,7 +177,7 @@ function Sidebar() {
           onMouseOver={handleTvHoverEnter}
           onMouseLeave={handleTvHoverLeave}>
             <RiSlideshow3Line size={25}  className='icon'/>
-            {tvHover ? <p className='icon-name'>Tv_shows</p> : ''} 
+            {tvHover ? <p className='icon-name-close icon-name-open'>Tv_shows</p> : ''} 
             {openSidebar && <p className="icon-open-text">TV-Shows</p>}
           </div>
           <div 
@@ -162,7 +185,7 @@ function Sidebar() {
           onMouseOver={handleBookHoverEnter}
           onMouseLeave={handleBookHoverLeave}>
             <BiBookBookmark size={25}  className='icon'/>
-            {bookHover ? <p className='icon-name'>Bookmark</p> : ''} 
+            {bookHover ? <p className='icon-name-close icon-name-open'>Bookmark</p> : ''} 
             {openSidebar && <p className="icon-open-text">Bookmarks</p>}
           </div>
         </div>
@@ -171,7 +194,7 @@ function Sidebar() {
          onMouseOver={handleSettingHoverEnter}
          onMouseLeave={handleSettingHoverLeave}>
             <IoMdSettings size={25}  className='setting-icon'/>
-            {settingHover ? <p className='icon-name'>Settings</p> : ''} 
+            {settingHover ? <p className='icon-setting-close icon-setting-open'>Settings</p> : ''} 
             {openSidebar && <p className="setting-text">Settings</p>}
         </div>
       </div>
