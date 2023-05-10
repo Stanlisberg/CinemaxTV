@@ -5,7 +5,6 @@ function home() {
   return (
     <div>
         <Navbar />
-        <Sidebar />
     </div>
   )
 }

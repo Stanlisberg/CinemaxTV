@@ -108,19 +108,31 @@
   border: 1px solid brown;
 }
 .sidebar-close .side-wrapper-close {
-  padding-top: 5px;
   outline: 1px solid blue;
   margin-bottom: 60px;
 }
 .sidebar-close .side-wrapper-close .icon-close {
-  padding: 12px;
-}
-.sidebar-close .side-wrapper-close .icon-close .icon-div {
-  border: 1px solid pink;
-  background: #dee2e6;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 9px 6px;
+  margin-top: 12px;
+  position: relative;
+}
+.sidebar-close .side-wrapper-close .icon-close:hover {
+  cursor: pointer;
+  border-radius: 4px;
+  background: #dee2e6;
+}
+.sidebar-close .side-wrapper-close .icon-close .icon-name {
+  position: absolute;
+  top: 0px;
+  left: 80px;
+  top: 8px;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  pointer-events: none;
 }
 .sidebar-close .setting-close {
   outline: 1px solid red;

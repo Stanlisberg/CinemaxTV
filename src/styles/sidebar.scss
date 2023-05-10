@@ -133,7 +133,7 @@ $bg-color:#f1f3f5;
         // display: grid;
         // align-items: center;
         // justify-content: center;
-        padding-top: 5px;
+        // padding-top: 5px;
         outline: 1px solid blue;
         margin-bottom:60px;
 
@@ -143,16 +143,42 @@ $bg-color:#f1f3f5;
         // }
 
         .icon-close {
-            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 9px 6px;
+            margin-top: 12px;
+            position: relative;
+            // border: 1px solid indigo;
+            // cursor: pointer;
+            // border-radius: 4px;
 
-            .icon-div {
-                border: 1px solid pink;
+            &:hover {
+                cursor: pointer;
+                border-radius: 4px;
                 background:  #dee2e6;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            }
+    
+            .iconic {
+                // border: 1px solid pink;
+                // background:  #dee2e6;
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
+                // padding: 12px;
             }
 
+            .icon-name {
+                position: absolute;
+                top: 0px;
+                left: 80px;
+                top:8px;
+                font-family: Poppins,sans-serif;
+                font-weight: 500;
+                font-size: 17px;
+                pointer-events: none;
+                // visibility: hidden;
+            }
         }
 
     }
