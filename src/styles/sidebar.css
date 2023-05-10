@@ -48,6 +48,9 @@
   outline: none;
   border-radius: 5px;
 }
+.sidebar-open .side-wrapper-open .icon-open .hey:hover {
+  display: none;
+}
 .sidebar-open .side-wrapper-open .icon-open .search {
   position: absolute;
   top: 9px;
