@@ -1,12 +1,9 @@
-import Sidebar from "./sidebar/Sidebar"
-import Navbar from "./Navbar"
-
-function home() {
-  return (
+function Home () {
+  return(
     <div>
-        <Navbar />
+      
     </div>
   )
 }
 
-export default home
+export default Home;
