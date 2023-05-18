@@ -3,8 +3,10 @@
 
 .trending-container {
     // background: $theme-color;
+    margin-top: 50px;
+    margin-left: 100px;
 }
 
-// button {
-//    @extend home.button;
-// }
+button {
+   @extend home.button;
+}
