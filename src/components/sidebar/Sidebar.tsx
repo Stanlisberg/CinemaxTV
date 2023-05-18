@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
+import { Link } from 'react-router-dom';
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { BiHome } from "react-icons/bi";
 import { BiSearchAlt } from "react-icons/bi";
@@ -11,33 +12,11 @@ import { TbTriangleSquareCircle } from "react-icons/tb";
 // import logo from '../../assets/logo2.png'
 import "../../styles/sidebar.css";
 
+
 function Sidebar() {
-
-  const sidebarRef = useRef<any>()
-  // console.log(sidebarRef.current);
- 
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    // if (sidebarRef.current.className === 'sidebarOpen') {
-      setIsHovered(false);
-    // }
-  };
-
   const handleMouseLeave = () => {
-    if (sidebarRef.current.className === 'sidebarOpen') {
-      setIsHovered(true); 
-    }
+    setOpenSidebar(false);
   };
-
-  const elementStyle = {
-    /* Define the initial styling */
-    // padding: '10px',
-    background: isHovered ? 'blue' : '',
-    // color: '#fff',
-    width: isHovered? '30px' : ''
-  };
-
 
   //-----------Open sidebar state
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -129,13 +108,9 @@ function Sidebar() {
   return (
     <div>
       <div 
-         onMouseEnter={handleMouseEnter}
          onMouseLeave={handleMouseLeave}
-         style={elementStyle}
          className={openSidebar ? "sidebar-open" : "sidebar-close"}
-        //  onMouseLeave={change} 
-        //  onMouseOver={changeAg}
-         ref={sidebarRef}>
+      >
         <div className="logo-div">
           <TbTriangleSquareCircle
             size={50}
@@ -158,7 +133,6 @@ function Sidebar() {
           >
             <BiSearchAlt
               size={25}
-              // onClick={handleSidebar}
               className={activeButton === 1 ? "active search" : "search"}
             />
             {searchHover && (
@@ -188,12 +162,11 @@ function Sidebar() {
             )}
           </div>
           <div
-            className={
-              openSidebar ? ("icon-open") : ("icon-close")
-            }
+            className={ openSidebar ? ("icon-open") : ("icon-close")}
             onMouseOver={handleHomeHoverEnter}
             onMouseLeave={handleHomeHoverLeave}
             onClick={() => handleActiveButton(2)}
+            <Link to="/" className="">Home</Link>
           >
             <BiHome size={25} className={activeButton === 2 ? "active" : ""} />
             {homeHover ? (
