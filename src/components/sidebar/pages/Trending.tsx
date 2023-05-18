@@ -1,7 +1,13 @@
+import '../../../styles/trending.css'
 
 function Trending() {
   return (
-    <div>Trending Movies</div>
+    <div className='trending-container'>
+      <div className='trending-wrapper'>
+          Trending
+      </div>
+      <button>Genre</button>
+    </div>
   )
 }
 

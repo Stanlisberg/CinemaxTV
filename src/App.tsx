@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Sidebar from "./components/sidebar/sidebar"
-import Navbar from "./components/Navbar"
 import Home from "./components/sidebar/pages/Home"
 import Trending from "./components/sidebar/pages/Trending"
 import Tele from "./components/sidebar/pages/Tele"

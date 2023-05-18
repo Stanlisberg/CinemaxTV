@@ -15,7 +15,7 @@
   font-size: 32px;
   font-weight: 800;
 }
-.home-container button {
+.home-container .button {
   background: #e91e63;
   color: whitesmoke;
   margin-left: 20px;

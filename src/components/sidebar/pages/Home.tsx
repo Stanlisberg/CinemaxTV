@@ -6,7 +6,7 @@ function Home () {
       <div className='home-wrapper'>
           Discover Movies
       </div>
-      <button>Genre </button>
+      <button className='button'>Genre </button>
     </div>
   )
 }
