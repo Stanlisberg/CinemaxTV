@@ -25,7 +25,7 @@
   align-items: center;
   padding-top: 35px;
   padding-left: 6px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif;
 }
 .sidebar-open .logo-div .logo-open {
   margin-top: 20px;
@@ -41,6 +41,8 @@
   border-radius: 5px;
   position: relative;
   display: flex;
+  margin-top: 6px;
+  cursor: pointer;
 }
 .sidebar-open .side-wrapper-open .icon-open:hover {
   background: #dee2e6;
@@ -78,6 +80,11 @@
 }
 .sidebar-open .side-wrapper-open .icon-open .input-div .input::placeholder {
   font-size: 16px;
+}
+.sidebar-open .side-wrapper-open .search-input {
+  background: #dee2e6;
+  outline: none;
+  border-radius: 5px;
 }
 .sidebar-open .side-wrapper-open .arrow-open {
   display: none;

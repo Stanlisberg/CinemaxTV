@@ -50,12 +50,20 @@ function Sidebar() {
   const [bookHover, setBookHover] = useState(false);
   const [settingHover, setSettingHover] = useState(false);
 
+
   //-----------Active  Button State
   const [activeButton, setActiveButton] = useState<number | null>(null);
 
   //------------Active Fuction
-  const handleActiveButton = (id: number) => [setActiveButton(id)];
+  const handleActiveButton = (id: number) => {
+    setActiveButton(id);
+    handleCloseSidebar()
+  }
 
+  //------------CloseSidebar Function
+  const handleCloseSidebar = () => {
+    setOpenSidebar(false);
+  }
   //----------HandleSidebar Function
   const handleSidebar = () => {
     setOpenSidebar(true);
@@ -140,7 +148,7 @@ function Sidebar() {
           className={openSidebar ? " side-wrapper-open" : "side-wrapper-close"}
         >
           <div
-            className={openSidebar ? "icon-open" : "icon-close"}
+            className={openSidebar ? "icon-open search-input" : "icon-close"}
             onMouseOver={handleSearchHoverEnter}
             onMouseLeave={handleSearchHoverLeave}
             onClick={() => {
@@ -180,7 +188,9 @@ function Sidebar() {
             )}
           </div>
           <div
-            className={openSidebar ? "icon-open" : "icon-close"}
+            className={
+              openSidebar ? ("icon-open") : ("icon-close")
+            }
             onMouseOver={handleHomeHoverEnter}
             onMouseLeave={handleHomeHoverLeave}
             onClick={() => handleActiveButton(2)}
