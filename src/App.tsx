@@ -12,16 +12,15 @@ function App() {
   return (
     <>
      <div className='app'>
-        <Navbar />
-        <Sidebar />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/user" element={<Trending />} />
-            <Route path="/" element={<Movie/>} />
-            <Route path="/" element={<Tele />} />
-            <Route path="/" element={<Bookmark />} />
-          </Routes>
+       <Router>
+          <Sidebar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/trending" element={<Trending />} />
+              <Route path="/movie" element={<Movie/>} />
+              <Route path="/tv" element={<Tele />} />
+              <Route path="/bookmark" element={<Bookmark />} />
+            </Routes>
         </Router>
      </div>
     </>

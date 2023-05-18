@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { BiHome } from "react-icons/bi";
 import { BiSearchAlt } from "react-icons/bi";
@@ -17,6 +17,8 @@ function Sidebar() {
   const handleMouseLeave = () => {
     setOpenSidebar(false);
   };
+
+  const navigate = useNavigate();
 
   //-----------Open sidebar state
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -122,6 +124,7 @@ function Sidebar() {
         <div
           className={openSidebar ? " side-wrapper-open" : "side-wrapper-close"}
         >
+          {/* <Link to='/'> */}
           <div
             className={openSidebar ? "icon-open search-input" : "icon-close"}
             onMouseOver={handleSearchHoverEnter}
@@ -148,6 +151,7 @@ function Sidebar() {
               </div>
             )}
           </div>
+          {/* </Link> */}
           <div
             className={openSidebar ? "icon-open arrow-open" : "icon-close"}
             onMouseOver={handleArrowHoverEnter}
@@ -165,8 +169,10 @@ function Sidebar() {
             className={ openSidebar ? ("icon-open") : ("icon-close")}
             onMouseOver={handleHomeHoverEnter}
             onMouseLeave={handleHomeHoverLeave}
-            onClick={() => handleActiveButton(2)}
-            <Link to="/" className="">Home</Link>
+            onClick={() => {
+              handleActiveButton(2);
+              navigate("/");
+            }}
           >
             <BiHome size={25} className={activeButton === 2 ? "active" : ""} />
             {homeHover ? (
@@ -180,7 +186,10 @@ function Sidebar() {
             className={openSidebar ? "icon-open" : "icon-close"}
             onMouseOver={handleTrendingHoverEnter}
             onMouseLeave={handleTrendingHoverLeave}
-            onClick={() => handleActiveButton(3)}
+            onClick={() => {
+              handleActiveButton(3);
+              navigate("/trending");
+            }}
           >
             <AiOutlineFire
               size={25}
@@ -197,7 +206,10 @@ function Sidebar() {
             className={openSidebar ? "icon-open" : "icon-close"}
             onMouseOver={handleMovieHoverEnter}
             onMouseLeave={handleMovieHoverLeave}
-            onClick={() => handleActiveButton(4)}
+            onClick={() => {
+              handleActiveButton(4);
+              navigate("/movie");
+            }}
           >
             <BiCameraMovie 
               size={25} 
@@ -214,7 +226,10 @@ function Sidebar() {
             className={openSidebar ? "icon-open" : "icon-close"}
             onMouseOver={handleTvHoverEnter}
             onMouseLeave={handleTvHoverLeave}
-            onClick={() => handleActiveButton(5)}
+            onClick={() => {
+              handleActiveButton(5);
+              navigate("/tv");
+            }}
           >
             <RiSlideshow3Line 
               size={25} 
@@ -231,7 +246,10 @@ function Sidebar() {
             className={openSidebar ? "icon-open" : "icon-close"}
             onMouseOver={handleBookHoverEnter}
             onMouseLeave={handleBookHoverLeave}
-            onClick={() => handleActiveButton(6)}
+            onClick={() => {
+              handleActiveButton(6);
+              navigate("/bookmark");
+            }}
           >
             <BiBookBookmark 
               size={25} 

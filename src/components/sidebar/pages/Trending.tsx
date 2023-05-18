@@ -1,7 +1,7 @@
 
 function Trending() {
   return (
-    <div>Trending</div>
+    <div>Trending Movies</div>
   )
 }
 

@@ -1,7 +1,12 @@
+import '../../../styles/home.css'
+
 function Home () {
   return(
-    <div>
-      Discover Movies
+    <div className='home-container'>
+      <div className='home-wrapper'>
+          Discover Movies
+      </div>
+      <button>Genre </button>
     </div>
   )
 }

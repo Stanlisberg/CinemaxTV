@@ -6,7 +6,7 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
 
-      /* undler mode */
+      /* bundler mode */
     "moduleResolution": "node",
     // "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
