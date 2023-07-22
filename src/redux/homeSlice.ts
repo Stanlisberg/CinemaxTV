@@ -1,15 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import axios from 'axios';
-// import type { PayloadAction } from "@reduxjs/toolkit";
-
-interface Movie {
-  id: number;
-  name: string;
-  email: string;
-}
 
 interface MovieInter{
-  homeData: Movie[];
+  homeData: []
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: any
 }
