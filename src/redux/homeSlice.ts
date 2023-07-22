@@ -54,7 +54,7 @@ const homeSlice = createSlice({
       state.status = 'failed'
       state.error = action.payload;
     })
-  }
+  },
   
 });
 
