@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { BiHome } from "react-icons/bi";
@@ -49,6 +49,12 @@ function Sidebar() {
   const handleSidebar = () => {
     setOpenSidebar(true);
   };
+
+  //--------For default Home---
+  useEffect(() => {
+    handleActiveButton(2)
+  }, [])
+  
 
   //-----------Hover Function
   const handleArrowHoverEnter = () => {
@@ -119,12 +125,11 @@ function Sidebar() {
             color="#e91e63"
             className={openSidebar ? "logo-open" : "logo-close"}
           />
-          {openSidebar && <p className="logo-text">CinemaxTV</p>}
+          {openSidebar && <p className="logo-text"> CINEMAX-TV</p>}
         </div>
         <div
           className={openSidebar ? " side-wrapper-open" : "side-wrapper-close"}
         >
-          {/* <Link to='/'> */}
           <div
             className={openSidebar ? "icon-open search-input" : "icon-close"}
             onMouseOver={handleSearchHoverEnter}
@@ -151,7 +156,6 @@ function Sidebar() {
               </div>
             )}
           </div>
-          {/* </Link> */}
           <div
             className={openSidebar ? "icon-open arrow-open" : "icon-close"}
             onMouseOver={handleArrowHoverEnter}
@@ -166,8 +170,8 @@ function Sidebar() {
             )}
           </div>
           <div
-            className={ openSidebar ? ("icon-open") : ("icon-close")}
-            onMouseOver={handleHomeHoverEnter}
+            className={ openSidebar ? "icon-open" : "icon-close"}
+            onMouseOver={handleHomeHoverEnter} 
             onMouseLeave={handleHomeHoverLeave}
             onClick={() => {
               handleActiveButton(2);
@@ -176,7 +180,7 @@ function Sidebar() {
           >
             <BiHome size={25} className={activeButton === 2 ? "active" : ""} />
             {homeHover ? (
-              <p className="icon-name-close icon-name-open">Home</p>
+              <div className="icon-name-close icon-name-open">Home</div>
             ) : (
               ""
             )}
@@ -193,7 +197,7 @@ function Sidebar() {
           >
             <AiOutlineFire
               size={25}
-              className={activeButton === 3 ? "active" : ""}
+              className={activeButton === 3 ? "active open-icon" : ""}
             />
             {trendingHover ? (
               <p className="icon-name-close icon-name-open">Trending</p>

@@ -1,12 +1,12 @@
 @use 'home';
 @import 'home.scss';
 
-.trending-container {
+.trend-container {
     // background: $theme-color;
     margin-top: 50px;
     margin-left: 100px;
 }
 
-button {
-   @extend home.button;
+.trend-button {
+  border: 2px solid blue;
 }

@@ -2,11 +2,11 @@ import '../../../styles/trending.css'
 
 function Trending() {
   return (
-    <div className='trending-container'>
-      <div className='trending-wrapper'>
+    <div className='trend-container'>
+      <div className='trend-wrapper'>
           Trending
       </div>
-      <button>Genre</button>
+      <button className='trend-button'>Genre</button>
     </div>
   )
 }
