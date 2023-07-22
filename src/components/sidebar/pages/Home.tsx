@@ -4,13 +4,11 @@ import type { RootState, AppDispatch } from '../../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchDiscover } from '../../../redux/homeSlice'
 
-
 function Home () {
-
-  const { homeData }= useSelector((state: RootState) => state.home)
+  const { homeData } = useSelector((state: RootState) => state.home)
   const dispatch: AppDispatch = useDispatch()
 
-  const data = homeData
+  const data = homeData;
 
   useEffect(() => {
     dispatch(fetchDiscover());
@@ -33,9 +31,9 @@ console.log(data)
 
         <main className='data-content'>
           {(data as unknown as any[])?.map(item => (
-            <>
+            <div key={item.id}>
               <img className='data-card' src={`${baseImgUrl}/${size}${item.poster_path}`} width={210} height={300}/>
-            </>
+            </div>
           ))}
         </main>
       </div>

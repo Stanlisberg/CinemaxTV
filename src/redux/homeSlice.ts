@@ -15,7 +15,7 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOGQyNDQ2ZTg1ZmQ2Mzc3NGM5ZjNhODY2N2U1MmI3ZiIsInN1YiI6IjYxMDNhNWQ0NDI4NGVhMDA1ZDE5OTc2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FG38CkW-ijLIMRLiOIeoPLJeQV_0O2bSIK5vymhKKNE",
   },
 };
-export const fetchDiscover = createAsyncThunk('home/fetchDiscover', async () => {
+export const fetchDiscover = createAsyncThunk('fetchDiscover', async () => {
   const response = await fetch('https://api.themoviedb.org/3/discover/movie', options)
   const data = await response.json()
   const { results } = data
@@ -35,17 +35,17 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(fetchDiscover.pending, (state) => {
-      state.status = 'loading'
-    })
+    // .addCase(fetchDiscover.pending, (state) => {
+    //   state.status = 'loading'
+    // })
     .addCase(fetchDiscover.fulfilled, (state, action) => {
       state.homeData = action.payload
       state.status = 'succeeded'
     })
-    .addCase(fetchDiscover.rejected, (state, action) => {
-      state.status = 'failed'
-      state.error = action.payload;
-    })
+    // .addCase(fetchDiscover.rejected, (state, action) => {
+    //   state.status = 'failed'
+    //   state.error = action.payload;
+    // })
   },
   
 });
