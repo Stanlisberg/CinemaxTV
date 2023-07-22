@@ -4,6 +4,7 @@ import type { RootState, AppDispatch } from '../../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchDiscover } from '../../../redux/homeSlice'
 
+
 function Home () {
   const { homeData } = useSelector((state: RootState) => state.home)
   const dispatch: AppDispatch = useDispatch()

@@ -12,11 +12,14 @@ const sidebarSlice = createSlice({
     name: "sidebar",
     initialState,
     reducers: {
-        handleEnter: (state) => {
+        sideEnter: (state) => {
             state.value = true
+        },
+        sideLeave: (state) => {
+            state.value = false
         }
     },
 })
 
-export const { handleEnter } = sidebarSlice.actions
-export default sidebarSlice
+export const { sideEnter, sideLeave } = sidebarSlice.actions
+export default sidebarSlice.reducer

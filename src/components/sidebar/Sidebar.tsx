@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { BiHome } from "react-icons/bi";
 import { BiSearchAlt } from "react-icons/bi";
@@ -11,9 +11,16 @@ import { IoMdSettings } from "react-icons/io";
 import { TbTriangleSquareCircle } from "react-icons/tb";
 // import logo from '../../assets/logo2.png'
 import "../../styles/sidebar.css";
-
+import type { RootState, AppDispatch } from "../../redux/store";
+import { useSelector, useDispatch } from "react-redux";
+import { sideEnter, sideLeave } from "../../redux/sidebarSlice";
 
 function Sidebar() {
+  const sidebar = useSelector((state: RootState) => state.sidebar.value);
+  const dispatch: AppDispatch = useDispatch();
+
+  console.log(sidebar);
+
   const handleMouseLeave = () => {
     setOpenSidebar(false);
   };
@@ -31,20 +38,19 @@ function Sidebar() {
   const [bookHover, setBookHover] = useState(false);
   const [settingHover, setSettingHover] = useState(false);
 
-
   //-----------Active  Button State
   const [activeButton, setActiveButton] = useState<number | null>(null);
 
   //------------Active Fuction
   const handleActiveButton = (id: number) => {
     setActiveButton(id);
-    handleCloseSidebar()
-  }
+    handleCloseSidebar();
+  };
 
   //------------CloseSidebar Function
   const handleCloseSidebar = () => {
     setOpenSidebar(false);
-  }
+  };
   //----------HandleSidebar Function
   const handleSidebar = () => {
     setOpenSidebar(true);
@@ -52,9 +58,8 @@ function Sidebar() {
 
   //--------For default Home---
   useEffect(() => {
-    handleActiveButton(2)
-  }, [])
-  
+    handleActiveButton(2);
+  }, []);
 
   //-----------Hover Function
   const handleArrowHoverEnter = () => {
@@ -115,9 +120,13 @@ function Sidebar() {
 
   return (
     <div>
-      <div 
-         onMouseLeave={handleMouseLeave}
-         className={openSidebar ? "sidebar-open" : "sidebar-close"}
+      <div
+        onMouseLeave={() => {
+          handleMouseLeave;
+          dispatch(sideLeave());
+        }}
+        onMouseEnter={() => dispatch(sideEnter())}
+        className={openSidebar ? "sidebar-open" : "sidebar-close"}
       >
         <div className="logo-div">
           <TbTriangleSquareCircle
@@ -170,8 +179,8 @@ function Sidebar() {
             )}
           </div>
           <div
-            className={ openSidebar ? "icon-open" : "icon-close"}
-            onMouseOver={handleHomeHoverEnter} 
+            className={openSidebar ? "icon-open" : "icon-close"}
+            onMouseOver={handleHomeHoverEnter}
             onMouseLeave={handleHomeHoverLeave}
             onClick={() => {
               handleActiveButton(2);
@@ -215,9 +224,9 @@ function Sidebar() {
               navigate("/movie");
             }}
           >
-            <BiCameraMovie 
-              size={25} 
-              className={activeButton === 4 ? "active" : ""} 
+            <BiCameraMovie
+              size={25}
+              className={activeButton === 4 ? "active" : ""}
             />
             {movieHover ? (
               <p className="icon-name-close icon-name-open">Movies</p>
@@ -235,9 +244,9 @@ function Sidebar() {
               navigate("/tv");
             }}
           >
-            <RiSlideshow3Line 
-              size={25} 
-              className={activeButton === 5 ? "active" : ""} 
+            <RiSlideshow3Line
+              size={25}
+              className={activeButton === 5 ? "active" : ""}
             />
             {tvHover ? (
               <p className="icon-name-close icon-name-open">Tv_shows</p>
@@ -255,8 +264,8 @@ function Sidebar() {
               navigate("/bookmark");
             }}
           >
-            <BiBookBookmark 
-              size={25} 
+            <BiBookBookmark
+              size={25}
               className={activeButton === 6 ? "active" : ""}
             />
             {bookHover ? (
@@ -273,8 +282,8 @@ function Sidebar() {
           onMouseLeave={handleSettingHoverLeave}
           onClick={() => handleActiveButton(7)}
         >
-          <IoMdSettings 
-            size={25} 
+          <IoMdSettings
+            size={25}
             className={activeButton === 7 ? "active" : ""}
           />
           {settingHover ? (
