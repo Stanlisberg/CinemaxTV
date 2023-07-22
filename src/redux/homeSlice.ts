@@ -15,7 +15,7 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOGQyNDQ2ZTg1ZmQ2Mzc3NGM5ZjNhODY2N2U1MmI3ZiIsInN1YiI6IjYxMDNhNWQ0NDI4NGVhMDA1ZDE5OTc2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FG38CkW-ijLIMRLiOIeoPLJeQV_0O2bSIK5vymhKKNE",
   },
 };
-export const fetchDiscover = createAsyncThunk('fetchDiscover', async () => {
+export const fetchDiscover = createAsyncThunk('home/fetchDiscover', async () => {
   const response = await fetch('https://api.themoviedb.org/3/discover/movie', options)
   const data = await response.json()
   const { results } = data
