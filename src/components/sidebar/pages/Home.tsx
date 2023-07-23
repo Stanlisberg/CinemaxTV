@@ -5,15 +5,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchDiscover } from '../../../redux/homeSlice'
 
 
+
 function Home () {
   const { homeData } = useSelector((state: RootState) => state.home)
+  const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const dispatch: AppDispatch = useDispatch()
 
   const data = homeData;
 
   useEffect(() => {
     dispatch(fetchDiscover());
-  }, []);
+  }, [dispatch]);
 
 console.log(data)
 
@@ -24,7 +26,7 @@ console.log(data)
 
   return(
     <div className='home-container'>
-      <div className='home-wrapper'>
+      <div className={sidebar === true ? 'sidebar-opac home-wrapper': 'home-wrapper'}>
         <nav className='home-nav'>
           <p>Discover Movies</p> 
           <button className='button'>Genre</button>

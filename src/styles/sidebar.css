@@ -164,7 +164,7 @@
   font-weight: 700;
   font-size: 17px;
   pointer-events: none;
-  z-index: 10;
+  z-index: 1;
   color: black;
 }
 .sidebar-close .setting-close {

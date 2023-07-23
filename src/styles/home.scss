@@ -15,8 +15,11 @@ $theme-color: #e91e63;
   // background: lightcoral;
   // opacity: 0.4;
 
+  .sidebar-opac {
+    opacity: 0.5
+  }
   .home-wrapper {
-    opacity: 0.5;
+    // opacity: 0.5;
     font-size: 32px;
     font-weight:800;
     margin: 20px 0 20px 80px;
@@ -53,21 +56,35 @@ $theme-color: #e91e63;
   
     .data-content {
       border: 1px solid blue;
-      margin-top: 50px;
-      // margin-left: 1px;
-      // margin-right: 2px;
+      margin-top: 70px;
+      margin-left: auto;
+      margin-right: auto;
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
       align-items: center;
       justify-content: center;
       z-index: 2;
     }
+    @media(width <= 1035px) {
+      .data-content {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+      }
+    }
+
     .data-card {
       border: 1px solid teal;
       padding: 6px;
       border-radius: 15px;
-      margin: 10px auto;
+      margin: 5px 12px;
+    }
+    @media(width <= 990px) {
+      .data-card {
+        width: 200px;
+        height: 290px;
+      }
     }
   }
   
 }
+
