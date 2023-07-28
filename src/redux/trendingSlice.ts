@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-interface MovieInter{
-  homeData: []
-  // status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  // error: any
+interface TrendInter{
+  trendingData: any
 }
 
 // Async thunk to fetch customers from the API
@@ -15,41 +13,44 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOGQyNDQ2ZTg1ZmQ2Mzc3NGM5ZjNhODY2N2U1MmI3ZiIsInN1YiI6IjYxMDNhNWQ0NDI4NGVhMDA1ZDE5OTc2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FG38CkW-ijLIMRLiOIeoPLJeQV_0O2bSIK5vymhKKNE",
   },
 };
-export const fetchDiscover = createAsyncThunk('home/fetchDiscover', async (page) => {
-  const response = await fetch(`https://api.themoviedb.org/3/discover/movie?page=${page}`, options)
-  const data = await response.json()
-  console.log(data);
-  const { results } = data
-  return results
+export const fetchTrending = createAsyncThunk('trending/fetchTrending', async () => {
+ try {
+    const allMovies = [];
+    const totalPages = 5;
+    // https://api.themoviedb.org/3/trending/all/day?page=${page}
+    // https://api.themoviedb.org/3/person/popular
+    for(let page= 1; page <= totalPages; page++) {
+        const response = await fetch(`https://api.themoviedb.org/3/tv/popular?page=${page}`, options)
+        const data = await response.json()
+        const { results } = data
+
+        allMovies.push(...results)
+    }
+
+    const movies = allMovies.slice(0, 100)
+    return  movies;
+
+} catch (error) {
+    console.log(error)
+}
  
 });
 
-
-const initialState: MovieInter= {
-  homeData: [],
-  // status: 'idle',
-  // error: null,
+const initialState: TrendInter = {
+  trendingData: [],
 };
 
-const homeSlice = createSlice({
-  name: "home",
+const trendingSlice = createSlice({
+  name: "trending",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-    // .addCase(fetchDiscover.pending, (state) => {
-    //   state.status = 'loading'
-    // })
-    .addCase(fetchDiscover.fulfilled, (state, action) => {
-      state.homeData = action.payload
-      // state.status = 'succeeded'
+    .addCase(fetchTrending.fulfilled, (state, action) => {
+      state.trendingData = action.payload
     })
-    // .addCase(fetchDiscover.rejected, (state, action) => {
-    //   state.status = 'failed'
-    //   state.error = action.payload;
-    // })
   },
   
 });
 
-export default homeSlice.reducer;
+export default trendingSlice.reducer;

@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import homeReducer from './homeSlice'
 import sidebarReducer from './sidebarSlice';
+import trendingReducer from './trendingSlice';
 
 export const store = configureStore({
   reducer: {
     home: homeReducer,
-    sidebar: sidebarReducer
+    sidebar: sidebarReducer,
+    trending: trendingReducer
   },
 })
 
