@@ -9,6 +9,7 @@
   margin: 0 auto 0 auto;
   color: #111;
   font-family: "Open Sans", sans-serif;
+  display: none;
 }
 .nav-container .nav-wrapper {
   margin-left: 100px;

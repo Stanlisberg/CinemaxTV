@@ -19,7 +19,7 @@ function Sidebar() {
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const dispatch: AppDispatch = useDispatch();
 
-  console.log(sidebar);
+  // console.log(sidebar);
 
   const handleMouseLeave = () => {
     setOpenSidebar(false);
@@ -122,11 +122,11 @@ function Sidebar() {
     <div>
       <div
         onMouseLeave={() => {
-          handleMouseLeave;
+          handleMouseLeave()
           dispatch(sideLeave());
         }}
         onMouseEnter={() => dispatch(sideEnter())}
-        className={openSidebar ? "sidebar-open" : "sidebar-close"}
+        className={openSidebar === false ? "sidebar-close hidden lg:grid " : "sidebar-open hidden lg:grid"}
       >
         <div className="logo-div">
           <TbTriangleSquareCircle
