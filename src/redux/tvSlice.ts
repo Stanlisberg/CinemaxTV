@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-interface TrendInter{
-  trendingData: any
+interface TvInter{
+  tvData: any
 }
 
 // Async thunk to fetch customers from the API
@@ -13,14 +13,14 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOGQyNDQ2ZTg1ZmQ2Mzc3NGM5ZjNhODY2N2U1MmI3ZiIsInN1YiI6IjYxMDNhNWQ0NDI4NGVhMDA1ZDE5OTc2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FG38CkW-ijLIMRLiOIeoPLJeQV_0O2bSIK5vymhKKNE",
   },
 };
-export const fetchTrending = createAsyncThunk('trending/fetchTrending', async () => {
+export const fetchTv = createAsyncThunk('tv/fetchTv', async () => {
  try {
     const allMovies = [];
     const totalPages = 5;
-    // https://api.themoviedb.org/3/tv/popular
+    
     // https://api.themoviedb.org/3/person/popular
     for(let page= 1; page <= totalPages; page++) {
-        const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?page=${page}`, options)
+        const response = await fetch(`https://api.themoviedb.org/3/tv/popular?page=${page}`, options)
         const data = await response.json()
         const { results } = data
 
@@ -36,21 +36,21 @@ export const fetchTrending = createAsyncThunk('trending/fetchTrending', async ()
  
 });
 
-const initialState: TrendInter = {
-  trendingData: [],
+const initialState: TvInter = {
+  tvData: [],
 };
 
-const trendingSlice = createSlice({
-  name: "trending",
+const tvSlice = createSlice({
+  name: "tv",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(fetchTrending.fulfilled, (state, action) => {
-      state.trendingData = action.payload
+    .addCase(fetchTv.fulfilled, (state, action) => {
+      state.tvData = action.payload
     })
   },
   
 });
 
-export default trendingSlice.reducer;
+export default tvSlice.reducer;

@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Sidebar from "./components/sidebar/Sidebar"
 import Home from "./components/sidebar/pages/Home"
 import Trending from "./components/sidebar/pages/Trending"
-import Tele from "./components/sidebar/pages/Tele"
+import Tv from "./components/sidebar/pages/Tv"
 import Bookmark from "./components/sidebar/pages/Bookmark"
-import Movie from "./components/sidebar/pages/Movie"
+import Popular from "./components/sidebar/pages/Popular"
 
 function App() {
 
@@ -16,8 +16,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/trending" element={<Trending />} />
-              <Route path="/movie" element={<Movie/>} />
-              <Route path="/tv" element={<Tele />} />
+              <Route path="/movie" element={<Popular/>} />
+              <Route path="/tv" element={<Tv />} />
               <Route path="/bookmark" element={<Bookmark />} />
             </Routes>
         </Router>

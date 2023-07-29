@@ -19,7 +19,7 @@ function Sidebar() {
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const dispatch: AppDispatch = useDispatch();
 
-  // console.log(sidebar);
+  console.log(sidebar);
 
   const handleMouseLeave = () => {
     setOpenSidebar(false);
@@ -58,7 +58,17 @@ function Sidebar() {
 
   //--------For default Home---
   useEffect(() => {
-    handleActiveButton(2);
+    if(window.location.pathname === '/') {
+      handleActiveButton(2);
+    } else if(window.location.pathname === '/trending') {
+      handleActiveButton(3);
+    } else if(window.location.pathname === '/movie') {
+      handleActiveButton(4);
+    } else if(window.location.pathname === '/tv') {
+      handleActiveButton(5);
+    } else if(window.location.pathname === '/bookmark') {
+      handleActiveButton(6);
+    }
   }, []);
 
   //-----------Hover Function
@@ -229,11 +239,11 @@ function Sidebar() {
               className={activeButton === 4 ? "active" : ""}
             />
             {movieHover ? (
-              <p className="icon-name-close icon-name-open">Movies</p>
+              <p className="icon-name-close icon-name-open">Movie_Icons</p>
             ) : (
               ""
             )}
-            {openSidebar && <p className="icon-open-text">Movies</p>}
+            {openSidebar && <p className="icon-open-text">Movie Icons</p>}
           </div>
           <div
             className={openSidebar ? "icon-open" : "icon-close"}
@@ -249,11 +259,11 @@ function Sidebar() {
               className={activeButton === 5 ? "active" : ""}
             />
             {tvHover ? (
-              <p className="icon-name-close icon-name-open">Tv_shows</p>
+              <p className="icon-name-close icon-name-open">Tv_Shows</p>
             ) : (
               ""
             )}
-            {openSidebar && <p className="icon-open-text">TV-Shows</p>}
+            {openSidebar && <p className="icon-open-text">Tv Shows</p>}
           </div>
           <div
             className={openSidebar ? "icon-open" : "icon-close"}

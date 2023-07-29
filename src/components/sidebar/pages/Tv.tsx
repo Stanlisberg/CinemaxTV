@@ -1,22 +1,22 @@
-import { useEffect } from 'react';
 import type { RootState, AppDispatch } from '../../../redux/store'
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchTrending } from '../../../redux/trendingSlice'
+import { fetchTv } from '../../../redux/tvSlice'
 import { FiMenu} from 'react-icons/fi'
 import { CgMenuGridO } from 'react-icons/cg'
 
 
-function Trending () {
-  const { trendingData } = useSelector((state: RootState) => state.trending)
+function Tv () {
+  const { tvData } = useSelector((state: RootState) => state.tv)
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const dispatch: AppDispatch = useDispatch()
 
-  const data = trendingData;
+  const data = tvData;
   console.log(data)
 
   useEffect(() => {
 
-    dispatch(fetchTrending());
+    dispatch(fetchTv());
   }, [dispatch]);
 
   //---------For images concating--------
@@ -29,7 +29,7 @@ function Trending () {
       <div className={sidebar === true ? 'sidebar-opac ml-auto mr-auto max-w-full mt-6 lg:pl-20 lg:pr-20 lg:mt-4': 'ml-auto mr-auto mt-6 lg:pl-20 lg:pr-20 lg:mt-4'}>
         <nav className='fixed left-0 top-0 flex items-center justify-between w-full bg-[#dee2e6] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-start lg:w-[100%] lg:pl-24'>
           <div className='lg:justify-center lg:items-center lg:flex'>
-            <p className='text-2xl sm:text-3xl lg:text-4xl font-bold'>Trending</p> 
+            <p className='text-2xl sm:text-3xl lg:text-4xl font-bold'>Tv Shows</p> 
             <button className='text-white cursor-pointer h-8 text-sm rounded-md border-none mt-3 mb-3 ml-5 pt-1 pb-1 pl-3 pr-3 hidden lg:grid bg-[#e91e63]'>Genre</button>
           </div>
             <div className='flex'>
@@ -49,4 +49,4 @@ function Trending () {
   )
 }
 
-export default Trending;
+export default Tv
