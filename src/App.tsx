@@ -11,6 +11,7 @@ function App() {
   return (
     <>
      <div className='app'>
+     <div className='set'>Modal</div> 
        <Router>
           <Sidebar />
             <Routes>

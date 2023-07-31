@@ -149,6 +149,10 @@
 .sidebar-close .side-wrapper-close .icon-close .active {
   color: #e91e63;
 }
+.sidebar-close .side-wrapper-close .icon-close .modal {
+  border: 3px solid black;
+  width: 90px;
+}
 .sidebar-close .side-wrapper-close .icon-close .icon-name-close {
   position: absolute;
   top: 0px;
@@ -184,4 +188,34 @@
   font-family: Poppins, sans-serif;
   font-weight: 700;
   font-size: 17px;
+}
+.sidebar-close .setting-close .modal-background {
+  position: fixed;
+  background: black;
+  width: 190%;
+  height: 100vh;
+  border: 1px solid black;
+  opacity: 0.3;
+  top: 0;
+  left: 82px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar-close .setting-close .modal-background .modal {
+  position: fixed;
+  left: 30%;
+  top: 40%;
+  width: 25%;
+  height: 35%;
+  background: #DEE2E6;
+  border-radius: 5px;
+  border: none;
+  padding: 0 20px;
+}
+.sidebar-close .setting-close .modal-background .modal .container {
+  border: 1px solid red;
+  padding: 0 10px;
+  margin: 20px 0;
+  line-height: 2;
 }/*# sourceMappingURL=sidebar.css.map */

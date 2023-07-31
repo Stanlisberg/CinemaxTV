@@ -27,6 +27,9 @@ function Sidebar() {
 
   const navigate = useNavigate();
 
+  //----------Setting Modal---------------
+  const [modal, setModal] = useState(false)
+
   //-----------Open sidebar state
   const [openSidebar, setOpenSidebar] = useState(false);
   const [arrowHover, setArrowHover] = useState(false);
@@ -56,7 +59,7 @@ function Sidebar() {
     setOpenSidebar(true);
   };
 
-  //--------For default Home---
+  //--------For default active button---
   useEffect(() => {
     if(window.location.pathname === '/') {
       handleActiveButton(2);
@@ -239,11 +242,11 @@ function Sidebar() {
               className={activeButton === 4 ? "active" : ""}
             />
             {movieHover ? (
-              <p className="icon-name-close icon-name-open">Movie_Icons</p>
+              <p className="icon-name-close icon-name-open">Movie_Actors</p>
             ) : (
               ""
             )}
-            {openSidebar && <p className="icon-open-text">Movie Icons</p>}
+            {openSidebar && <p className="icon-open-text">Movie Actors</p>}
           </div>
           <div
             className={openSidebar ? "icon-open" : "icon-close"}
@@ -296,12 +299,37 @@ function Sidebar() {
             size={25}
             className={activeButton === 7 ? "active" : ""}
           />
+          {}
           {settingHover ? (
             <p className="icon-setting-close icon-setting-open">Settings</p>
           ) : (
             ""
           )}
           {openSidebar && <p className="setting-text">Settings</p>}
+          {activeButton === 7 && <div className='modal-background'>
+           {activeButton === 7 && <div className='modal'>
+            <div>
+             <p className='ml-3'>Settings</p>
+             <div className='container'>
+                <div className='flex justify-between items-center'>
+                  <p>Dark Mode</p>
+                  <p><BiHome /></p>
+                </div>
+                <div className='flex justify-between items-center'> 
+                  <p>Dark Mode</p>
+                  <p><BiHome /></p>
+                </div>
+                <div className='flex justify-between items-center'>
+                  <p>Dark Mode</p>
+                  <p><BiHome /></p>
+                </div>
+                <button> close</button>
+             </div>
+             </div>
+            </div>
+           }
+          </div>
+          }
         </div>
       </div>
     </div>
