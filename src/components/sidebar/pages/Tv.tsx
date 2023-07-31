@@ -25,7 +25,7 @@ function Tv () {
  
 
   return(
-    <div className='flex justify-between'>
+    <div className='flex'>
       <div className={sidebar === true ? 'sidebar-opac ml-auto mr-auto max-w-full mt-6 lg:pl-20 lg:pr-20 lg:mt-4': 'ml-auto mr-auto mt-6 lg:pl-20 lg:pr-20 lg:mt-4'}>
         <nav className='fixed left-0 top-0 flex items-center justify-between w-full bg-[#dee2e6] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-start lg:w-[100%] lg:pl-24'>
           <div className='lg:justify-center lg:items-center lg:flex'>

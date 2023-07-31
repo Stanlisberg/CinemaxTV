@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 html {
   background: blue;
@@ -14,7 +13,7 @@ html {
 
   color-scheme: light dark;
   color: #111;
-  background-color: #DEE2E6;
+  background-color: #dee2e6;
   /* background-color: red; */
   /* font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,11 +28,34 @@ html {
   padding: 0;
 }
 
-.set {
-  border: 1px solid black;
-  background: black;
-  width: 50%;
-  height: 50%;
+.modal-background {
   position: fixed;
+  background: black;
+  width: 190%;
+  height: 100vh;
+  border: 1px solid black;
+  /* opacity: 0.3; */
+  top: 0;
+  left: 82px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  position: fixed;
+  left: 30%;
+  top: 40%;
+  width: 25%;
+  height: 35%;
+  background: #dee2e6;
+  border-radius: 5px;
+  border: none;
+  padding: 0 20px;
 }
 
+.container {
+  border: 1px solid red;
+  padding: 0 10px;
+  margin: 20px 0;
+  line-height: 2;
+}

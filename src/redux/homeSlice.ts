@@ -37,7 +37,7 @@ export const fetchDiscover = createAsyncThunk(
 
       // Slice 'allMovies' to get the first 100 movies
       const movies = allMovies.slice(0, 100);
-      console.log(movies);
+      // console.log(movies);
       return movies;
 
     } catch (error) {
@@ -59,7 +59,7 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // .addCase(fetchDiscover.pending, (state) => {
+      // .addCase(fetchDiscover.pending, (state) => { 
       //   state.status = 'loading'
       // })
       .addCase(fetchDiscover.fulfilled, (state, action) => {

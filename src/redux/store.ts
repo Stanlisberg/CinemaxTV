@@ -4,6 +4,7 @@ import sidebarReducer from './sidebarSlice';
 import trendingReducer from './trendingSlice';
 import tvReducer from './tvSlice'
 import popularReducer from './popularSlice'
+import modalReducer from './modalSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     sidebar: sidebarReducer,
     trending: trendingReducer,
     tv: tvReducer,
-    popular: popularReducer
+    popular: popularReducer,
+    modal: modalReducer
   },
 })
 

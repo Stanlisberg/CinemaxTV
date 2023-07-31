@@ -11,24 +11,19 @@ import { IoMdSettings } from "react-icons/io";
 import { TbTriangleSquareCircle } from "react-icons/tb";
 // import logo from '../../assets/logo2.png'
 import "../../styles/sidebar.css";
-import type { RootState, AppDispatch } from "../../redux/store";
-import { useSelector, useDispatch } from "react-redux";
+import type { AppDispatch } from "../../redux/store";
+import { useDispatch } from "react-redux";
 import { sideEnter, sideLeave } from "../../redux/sidebarSlice";
+import { modalShow, modalHide } from '../../redux/modalSlice'
 
 function Sidebar() {
-  const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const dispatch: AppDispatch = useDispatch();
-
-  console.log(sidebar);
 
   const handleMouseLeave = () => {
     setOpenSidebar(false);
   };
 
   const navigate = useNavigate();
-
-  //----------Setting Modal---------------
-  const [modal, setModal] = useState(false)
 
   //-----------Open sidebar state
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -293,7 +288,10 @@ function Sidebar() {
           className={openSidebar ? "setting-open" : "setting-close"}
           onMouseOver={handleSettingHoverEnter}
           onMouseLeave={handleSettingHoverLeave}
-          onClick={() => handleActiveButton(7)}
+          onClick={() => {
+            handleActiveButton(7)
+            dispatch(modalShow())
+          }}
         >
           <IoMdSettings
             size={25}
@@ -306,30 +304,6 @@ function Sidebar() {
             ""
           )}
           {openSidebar && <p className="setting-text">Settings</p>}
-          {activeButton === 7 && <div className='modal-background'>
-           {activeButton === 7 && <div className='modal'>
-            <div>
-             <p className='ml-3'>Settings</p>
-             <div className='container'>
-                <div className='flex justify-between items-center'>
-                  <p>Dark Mode</p>
-                  <p><BiHome /></p>
-                </div>
-                <div className='flex justify-between items-center'> 
-                  <p>Dark Mode</p>
-                  <p><BiHome /></p>
-                </div>
-                <div className='flex justify-between items-center'>
-                  <p>Dark Mode</p>
-                  <p><BiHome /></p>
-                </div>
-                <button> close</button>
-             </div>
-             </div>
-            </div>
-           }
-          </div>
-          }
         </div>
       </div>
     </div>

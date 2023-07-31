@@ -15,21 +15,13 @@ function Home () {
   const dispatch: AppDispatch = useDispatch()
 
   const data = homeData;
-  console.log(data)
+  // console.log(data)
 
   useEffect(() => {
 
     dispatch(fetchDiscover());
   }, [dispatch]);
-
-
-    // for (let page = 1; page <= 5; page++) {
-    //   return page
-
-    // }
   
-
-console.log(data)
 
   //---------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p"
