@@ -2,8 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface MovieInter {
   homeData: any
-  // status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  // error: any
+  loading: boolean
 }
 
 // Async thunk to fetch customers from the API
@@ -49,7 +48,7 @@ export const fetchDiscover = createAsyncThunk(
 
 const initialState: MovieInter = {
   homeData: [],
-  // status: 'idle',
+  loading: false
   // error: null,
 };
 
@@ -59,12 +58,12 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // .addCase(fetchDiscover.pending, (state) => { 
-      //   state.status = 'loading'
-      // })
+      .addCase(fetchDiscover.pending, (state) => { 
+        state.loading = true
+      })
       .addCase(fetchDiscover.fulfilled, (state, action) => {
         state.homeData = action.payload;
-        // state.status = 'succeeded'
+        state.loading = false
       });
     // .addCase(fetchDiscover.rejected, (state, action) => {
     //   state.status = 'failed'

@@ -17,7 +17,7 @@ const sidebarSlice = createSlice({
         },
         sideLeave: (state) => {
             state.value = false
-        }
+        } 
     },
 })
 

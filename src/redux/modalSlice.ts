@@ -15,7 +15,7 @@ const modalSlice = createSlice({
         modalShow: (state) => {
             state.value = true
         },
-        modalHide: (state) => {
+        modalHide: (state ) => {
             state.value = false
         }
     },

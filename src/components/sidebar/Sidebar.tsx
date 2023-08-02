@@ -12,19 +12,25 @@ import { TbTriangleSquareCircle } from "react-icons/tb";
 // import logo from '../../assets/logo2.png'
 import "../../styles/sidebar.css";
 import type { AppDispatch } from "../../redux/store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { sideEnter, sideLeave } from "../../redux/sidebarSlice";
-import { modalShow, modalHide } from '../../redux/modalSlice'
+import { modalShow } from '../../redux/modalSlice'
 
 function Sidebar() {
   const dispatch: AppDispatch = useDispatch();
+  const modal = useSelector((state: RootState) => state.modal.value);
+  const navigate = useNavigate();
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = () => { 
     setOpenSidebar(false);
   };
 
-  const navigate = useNavigate();
-
+  //-------Modal funtion
+  const enterContainer = () => {
+    if (modal === true) {
+      dispatch(sideEnter())
+    }
+  }
   //-----------Open sidebar state
   const [openSidebar, setOpenSidebar] = useState(false);
   const [arrowHover, setArrowHover] = useState(false);
@@ -132,6 +138,7 @@ function Sidebar() {
         onMouseLeave={() => {
           handleMouseLeave()
           dispatch(sideLeave());
+          enterContainer()
         }}
         onMouseEnter={() => dispatch(sideEnter())}
         className={openSidebar === false ? "sidebar-close hidden lg:grid " : "sidebar-open hidden lg:grid"}

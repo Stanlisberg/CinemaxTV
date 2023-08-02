@@ -9,6 +9,7 @@ import modalReducer from './modalSlice';
 export const store = configureStore({
   reducer: {
     home: homeReducer,
+    loading: homeReducer,
     sidebar: sidebarReducer,
     trending: trendingReducer,
     tv: tvReducer,

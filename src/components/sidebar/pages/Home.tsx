@@ -5,17 +5,18 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchDiscover } from '../../../redux/homeSlice'
 import { FiMenu} from 'react-icons/fi'
 import { CgMenuGridO } from 'react-icons/cg'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 // import Sidebar from '../Sidebar';
-
 
 
 function Home () {
   const { homeData } = useSelector((state: RootState) => state.home)
+  const { loading } = useSelector((state: RootState) => state.loading)
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const dispatch: AppDispatch = useDispatch()
 
   const data = homeData;
-  // console.log(data)
+  console.log(data)
 
   useEffect(() => {
 
@@ -45,7 +46,8 @@ function Home () {
         <div className='lg:w-[100%] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0'>
           {(data as unknown as any[])?.map(item => (
             <div key={item.id} className='mx-auto xl:mx-4 w-[100%]  h-[100%]'>
-              <img className=' object-cover rounded-lg' src={`${baseImgUrl}/${size}${item.poster_path}`}/>
+              <img className=' object-cover rounded-lg' src={`${baseImgUrl}/${size}${item.poster_path
+}`}/>
             </div>
           ))}
         </div>
