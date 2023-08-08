@@ -89,3 +89,47 @@ html {
     top:27%;
   }
 }
+
+.skeleton {
+  border-radius: 10px;
+  background-color: whitesmoke;
+  /* margin: 10px 0; */
+  /* width: 300px;
+  height: 300px; */
+  /* margin: auto; */
+}
+
+/*-----------Movie info image --------------*/
+/* .img {
+  width: 100%;
+} */
+
+/* .dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 85%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust the alpha (last) value to control darkness */
+*/
+
+/* .overlay-button {
+  position: absolute;
+  left: 40px;
+  top: 90%;
+  transform: translate(-30%, -30%);
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid pink;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  text-shadow: 1px 1px rgba(0,0,0,.2);
+} */
+
+.genre > :nth-child(2),
+.genre > :nth-child(3),
+.genre > :nth-child(4) {
+  margin-left: 5px;
+}

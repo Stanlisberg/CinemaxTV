@@ -5,9 +5,11 @@ import Trending from "./components/sidebar/pages/Trending";
 import Tv from "./components/sidebar/pages/Tv";
 import Bookmark from "./components/sidebar/pages/Bookmark"; 
 import Popular from "./components/sidebar/pages/Popular";
+import MovieInfo from "./components/movieInfo/MovieInfo";
 import { BiHome } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import type { RootState } from "./redux/store";
+import { SkeletonTheme } from "react-loading-skeleton";
 // import { modalHide } from "./redux/modalSlice";
 // import { useDispatch } from "react-redux";
  
@@ -53,6 +55,7 @@ function App() {
             </div> 
           </>
         )}
+       <SkeletonTheme baseColor="lightgrey" highlightColor="#525252">
         <Router>
           <Sidebar />
           <Routes>
@@ -61,8 +64,10 @@ function App() {
             <Route path="/movie" element={<Popular />} />
             <Route path="/tv" element={<Tv />} />
             <Route path="/bookmark" element={<Bookmark />} />
+            <Route path="/movie/:movieId" element={<MovieInfo />} />
           </Routes>
         </Router>
+      </SkeletonTheme>
       </div>
     </>
   );
