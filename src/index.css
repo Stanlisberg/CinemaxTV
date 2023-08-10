@@ -93,43 +93,80 @@ html {
 .skeleton {
   border-radius: 10px;
   background-color: whitesmoke;
-  /* margin: 10px 0; */
-  /* width: 300px;
-  height: 300px; */
-  /* margin: auto; */
 }
 
-/*-----------Movie info image --------------*/
-/* .img {
-  width: 100%;
-} */
 
-/* .dark-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 85%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Adjust the alpha (last) value to control darkness */
-*/
 
-/* .overlay-button {
-  position: absolute;
-  left: 40px;
-  top: 90%;
-  transform: translate(-30%, -30%);
-  padding: 5px 10px;
-  color: #fff;
-  text-decoration: none;
-  border: 1px solid pink;
-  border-radius: 5px;
-  cursor: pointer;
-  display: inline-block;
-  text-shadow: 1px 1px rgba(0,0,0,.2);
-} */
+/* -----Youtube video adjustment-----*/
 
-.genre > :nth-child(2),
-.genre > :nth-child(3),
-.genre > :nth-child(4) {
-  margin-left: 5px;
+@media(min-width: 450px) {
+  .frame {
+    height: 240px
+  }
+}
+
+@media(min-width: 500px) {
+  .frame {
+    height: 260px
+  }
+}
+
+@media(min-width: 550px) {
+  .frame {
+    height: 280px
+  }
+}
+
+@media(min-width: 600px) {
+  .frame {
+    height: 300px
+  }
+}
+
+@media(min-width: 650px) {
+  .frame {
+    height: 320px
+  }
+}
+
+@media(min-width: 700px) {
+  .frame {
+    height: 340px
+  }
+}
+
+@media(min-width: 750px) {
+  .frame {
+    height: 360px
+  }
+}
+
+@media(min-width: 800px) {
+  .frame {
+    height: 380px
+  }
+}
+
+@media(min-width: 850px) {
+  .frame {
+    height: 400px
+  }
+}
+
+@media(min-width: 900px) {
+  .frame {
+    height: 420px
+  }
+}
+
+@media(min-width: 1000px) {
+  .frame {
+    height: 390px
+  }
+}
+
+@media(min-width: 1050px) {
+  .frame {
+    height: 510px
+  }
 }

@@ -13,20 +13,13 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 function Home() {
   const { homeData } = useSelector((state: RootState) => state.home);
-  const { loading } = useSelector((state: RootState) => state.loading);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const dispatch: AppDispatch = useDispatch();
   const [status, setStatus] = useState(true);
 
   const arrayList = Array(20).fill(0);
-
   const data = homeData;
-  console.log(data);
-
-  const loadingData = loading;
-  console.log(loadingData);
-
-  console.log(status);
+  console.log(data)
 
   useEffect(() => {
     setTimeout(() => {

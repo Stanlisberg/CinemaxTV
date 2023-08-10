@@ -5,7 +5,10 @@ import Trending from "./components/sidebar/pages/Trending";
 import Tv from "./components/sidebar/pages/Tv";
 import Bookmark from "./components/sidebar/pages/Bookmark"; 
 import Popular from "./components/sidebar/pages/Popular";
-import MovieInfo from "./components/movieInfo/MovieInfo";
+import MovieInfo from "./components/allMovieInfo/MovieInfo";
+import PopularInfo from "./components/allMovieInfo/PopularInfo";
+import TrendingInfo from './components/allMovieInfo/TrendingInfo'
+import TvInfo from "./components/allMovieInfo/TvInfo";
 import { BiHome } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import type { RootState } from "./redux/store";
@@ -65,6 +68,9 @@ function App() {
             <Route path="/tv" element={<Tv />} />
             <Route path="/bookmark" element={<Bookmark />} />
             <Route path="/movie/:movieId" element={<MovieInfo />} />
+            <Route path="/movie/:popularId" element={<PopularInfo />} />
+            <Route path="/movie/:trendingId" element={<TrendingInfo />} />
+            <Route path="/movie/:tvId" element={<TvInfo />} />
           </Routes>
         </Router>
       </SkeletonTheme>

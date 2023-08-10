@@ -1,22 +1,30 @@
 import type { RootState, AppDispatch } from '../../../redux/store'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import {Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchTv } from '../../../redux/tvSlice'
 import { FiMenu} from 'react-icons/fi'
 import { CgMenuGridO } from 'react-icons/cg'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 
 function Tv () {
   const { tvData } = useSelector((state: RootState) => state.tv)
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const dispatch: AppDispatch = useDispatch()
+  const [status, setStatus] = useState(true)
 
+
+  const arrayList = Array(20).fill(0);
   const data = tvData;
   console.log(data)
 
   useEffect(() => {
-
-    dispatch(fetchTv());
+    setTimeout(() => {
+      dispatch(fetchPopular());
+      setStatus(false);
+    }, 1000);
   }, [dispatch]);
 
   //---------For images concating--------

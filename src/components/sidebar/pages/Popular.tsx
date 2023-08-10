@@ -1,22 +1,29 @@
 import type { RootState, AppDispatch } from '../../../redux/store'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchPopular } from '../../../redux/popularSlice'
 import { FiMenu} from 'react-icons/fi'
 import { CgMenuGridO } from 'react-icons/cg'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 
 function Popular () {
   const { popularData } = useSelector((state: RootState) => state.popular)
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
-  const dispatch: AppDispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch() 
+  const [status, setStatus] = useState(true)
 
+  const arrayList = Array(20).fill(0);
   const data = popularData;
   console.log(data)
 
   useEffect(() => {
-
-    dispatch(fetchPopular());
+    setTimeout(() => {
+      dispatch(fetchPopular());
+      setStatus(false);
+    }, 1000);
   }, [dispatch]);
 
   //---------For images concating--------
@@ -37,11 +44,24 @@ function Popular () {
               <FiMenu className='lg:hidden' size={25}/>
             </div>
         </nav>
-        <div className='lg:w-[100%] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0'>
-          {(data as unknown as any[])?.map(item => (
-            <div key={item.id} className='mx-auto xl:mx-4 w-[100%]  h-[100%]'>
-              <img className=' object-cover rounded-lg' src={`${baseImgUrl}/${size}${item.profile_path}`}/>
-            </div>
+        <div className="lg:w-[100%] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
+          {status &&
+            arrayList.map((_, index) => (
+              <div className="z-0 mx-auto xl:mx-4" key={index}>
+                <Skeleton className="skeleton mx-auto w-[260px] h-[400px] sm:w-[300px] sm:h-[420px] md:w-[210px] md:h-[310px] lg:w-[190px] lg:h-[280px] xl:w-[205px] xl:h-[300px]" />
+              </div>
+            ))}
+          {(data as unknown as any[])?.map((item, index) => (
+            <>
+              <Link to={`/popular/${item.id}`} key={index}>
+                <div key={index} className="mx-auto xl:mx-4 w-[100%]  h-[100%]">
+                  <img
+                    className="object-cover rounded-lg"
+                    src={`${baseImgUrl}/${size}${item.poster_path}`}
+                  />
+                </div>
+              </Link>
+            </>
           ))}
         </div>
       </div>
