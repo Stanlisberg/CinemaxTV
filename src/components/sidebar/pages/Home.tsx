@@ -1,6 +1,6 @@
 import "../../../styles/homestyle.css";
 import { useEffect, useState } from "react";
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from '../../../redux/store'
 import { fetchDiscover } from "../../../redux/homeSlice";

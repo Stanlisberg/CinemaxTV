@@ -6,6 +6,7 @@ import { fetchDetail } from "../../redux/movieDetailSlice";
 import { FaPlay } from "react-icons/fa";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { BiBookBookmark } from "react-icons/bi";
+import { BiSolidError} from 'react-icons/bi'
 
 function MovieInfo() {
   const [showVideo, setShowVideo] = useState<boolean>(false);
@@ -15,10 +16,10 @@ function MovieInfo() {
   const { info } = useSelector((state: RootState) => state.movieDetail);
   const dispatch: AppDispatch = useDispatch();
 
-  // console.log(info);
+  console.log(info);
 
   //-----Distructure for movie and video-------
-  const { genres, videos } = info;
+  const { genres, videos, credits } = info;
 
   const youtube = videos?.results?.find((item: any) => item.type === "Trailer");
   // console.log(youtube?.key)
@@ -27,7 +28,7 @@ function MovieInfo() {
   const baseImgUrl = "https://image.tmdb.org/t/p";
   const size = "w500";
   const youtubeUrl = `https://www.youtube.com/embed/${youtube?.key}`;
-  const url = `https://api.themoviedb.org/3/movie/${trendingId}?language=en-US&append_to_response=videos`;
+  const url = `https://api.themoviedb.org/3/movie/${trendingId}?language=en-US&append_to_response=videos,credits`;
 
   useEffect(() => {
     dispatch(fetchDetail(url));
@@ -92,7 +93,6 @@ function MovieInfo() {
           </div>
         )}
       </div>
-      <div className={info.success === false ? "hidden" : ""}>
         <div className="genre mx-[6px]">
           {genres?.map((item: any) => (
             <button
@@ -108,7 +108,8 @@ function MovieInfo() {
         </div>
         <div className="md:flex md:justify-between md:items-center mt-[20px] mx-[13px]">
           <div className="flex justify-start">
-            <div className="border border-[#e91e63] flex justify-center items-center py-[28px] px-[25px] md:py-[35px] md:px-[30px] text-[#e91e63] text-2xl md:text-3xl rounded-md">
+            <div className="border border-[#e91e63] flex flex-col justify-center items-center py-[28px] px-[25px] md:py-[35px] md:px-[30px] text-[#e91e63] text-2xl md:text-3xl rounded-md">
+            <div className="font-bold font-mono text-lg text-black md:text-xl ">Rating</div>
               {info.vote_average}
             </div>
             <div className="flex justify-center items-center">
@@ -142,6 +143,29 @@ function MovieInfo() {
           </div>
           {info.overview}
         </div>
+      <div className='text-black text-2xl font-mono font-bold mx-[13px] mt-8'>Casts</div>
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 w-[100%] gap-4 mx-auto px-3'>
+        {credits?.cast?.map((item:any, index:any) => (
+          <>
+           <a href={`https://www.google.com/search?q=${item.name}`} target="_blank">
+            <div 
+              key={index} className="rounded-lg w-full h-full overflow-hidden mx-auto px-[1px]">
+
+             {item.profile_path ? 
+              (<img
+                className="object-cover rounded-lg border-2 border-[#e91e63] image w-full h-full" 
+                src={`${baseImgUrl}/${size}${item.profile_path}`}
+              />) :
+              <div className="flex flex-col justify-center items-center rounded-lg w-full h-full border-2 border-[#e91e63]">
+                <BiSolidError size={70} color='#e91e63'/>
+                <div className='text-xl'>No Image</div>
+              </div>
+              }
+             
+            </div>
+            </a>
+          </>
+        ))} 
       </div>
     </div>
   );
