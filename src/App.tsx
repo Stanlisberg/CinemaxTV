@@ -13,15 +13,12 @@ import { BiHome } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import type { RootState } from "./redux/store";
 import { SkeletonTheme } from "react-loading-skeleton";
-// import { modalHide } from "./redux/modalSlice";
-// import { useDispatch } from "react-redux";
  
 
 function App() {
   const modal = useSelector((state: RootState) => state.modal.value);
-  // const dispatch: AppDispatch = useDispatch();
 
-  console.log(modal);
+  // console.log(modal);
   return (
     <>
       <div className="app">
@@ -68,9 +65,9 @@ function App() {
             <Route path="/tv" element={<Tv />} />
             <Route path="/bookmark" element={<Bookmark />} />
             <Route path="/movie/:movieId" element={<MovieInfo />} />
-            <Route path="/movie/:popularId" element={<PopularInfo />} />
-            <Route path="/movie/:trendingId" element={<TrendingInfo />} />
-            <Route path="/movie/:tvId" element={<TvInfo />} />
+            <Route path="/popular/:popularId" element={<PopularInfo />} />
+            <Route path="/trending/:trendingId" element={<TrendingInfo />} />
+            <Route path="/tv/:tvId" element={<TvInfo />} />
           </Routes>
         </Router>
       </SkeletonTheme>

@@ -59,7 +59,7 @@ function Trending() {
                 <Skeleton className="skeleton mx-auto w-[260px] h-[400px] sm:w-[300px] sm:h-[420px] md:w-[210px] md:h-[310px] lg:w-[190px] lg:h-[280px] xl:w-[205px] xl:h-[300px]" />
               </div>
             ))}
-          {(data as unknown as any[])?.map((item, index) => (
+          {(data as any[])?.map((item, index) => (
             <>
               <Link to={`/trending/${item.id}`} key={index}>
                 <div key={index} className="mx-auto xl:mx-4 w-[100%]  h-[100%]">

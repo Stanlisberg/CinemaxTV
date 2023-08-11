@@ -20,13 +20,16 @@ export const fetchTrending = createAsyncThunk('trending/fetchTrending', async ()
     // https://api.themoviedb.org/3/tv/popular
     // https://api.themoviedb.org/3/person/popular
     for(let page= 1; page <= totalPages; page++) {
-        const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?page=${page}`, options)
+        const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?page=${page}`, options)
         const data = await response.json()
         const { results } = data
 
         allMovies.push(...results)
     }
-
+    // if (re === 0) {
+    //   throw new Error("Division by zero is not allowed");
+    // }
+    // return a / b;
     const movies = allMovies.slice(0, 100)
     return  movies;
 

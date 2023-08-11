@@ -1,15 +1,13 @@
 import "../../../styles/homestyle.css";
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from '../../../redux/store'
 import { fetchDiscover } from "../../../redux/homeSlice";
 import { FiMenu } from "react-icons/fi";
 import { CgMenuGridO } from "react-icons/cg";
-// import CardSkeleton from "../../card/CardSkeleton";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-// import Sidebar from '../Sidebar';
 
 function Home() {
   const { homeData } = useSelector((state: RootState) => state.home);
@@ -67,7 +65,7 @@ function Home() {
                 </div>
               ))
             }
-            {(data as unknown as any[])?.map((item, index) => (
+            {data?.map((item:any, index:any) => (
               <>
               <Link to={`/movie/${item.id}`} key={index}>
                <div key={index} className="mx-auto xl:mx-4 w-[100%]  h-[100%]">
