@@ -18,7 +18,7 @@ export const fetchTrending = createAsyncThunk(
   async () => {
     try {
       const allMovies = [];
-      const totalPages = 5;
+      const totalPages = 20;
 
       for (let page = 1; page <= totalPages; page++) {
         const response = await fetch(
@@ -31,7 +31,7 @@ export const fetchTrending = createAsyncThunk(
         allMovies.push(...results);
       }
 
-      const movies = allMovies.slice(0, 100);
+      const movies = allMovies.slice(0, 400);
       return movies;
     } catch (error) {
       console.log(error);

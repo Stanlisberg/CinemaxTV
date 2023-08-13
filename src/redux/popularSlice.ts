@@ -16,7 +16,7 @@ const options = {
 export const fetchPopular = createAsyncThunk('popular/fetchPopular', async () => {
  try {
     const allMovies = [];
-    const totalPages = 5;
+    const totalPages = 20;
     
     for(let page= 1; page <= totalPages; page++) {
         const response = await fetch(`https://api.themoviedb.org/3/person/popular?page=${page}`, options)
@@ -26,7 +26,7 @@ export const fetchPopular = createAsyncThunk('popular/fetchPopular', async () =>
         allMovies.push(...results)
     }
 
-    const movies = allMovies.slice(0, 100)
+    const movies = allMovies.slice(0, 400)
     return  movies;
 
 } catch (error) {

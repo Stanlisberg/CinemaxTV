@@ -20,7 +20,7 @@ export const fetchDiscover = createAsyncThunk(
   async () => {
     try {
       const allMovies = [];
-      const totalPages = 5;
+      const totalPages = 20;
 
       // Fetch data from each page and concatenate the results into 'allMovies'
       for (let page = 1; page <= totalPages; page++) {
@@ -35,7 +35,7 @@ export const fetchDiscover = createAsyncThunk(
       }
 
       // Slice 'allMovies' to get the first 100 movies
-      const movies = allMovies.slice(0, 100);
+      const movies = allMovies.slice(0, 400);
       // console.log(movies);
       return movies;
 
