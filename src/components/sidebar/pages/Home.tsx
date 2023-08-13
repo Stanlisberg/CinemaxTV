@@ -53,7 +53,7 @@ function Home() {
             <FiMenu className="lg:hidden" size={25} />
           </div>
         </nav>
-          <div className="lg:w-[100%] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
+          <div className="lg:w-[100%] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
             { status &&
               arrayList.map((_, index) => (
                 <div
@@ -61,7 +61,7 @@ function Home() {
                   key={index}
                   
                 >
-                   <Skeleton className='skeleton mx-auto w-[260px] h-[400px] sm:w-[300px] sm:h-[420px] md:w-[210px] md:h-[310px] lg:w-[190px] lg:h-[280px] xl:w-[205px] xl:h-[300px]'/>
+                   <Skeleton className='skeleton mx-auto w-[165px] h-[250px] sm:w-[300px] sm:h-[420px] md:w-[210px] md:h-[310px] lg:w-[190px] lg:h-[280px] xl:w-[205px] xl:h-[300px]'/>
                 </div>
               ))
             }

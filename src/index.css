@@ -98,10 +98,53 @@ html {
 
 
 /* -----Youtube video adjustment-----*/
+@media(min-width: 250px) {
+  .frame {
+    height: 130px;
+  }
+
+  .loading {
+    height: 130px;
+  }
+}
+
+@media(min-width: 300px) {
+  .frame {
+    height: 160px;
+  }
+
+  .loading {
+    height: 160px;
+  }
+}
+
+@media(min-width: 350px) {
+  .frame {
+    height: 190px;
+  }
+
+  .loading {
+    height: 190px;
+  }
+}
+
+@media(min-width: 400px) {
+  .frame {
+    height: 215px;
+  }
+
+  .loading {
+    height: 215px;
+  }
+}
 
 @media(min-width: 450px) {
   .frame {
-    height: 240px
+    height: 240px;
+  }
+
+  .loading {
+    height: 240px;
   }
 }
 
@@ -109,11 +152,19 @@ html {
   .frame {
     height: 260px
   }
+
+  .loading {
+    height: 270px;
+  }
 }
 
 @media(min-width: 550px) {
   .frame {
     height: 280px
+  }
+
+  .loading {
+    height: 290px;
   }
 }
 
@@ -121,11 +172,19 @@ html {
   .frame {
     height: 300px
   }
+
+  .loading {
+    height: 310px;
+  }
 }
 
 @media(min-width: 650px) {
   .frame {
     height: 320px
+  }
+
+  .loading {
+    height: 330px;
   }
 }
 
@@ -133,11 +192,19 @@ html {
   .frame {
     height: 340px
   }
+
+  .loading {
+    height: 350px;
+  }
 }
 
 @media(min-width: 750px) {
   .frame {
     height: 360px
+  }
+
+  .loading {
+    height: 370px;
   }
 }
 
@@ -145,11 +212,19 @@ html {
   .frame {
     height: 380px
   }
+
+  .loading {
+    height: 390px;
+  }
 }
 
 @media(min-width: 850px) {
   .frame {
     height: 400px
+  }
+
+  .loading {
+    height: 410px;
   }
 }
 
@@ -157,17 +232,29 @@ html {
   .frame {
     height: 420px
   }
+
+  .loading {
+    height: 430px;
+  }
 }
 
 @media(min-width: 1000px) {
   .frame {
     height: 390px
   }
+
+  .loading {
+    height: 400px;
+  }
 }
 
 @media(min-width: 1050px) {
   .frame {
     height: 510px
+  }
+
+  .loading {
+    height: 520px;
   }
 }
 
