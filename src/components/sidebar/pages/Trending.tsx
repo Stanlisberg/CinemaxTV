@@ -82,7 +82,7 @@ function Trending() {
             {status &&
               arrayList.map((_, index) => (
                 <div className="z-0 mx-auto xl:mx-4" key={index}>
-                  <Skeleton className="skeleton mx-auto w-[260px] h-[400px] sm:w-[300px] sm:h-[420px] md:w-[210px] md:h-[310px] lg:w-[190px] lg:h-[280px] xl:w-[205px] xl:h-[300px]" />
+                  <Skeleton className="skeleton mx-auto w-[100px] h-[160px]" />
                 </div>
               ))}
             {(currentItems && (currentItems as any[]))?.map((item, index) => (

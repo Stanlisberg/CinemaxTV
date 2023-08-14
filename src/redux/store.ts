@@ -6,12 +6,14 @@ import tvReducer from './tvSlice'
 import popularReducer from './popularSlice'
 import modalReducer from './modalSlice';
 import movieDetailReducer from './movieDetailSlice'
+import mobileReducer from './mobileSlice'
 
 export const store = configureStore({
   reducer: {
     home: homeReducer,
     loading: homeReducer,
     sidebar: sidebarReducer,
+    mobile: mobileReducer,
     trending: trendingReducer,
     tv: tvReducer,
     popular: popularReducer,
