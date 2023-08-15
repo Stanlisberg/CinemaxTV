@@ -4,16 +4,20 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../../../redux/store";
 import { fetchDiscover } from "../../../redux/homeSlice";
-import { FiMenu } from "react-icons/fi";
+// import { FiMenu } from "react-icons/fi";
+import { FaTimes } from "react-icons/fa";
 import { CgMenuGridO } from "react-icons/cg";
 import ReactPaginate from "react-paginate";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { mobileEnter, mobileLeave } from "../../../redux/mobileSlice";
+import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
+import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 
 function Home() {
   const { homeData } = useSelector((state: RootState) => state.home);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
+  const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
   const [status, setStatus] = useState(true);
 
@@ -42,19 +46,28 @@ function Home() {
   }, [itemOffset, itemsPerPage, data]);
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(fetchDiscover());
-      setStatus(false);
-    }, 1000);
+    dispatch(fetchDiscover());
   }, [dispatch]);
 
-  //---------For images concating--------
+  //----Loading Timeout----------
+  setTimeout(() => {
+    setStatus(false);
+  }, 3000);
+
+  //--------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p";
   const size = "w500";
 
+  const backGroundRemoveMenu = () => {
+    if (icon === false) {
+      dispatch(toggleEnter());
+      dispatch(removeMenu());
+    }
+  };
+
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between" onClick={backGroundRemoveMenu}>
         <div
           className={
             sidebar === true
@@ -64,26 +77,41 @@ function Home() {
         >
           <nav className="fixed left-0 top-0 flex items-center justify-between w-full bg-[#dee2e6] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-start lg:w-[100%] lg:pl-24 z-10">
             <div className="lg:justify-center lg:items-center lg:flex">
-              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+              <p className="text-3xl sm:text-3xl lg:text-4xl font-bold">
                 Discover Movies
               </p>
               <button className="text-white cursor-pointer h-8 text-sm rounded-md border-none mt-3 mb-3 ml-5 pt-1 pb-1 pl-3 pr-3 hidden lg:grid bg-[#e91e63]">
                 Genre
               </button>
             </div>
-            <div className="flex cursor-pointer">
-              <CgMenuGridO
-                className="lg:hidden mr-3"
-                color="#e91e63"
-                size={25}
-              />
-              <FiMenu 
-               className="lg:hidden" 
-               size={25}
-               onClick={() => dispatch(mobileEnter())}
-               
+
+            {icon ? (
+              <div className="flex cursor-pointer">
+                <CgMenuGridO
+                  className="lg:hidden"
+                  size={34}
+                  color="#e91e63"
+                  onClick={() => {
+                    dispatch(mobileEnter());
+                    dispatch(toggleLeave());
+                    dispatch(showMenu());
+                  }}
                 />
-            </div>
+              </div>
+            ) : (
+              <div className="flex cursor-pointer">
+                <FaTimes
+                  className="lg:hidden"
+                  color="#e91e63"
+                  size={34}
+                  onClick={() => {
+                    dispatch(mobileLeave());
+                    dispatch(toggleEnter());
+                    dispatch(removeMenu());
+                  }}
+                />
+              </div>
+            )}
           </nav>
           <div className="lg:w-[100%] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
             {status &&

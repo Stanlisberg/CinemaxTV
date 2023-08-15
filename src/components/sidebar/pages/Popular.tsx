@@ -8,10 +8,14 @@ import { CgMenuGridO } from "react-icons/cg";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ReactPaginate from "react-paginate";
+import { mobileEnter, mobileLeave } from "../../../redux/mobileSlice";
+import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
+import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 
 function Popular() {
   const { popularData } = useSelector((state: RootState) => state.popular);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
+  const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
   const [status, setStatus] = useState(true);
 

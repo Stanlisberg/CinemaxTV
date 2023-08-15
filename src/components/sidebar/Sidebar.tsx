@@ -16,11 +16,14 @@ import { useDispatch, useSelector} from "react-redux";
 import { sideEnter, sideLeave } from "../../redux/sidebarSlice";
 import { modalShow } from '../../redux/modalSlice'
 import { mobileEnter, mobileLeave } from '../../redux/mobileSlice'
+import { showMenu, removeMenu } from "../../redux/changeIconSlice";
+import { toggleEnter } from "../../redux/toggleSlice";
 
 function Sidebar() {
   const dispatch: AppDispatch = useDispatch();
   const modal = useSelector((state: RootState) => state.modal.value);
   const mobile = useSelector((state: RootState) => state.mobile.value);
+  const toggle = useSelector((state: RootState) => state.toggle.value);
 
   console.log(mobile)
 
@@ -322,6 +325,7 @@ function Sidebar() {
       </div>
     </div>
 
+     {/*------------ Mobile Menu section ------------------*/}
       { mobile === true ? ( 
        <div
        onMouseLeave={() => {
@@ -330,7 +334,7 @@ function Sidebar() {
          enterContainer()
        }}
        onMouseEnter={() => dispatch(sideEnter())}
-       className={hideMobileSideBar === true ? ('hidden') : ('sidebar-open lg:hidden grid')}
+       className={toggle === true ? 'hidden' : 'sidebar-open lg:hidden fixed'}
      >
        <div className="logo-div">
          <TbTriangleSquareCircle
@@ -340,9 +344,10 @@ function Sidebar() {
            onClick={
             () => {
               navigate('/')
-              setHideMobileSideBar(true)
+              dispatch(toggleEnter())
               dispatch(mobileLeave())
-              dispatch(sideLeave());
+              dispatch(sideLeave())
+              dispatch(removeMenu())
             }}
          />
          <p className="logo-text"> CINEMAX-TV</p>
@@ -361,7 +366,7 @@ function Sidebar() {
          >
            <BiSearchAlt
              size={25}
-             className={activeButton === 1 ? "active search" : "search"}
+             className={ activeButton === 1 ? "active search" : "search" }
            />
            {searchHover && (
              <p className="icon-name-close icon-name-open">Search</p>
@@ -395,9 +400,13 @@ function Sidebar() {
            onClick={() => {
              handleActiveButton(2);
              navigate("/");
+             dispatch(toggleEnter())
+              dispatch(mobileLeave())
+              dispatch(sideLeave())
+              dispatch(removeMenu())
            }}
          >
-           <BiHome size={25} className={activeButton === 2 ? "active" : ""} />
+           <BiHome size={25} className={ activeButton === 2 ? "active" : "" } />
            {homeHover ? (
              <div className="icon-name-close icon-name-open">Home</div>
            ) : (
@@ -412,11 +421,15 @@ function Sidebar() {
            onClick={() => {
              handleActiveButton(3);
              navigate("/trending");
+              dispatch(toggleEnter())
+              dispatch(mobileLeave())
+              dispatch(sideLeave())
+              dispatch(removeMenu())
            }}
          >
            <AiOutlineFire
              size={25}
-             className={activeButton === 3 ? "active open-icon" : ""}
+             className={ activeButton === 3 ? "active open-icon" : "" }
            />
            {trendingHover ? (
              <p className="icon-name-close icon-name-open">Trending</p>
@@ -426,17 +439,21 @@ function Sidebar() {
            <p className="icon-open-text">Trending</p>
          </div>
          <div
-           className="icon-open"
+           className= "icon-open"
            onMouseOver={handleMovieHoverEnter}
            onMouseLeave={handleMovieHoverLeave}
            onClick={() => {
              handleActiveButton(4);
              navigate("/movie");
+             dispatch(toggleEnter())
+             dispatch(mobileLeave())
+             dispatch(sideLeave())
+             dispatch(removeMenu())
            }}
          >
            <BiCameraMovie
              size={25}
-             className={activeButton === 4 ? "active" : ""}
+             className={ activeButton === 4 ? "active" : "" }
            />
            {movieHover ? (
              <p className="icon-name-close icon-name-open">Movie_Actors</p>
@@ -446,17 +463,21 @@ function Sidebar() {
            <p className="icon-open-text">Movie Actors</p>
          </div>
          <div
-           className="icon-open"
+           className= "icon-open"
            onMouseOver={handleTvHoverEnter}
            onMouseLeave={handleTvHoverLeave}
            onClick={() => {
              handleActiveButton(5);
              navigate("/tv");
+             dispatch(toggleEnter())
+              dispatch(mobileLeave())
+              dispatch(sideLeave())
+              dispatch(removeMenu())
            }}
          >
            <RiSlideshow3Line
              size={25}
-             className={activeButton === 5 ? "active" : ""}
+             className={ activeButton === 5 ? "active" : "" }
            />
            {tvHover ? (
              <p className="icon-name-close icon-name-open">Tv_Shows</p>
@@ -472,11 +493,15 @@ function Sidebar() {
            onClick={() => {
              handleActiveButton(6);
              navigate("/bookmark");
+             dispatch(toggleEnter())
+              dispatch(mobileLeave())
+              dispatch(sideLeave())
+              dispatch(removeMenu())
            }}
          >
            <BiBookBookmark
              size={25}
-             className={activeButton === 6 ? "active" : ""}
+             className={ activeButton === 6 ? "active" : "" }
            />
            {bookHover ? (
              <p className="icon-name-close icon-name-open">Bookmark</p>
@@ -487,19 +512,22 @@ function Sidebar() {
          </div>
        </div>
        <div
-         className="setting-open"
+         className="setting-open hover:cursor-pointer"
          onMouseOver={handleSettingHoverEnter}
          onMouseLeave={handleSettingHoverLeave}
          onClick={() => {
            handleActiveButton(7)
            dispatch(modalShow())
+           dispatch(toggleEnter())
+            dispatch(mobileLeave())
+            dispatch(sideLeave())
+            dispatch(removeMenu())
          }}
        >
          <IoMdSettings
            size={25}
            className={activeButton === 7 ? "active" : ""}
          />
-         {}
          {settingHover ? (
            <p className="icon-setting-close icon-setting-open">Settings</p>
          ) : (

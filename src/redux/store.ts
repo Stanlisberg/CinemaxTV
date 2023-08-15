@@ -7,6 +7,8 @@ import popularReducer from './popularSlice'
 import modalReducer from './modalSlice';
 import movieDetailReducer from './movieDetailSlice'
 import mobileReducer from './mobileSlice'
+import toggleReducer from './toggleSlice';
+import changeIconReducer from './changeIconSlice';
 
 export const store = configureStore({
   reducer: {
@@ -18,7 +20,9 @@ export const store = configureStore({
     tv: tvReducer,
     popular: popularReducer,
     modal: modalReducer,
-    movieDetail: movieDetailReducer
+    movieDetail: movieDetailReducer,
+    toggle: toggleReducer,
+    icon: changeIconReducer
   },
 })
 

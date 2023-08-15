@@ -17,7 +17,7 @@ const toggleSlice = createSlice({
             state.value = true;
         },
         toggleLeave: (state) => {
-            state.value = true;
+            state.value = false;
         }
     }
 })

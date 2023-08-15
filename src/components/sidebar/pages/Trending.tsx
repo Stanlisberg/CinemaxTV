@@ -3,15 +3,19 @@ import { Link } from "react-router-dom";
 import type { RootState, AppDispatch } from "../../../redux/store";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTrending } from "../../../redux/trendingSlice";
-import { FiMenu } from "react-icons/fi";
+import { FaTimes } from "react-icons/fa";
 import { CgMenuGridO } from "react-icons/cg";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ReactPaginate from "react-paginate";
+import { mobileEnter, mobileLeave } from "../../../redux/mobileSlice";
+import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
+import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 
 function Trending() {
   const { trendingData } = useSelector((state: RootState) => state.trending);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
+  const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
   const [status, setStatus] = useState(true);
 
@@ -40,19 +44,28 @@ function Trending() {
   }, [itemOffset, itemsPerPage, data]);
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(fetchTrending());
-      setStatus(false);
-    }, 1000);
+    dispatch(fetchTrending());
   }, [dispatch]);
+
+  //----Loading Timeout----------
+  setTimeout(() => {
+    setStatus(false);
+  }, 3000);
 
   //---------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p";
   const size = "w500";
 
+  const backGroundRemoveMenu = () => {
+    if (icon === false) {
+      dispatch(toggleEnter());
+      dispatch(removeMenu());
+    }
+  };
+
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between" onClick={backGroundRemoveMenu}>
         <div
           className={
             sidebar === true
@@ -69,16 +82,35 @@ function Trending() {
                 Genre
               </button>
             </div>
-            <div className="flex">
-              <CgMenuGridO
-                className="lg:hidden mr-3"
-                color="#e91e63"
-                size={25}
-              />
-              <FiMenu className="lg:hidden" size={25} />
-            </div>
+            {icon ? (
+              <div className="flex cursor-pointer">
+                <CgMenuGridO
+                  className="lg:hidden"
+                  size={34}
+                  color="#e91e63"
+                  onClick={() => {
+                    dispatch(mobileEnter());
+                    dispatch(toggleLeave());
+                    dispatch(showMenu());
+                  }}
+                />
+              </div>
+            ) : (
+              <div className="flex cursor-pointer">
+                <FaTimes
+                  className="lg:hidden"
+                  color="#e91e63"
+                  size={34}
+                  onClick={() => {
+                    dispatch(mobileLeave());
+                    dispatch(toggleEnter());
+                    dispatch(removeMenu());
+                  }}
+                />
+              </div>
+            )}
           </nav>
-          <div className="lg:w-[100%] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
+          <div className="lg:w-[100%] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
             {status &&
               arrayList.map((_, index) => (
                 <div className="z-0 mx-auto xl:mx-4" key={index}>
