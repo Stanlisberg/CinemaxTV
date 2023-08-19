@@ -15,8 +15,8 @@ import type { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector} from "react-redux";
 import { sideEnter, sideLeave } from "../../redux/sidebarSlice";
 import { modalShow } from '../../redux/modalSlice'
-import { mobileEnter, mobileLeave } from '../../redux/mobileSlice'
-import { showMenu, removeMenu } from "../../redux/changeIconSlice";
+import { mobileLeave } from '../../redux/mobileSlice'
+import { removeMenu } from "../../redux/changeIconSlice";
 import { toggleEnter } from "../../redux/toggleSlice";
 
 function Sidebar() {
@@ -49,7 +49,6 @@ function Sidebar() {
   const [tvHover, setTvHover] = useState(false);
   const [bookHover, setBookHover] = useState(false);
   const [settingHover, setSettingHover] = useState(false);
-  const [hideMobileSideBar, setHideMobileSideBar] = useState(false)
 
   //-----------Active  Button State
   const [activeButton, setActiveButton] = useState<number | null>(null);

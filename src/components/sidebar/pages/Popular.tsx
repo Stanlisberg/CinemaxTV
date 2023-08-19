@@ -18,7 +18,6 @@ function Popular() {
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
   const [status, setStatus] = useState(true);
-  const [hoverImage, setHoverImage] = useState(false)
 
   //-----Pagination States------
   const [currentItems, setCurrentItems] = useState([]);
@@ -130,8 +129,6 @@ function Popular() {
                     >
                       <img
                         className= 'object-cover rounded-lg border-[1.5px] border-[#e91e63] image'
-                        onMouseOver={() => setHoverImage(true)}
-                        onMouseLeave={() => setHoverImage(false)}
                         src={`${baseImgUrl}/${size}${item.profile_path}`}
                       />
                       {/* <div className={'absolute bottom-0 left-0 w-full h-full bg-black bg-opacity-60 text-white transition-bottom duration-300 ease-in-out'}>
