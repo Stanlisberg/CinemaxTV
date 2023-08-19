@@ -3,9 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  background: blue;
-}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -143,8 +141,11 @@ html {
 
 .page-active {
   background-color: #e91e63;
-  /* color: #1f2937; */
   color: #fff;
+}
+
+.break {
+  color: #e91e63;
 }
 
 
@@ -190,7 +191,7 @@ html {
   }
 
   .skeleton {
-    width: 140px;
+    width: 150px;
     height: 230px;
   }
 }

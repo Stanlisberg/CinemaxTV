@@ -43,14 +43,16 @@ function Tv() {
     setPageCount(Math.ceil(data?.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, data]);
 
+  //---Effect for loading and data---
   useEffect(() => {
-    dispatch(fetchTv());
-  }, [dispatch]);
+    dispatch(fetchTv())
 
-  //----Loading Timeout----------
-  setTimeout(() => {
-    setStatus(false);
-  }, 3000);
+    if(currentItems) {
+      setTimeout(() => {
+        setStatus(false)
+      }, 1000)
+    } 
+  }, [])
 
   //------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p";
@@ -127,7 +129,7 @@ function Tv() {
                     className="mx-auto xl:mx-4 w-[100%]  h-[100%]"
                   >
                     <img
-                      className="object-cover rounded-lg"
+                      className="object-cover rounded-lg border-[1.5px] border-[#e91e63]"
                       src={`${baseImgUrl}/${size}${item.poster_path}`}
                     />
                   </div>
@@ -150,6 +152,7 @@ function Tv() {
         previousLinkClassName="page"
         nextLinkClassName="page"
         activeLinkClassName="page-active"
+        breakLinkClassName="break"
       />
     </>
   );

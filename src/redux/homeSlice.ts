@@ -10,8 +10,8 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOGQyNDQ2ZTg1ZmQ2Mzc3NGM5ZjNhODY2N2U1MmI3ZiIsInN1YiI6IjYxMDNhNWQ0NDI4NGVhMDA1ZDE5OTc2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FG38CkW-ijLIMRLiOIeoPLJeQV_0O2bSIK5vymhKKNE",
+    Authorization: "process.env.REACT_APP_CINEMAX_API_KEY",
+
   },
 };
 
@@ -35,7 +35,7 @@ export const fetchDiscover = createAsyncThunk(
       }
 
       // Slice 'allMovies' to get the first 100 movies
-      const movies = allMovies.slice(0, 400);
+      const movies = allMovies.slice(0, 100);
       // console.log(movies);
       return movies;
 

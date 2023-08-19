@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPopular } from "../../../redux/popularSlice";
-import { FiMenu } from "react-icons/fi";
+import { FaTimes } from "react-icons/fa";
 import { CgMenuGridO } from "react-icons/cg";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -18,6 +18,7 @@ function Popular() {
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
   const [status, setStatus] = useState(true);
+  const [hoverImage, setHoverImage] = useState(false)
 
   //-----Pagination States------
   const [currentItems, setCurrentItems] = useState([]);
@@ -43,20 +44,31 @@ function Popular() {
     setPageCount(Math.ceil(data?.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, data]);
 
+  //---Effect for loading and data---
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(fetchPopular());
-      setStatus(false);
-    }, 1000);
-  }, [dispatch]);
+    dispatch(fetchPopular())
+
+    if(currentItems) {
+      setTimeout(() => {
+        setStatus(false)
+      }, 1000)
+    } 
+  }, [])
 
   //---------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p";
   const size = "w500";
 
+  const backGroundRemoveMenu = () => {
+    if (icon === false) {
+      dispatch(toggleEnter());
+      dispatch(removeMenu());
+    }
+  };
+
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between" onClick={backGroundRemoveMenu}>
         <div
           className={
             sidebar === true
@@ -73,19 +85,38 @@ function Popular() {
                 Genre
               </button>
             </div>
-            <div className="flex">
-              <CgMenuGridO
-                className="lg:hidden mr-3"
-                color="#e91e63"
-                size={25}
-              />
-              <FiMenu className="lg:hidden" size={25} />
-            </div>
+            {icon ? (
+              <div className="flex cursor-pointer">
+                <CgMenuGridO
+                  className="lg:hidden"
+                  size={34}
+                  color="#e91e63"
+                  onClick={() => {
+                    dispatch(mobileEnter());
+                    dispatch(toggleLeave());
+                    dispatch(showMenu());
+                  }}
+                />
+              </div>
+            ) : (
+              <div className="flex cursor-pointer">
+                <FaTimes
+                  className="lg:hidden"
+                  color="#e91e63"
+                  size={34}
+                  onClick={() => {
+                    dispatch(mobileLeave());
+                    dispatch(toggleEnter());
+                    dispatch(removeMenu());
+                  }}
+                />
+              </div>
+            )}
           </nav>
           <div className="lg:w-[100%] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
             {status &&
               arrayList.map((_, index) => (
-                <div className="z-0 mx-auto xl:mx-4" key={index}>
+                <div className="mx-auto xl:mx-4 px-auto" key={index}>
                   <Skeleton className="skeleton mx-auto w-[100px] h-[160px]" />
                 </div>
               ))}
@@ -98,9 +129,17 @@ function Popular() {
                       className="mx-auto xl:mx-4 w-[100%]  h-[100%]"
                     >
                       <img
-                        className="object-cover rounded-lg"
+                        className= 'object-cover rounded-lg border-[1.5px] border-[#e91e63] image'
+                        onMouseOver={() => setHoverImage(true)}
+                        onMouseLeave={() => setHoverImage(false)}
                         src={`${baseImgUrl}/${size}${item.profile_path}`}
                       />
+                      {/* <div className={'absolute bottom-0 left-0 w-full h-full bg-black bg-opacity-60 text-white transition-bottom duration-300 ease-in-out'}>
+                        <div className="p-4">
+                          hey
+                        </div>
+                      </div> */}
+                      <div className='flex justify-center text-[15px] mt-1 sm:text-[18px] font-mono'>{item.name}</div>
                     </div>
                   </Link>
                 </>
@@ -121,6 +160,7 @@ function Popular() {
         previousLinkClassName="page"
         nextLinkClassName="page"
         activeLinkClassName="page-active"
+        breakLinkClassName="break"
       />
     </>
   );
