@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 interface TvInter{
   tvData: any
+  tvLoading: boolean | null;
 }
 
 // Async thunk to fetch customers from the API
@@ -37,6 +38,7 @@ export const fetchTv = createAsyncThunk('tv/fetchTv', async () => {
 
 const initialState: TvInter = {
   tvData: [],
+  tvLoading: null
 };
 
 const tvSlice = createSlice({
@@ -45,8 +47,12 @@ const tvSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    .addCase(fetchTv.pending, (state) => {
+      state.tvData = true
+    })
     .addCase(fetchTv.fulfilled, (state, action) => {
       state.tvData = action.payload
+      state.tvData = false
     })
   },
   

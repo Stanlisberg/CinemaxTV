@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 interface PopularInter{
   popularData: any
+  popularLoading: boolean | null
 }
 
 // Async thunk to fetch customers from the API
@@ -37,6 +38,7 @@ export const fetchPopular = createAsyncThunk('popular/fetchPopular', async () =>
 
 const initialState: PopularInter = {
   popularData: [],
+  popularLoading: null
 };
 
 const popularSlice = createSlice({
@@ -45,8 +47,12 @@ const popularSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    .addCase(fetchPopular.pending,(state) => {
+      state.popularLoading = true
+    })
     .addCase(fetchPopular.fulfilled, (state, action) => {
       state.popularData = action.payload
+      state.popularLoading = false
     })
   },
   

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface TrendInter {
   trendingData: any;
+  trendingLoading: boolean | null;
 }
 
 // Async thunk to fetch customers from the API
@@ -40,6 +41,7 @@ export const fetchTrending = createAsyncThunk(
 
 const initialState: TrendInter = {
   trendingData: [],
+  trendingLoading: null
 };
 
 const trendingSlice = createSlice({
@@ -47,8 +49,13 @@ const trendingSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchTrending.fulfilled, (state, action) => {
+    builder
+    .addCase(fetchTrending.pending,(state) => {
+      state.trendingLoading = true
+    })
+    .addCase(fetchTrending.fulfilled, (state, action) => {
       state.trendingData = action.payload;
+      state.trendingLoading = false
     });
   },
 });

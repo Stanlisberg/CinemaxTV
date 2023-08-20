@@ -13,7 +13,7 @@ import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
 import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 
 function Popular() {
-  const { popularData } = useSelector((state: RootState) => state.popular);
+  const { popularData, popularLoading } = useSelector((state: RootState) => state.popular);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
@@ -113,7 +113,7 @@ function Popular() {
             )}
           </nav>
           <div className="lg:w-[100%] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
-            {status &&
+            {popularLoading &&
               arrayList.map((_, index) => (
                 <div className="mx-auto xl:mx-4 px-auto" key={index}>
                   <Skeleton className="skeleton mx-auto w-[100px] h-[160px]" />

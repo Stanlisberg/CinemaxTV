@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface MovieInter {
   homeData: any
-  loading: boolean
+  loading: boolean | null
 }
 
 // Async thunk to fetch customers from the API
@@ -48,7 +48,7 @@ export const fetchDiscover = createAsyncThunk(
 
 const initialState: MovieInter = {
   homeData: [],
-  loading: false
+  loading: null,
   // error: null,
 };
 
