@@ -13,7 +13,9 @@ import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
 import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 
 function Trending() {
-  const { trendingData, trendingLoading } = useSelector((state: RootState) => state.trending);
+  const { trendingData, trendingLoading } = useSelector(
+    (state: RootState) => state.trending
+  );
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
@@ -45,15 +47,14 @@ function Trending() {
 
   //---Effect for loading and data---
   useEffect(() => {
-    dispatch(fetchTrending())
+    dispatch(fetchTrending());
 
-    if(currentItems) {
+    if (currentItems) {
       setTimeout(() => {
-        setStatus(false)
-      }, 1000)
-    } 
-  }, [])
-
+        setStatus(false);
+      }, 1000);
+    }
+  }, []);
 
   //---------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p";
