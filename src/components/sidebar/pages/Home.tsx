@@ -15,8 +15,7 @@ import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
 import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 
 function Home() {
-  const { homeData } = useSelector((state: RootState) => state.home);
-  const { loading } = useSelector((state: RootState) => state.home);
+  const { homeData, homeLoading } = useSelector((state: RootState) => state.home);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();

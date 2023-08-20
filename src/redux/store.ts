@@ -13,7 +13,7 @@ import changeIconReducer from './changeIconSlice';
 export const store = configureStore({
   reducer: {
     home: homeReducer,
-    loading: homeReducer,
+    homeLoading: homeReducer,
     sidebar: sidebarReducer,
     mobile: mobileReducer,
     trending: trendingReducer,

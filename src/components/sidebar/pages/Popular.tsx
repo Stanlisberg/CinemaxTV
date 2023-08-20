@@ -13,11 +13,12 @@ import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
 import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 
 function Popular() {
-  const { popularData, popularLoading } = useSelector((state: RootState) => state.popular);
+  const { popularData, popularLoading } = useSelector(
+    (state: RootState) => state.popular
+  );
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
-  const [status, setStatus] = useState(true);
 
   //-----Pagination States------
   const [currentItems, setCurrentItems] = useState([]);
@@ -45,14 +46,8 @@ function Popular() {
 
   //---Effect for loading and data---
   useEffect(() => {
-    dispatch(fetchPopular())
-
-    if(currentItems) {
-      setTimeout(() => {
-        setStatus(false)
-      }, 1000)
-    } 
-  }, [])
+    dispatch(fetchPopular());
+  }, []);
 
   //---------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p";
@@ -128,7 +123,7 @@ function Popular() {
                       className="mx-auto xl:mx-4 w-[100%]  h-[100%]"
                     >
                       <img
-                        className= 'object-cover rounded-lg border-[1.5px] border-[#e91e63] image'
+                        className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image"
                         src={`${baseImgUrl}/${size}${item.profile_path}`}
                       />
                       {/* <div className={'absolute bottom-0 left-0 w-full h-full bg-black bg-opacity-60 text-white transition-bottom duration-300 ease-in-out'}>
@@ -136,7 +131,9 @@ function Popular() {
                           hey
                         </div>
                       </div> */}
-                      <div className='flex justify-center text-[15px] mt-1 sm:text-[18px] font-mono'>{item.name}</div>
+                      <div className="flex justify-center text-[15px] mt-1 sm:text-[18px] font-mono">
+                        {item.name}
+                      </div>
                     </div>
                   </Link>
                 </>
