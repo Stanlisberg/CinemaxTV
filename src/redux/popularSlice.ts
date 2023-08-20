@@ -10,8 +10,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-    "process.env.REACT_APP_KRYPTOFOLIO_URL",
+    Authorization: import.meta.env.VITE_CINEMAX_API_KEY
   },
 };
 export const fetchPopular = createAsyncThunk('popular/fetchPopular', async () => {

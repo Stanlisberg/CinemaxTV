@@ -16,7 +16,7 @@ import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 
 function Home() {
   const { homeData } = useSelector((state: RootState) => state.home);
-  const {loading } = useSelector((state: RootState) => state.home);
+  const { loading } = useSelector((state: RootState) => state.home);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
@@ -48,14 +48,8 @@ function Home() {
 
   //---Effect for loading and data---
   useEffect(() => {
-    dispatch(fetchDiscover())
-
-    // if(currentItems) {
-    //   setTimeout(() => {
-    //     setStatus(false)
-    //   }, 1000)
-    // } 
-  }, [])
+    dispatch(fetchDiscover());
+  }, []);
 
   //--------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p";

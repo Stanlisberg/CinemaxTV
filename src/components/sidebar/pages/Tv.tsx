@@ -17,7 +17,6 @@ function Tv() {
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
-  const [status, setStatus] = useState(true);
 
   //-----Pagination States------
   const [currentItems, setCurrentItems] = useState([]);

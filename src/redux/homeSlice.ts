@@ -35,7 +35,7 @@ export const fetchDiscover = createAsyncThunk(
       }
 
       // Slice 'allMovies' to get the first 100 movies
-      const movies = allMovies.slice(0, 100);
+      const movies = allMovies.slice(0, 400);
       // console.log(movies);
       return movies;
 
