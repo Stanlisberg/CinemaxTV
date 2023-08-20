@@ -66,7 +66,7 @@ function Home() {
         <div
           className={
             sidebar === true
-              ? "sidebar-opac ml-auto mr-auto max-w-full mt-6 lg:pl-20 lg:pr-20 lg:mt-4"
+              ? "opacity-[0.5] ml-auto mr-auto max-w-full mt-6 lg:pl-20 lg:pr-20 lg:mt-4"
               : "ml-auto mr-auto mt-6 lg:pl-20 lg:pr-20 lg:mt-4"
           }
         >
