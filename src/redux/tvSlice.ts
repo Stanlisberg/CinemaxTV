@@ -9,7 +9,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: "process.env.REACT_APP_CINEMAX_API_KEY",
+    Authorization: import.meta.env.VITE_CINEMAX_API_KEY
   },
 };
 export const fetchTv = createAsyncThunk('tv/fetchTv', async () => {

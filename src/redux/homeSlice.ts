@@ -8,10 +8,9 @@ interface MovieInter {
 // Async thunk to fetch customers from the API
 const options = {
   method: "GET",
-  headers: {
+  headers: { 
     accept: "application/json",
-    Authorization: "process.env.REACT_APP_CINEMAX_API_KEY",
-
+    Authorization: import.meta.env.VITE_CINEMAX_API_KEY
   },
 };
 
@@ -30,6 +29,7 @@ export const fetchDiscover = createAsyncThunk(
         );
         const data = await response.json();
         const { results } = data;
+        console.log(results)
 
         allMovies.push(...results);
       }
