@@ -19,7 +19,6 @@ function Trending() {
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dispatch: AppDispatch = useDispatch();
-  const [status, setStatus] = useState(true);
 
   //-----Pagination States------
   const [currentItems, setCurrentItems] = useState([]);
@@ -48,12 +47,6 @@ function Trending() {
   //---Effect for loading and data---
   useEffect(() => {
     dispatch(fetchTrending());
-
-    if (currentItems) {
-      setTimeout(() => {
-        setStatus(false);
-      }, 1000);
-    }
   }, []);
 
   //---------For images concating--------
