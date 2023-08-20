@@ -29,8 +29,7 @@ export const fetchDiscover = createAsyncThunk(
         );
         const data = await response.json();
         const { results } = data;
-        console.log(results)
-
+        // console.log(results)
         allMovies.push(...results);
       }
 

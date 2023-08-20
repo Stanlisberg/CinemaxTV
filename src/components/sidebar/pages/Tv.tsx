@@ -44,14 +44,8 @@ function Tv() {
 
   //---Effect for loading and data---
   useEffect(() => {
-    dispatch(fetchTv())
-
-    if(currentItems) {
-      setTimeout(() => {
-        setStatus(false)
-      }, 1000)
-    } 
-  }, [])
+    dispatch(fetchTv());
+  }, []);
 
   //------For images concating--------
   const baseImgUrl = "https://image.tmdb.org/t/p";

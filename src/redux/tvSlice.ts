@@ -25,6 +25,7 @@ export const fetchTv = createAsyncThunk('tv/fetchTv', async () => {
         const { results } = data
 
         allMovies.push(...results)
+        // console.log(allMovies)
     }
 
     const movies = allMovies.slice(0, 400)
@@ -48,11 +49,11 @@ const tvSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(fetchTv.pending, (state) => {
-      state.tvData = true
+      state.tvLoading = true
     })
     .addCase(fetchTv.fulfilled, (state, action) => {
       state.tvData = action.payload
-      state.tvData = false
+      state.tvLoading = false
     })
   },
   
