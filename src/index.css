@@ -27,7 +27,8 @@
 }
 
 .modal-background {
-  background: blue;
+  background:#dee2e6;
+  opacity: 0.4;
   width: 100%;
   height: 100vh;
   opacity: 0.5;

@@ -10,13 +10,16 @@ import PopularInfo from "./components/allMovieInfo/PopularInfo";
 import TrendingInfo from './components/allMovieInfo/TrendingInfo'
 import TvInfo from "./components/allMovieInfo/TvInfo";
 import { BiHome } from "react-icons/bi";
-import { useSelector } from "react-redux";
-import type { RootState } from "./redux/store";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "./redux/store";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { modalHide } from "./redux/modalSlice";
+import { sideLeave } from "./redux/sidebarSlice";
  
 
 function App() {
   const modal = useSelector((state: RootState) => state.modal.value);
+  const dispatch : AppDispatch = useDispatch()
 
   // console.log(modal);
   return (
@@ -50,7 +53,13 @@ function App() {
                </div>
               </div>
               <button
-               className=' border rounded-md shadow-xl text-center text-lg text-[#e91e63] border-[#e91e63] px-4 ml-6 py-1 hover:text-[#fff] hover:bg-[#e91e63]'>Close 
+               className=' border rounded-md shadow-xl text-center text-lg text-[#e91e63] border-[#e91e63] px-4 ml-6 py-1 hover:text-[#fff] hover:bg-[#e91e63]'
+               onClick={() => {
+                dispatch(modalHide())
+                dispatch(sideLeave())
+              }}
+                >
+                Close 
               </button>
             </div> 
           </>
