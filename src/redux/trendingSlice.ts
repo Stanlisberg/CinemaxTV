@@ -10,7 +10,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: import.meta.env.VITE_CINEMAX_API_KEY
+    Authorization: import.meta.env.VITE_CINEMAX_API_KEY,
   },
 };
 export const fetchTrending = createAsyncThunk(
@@ -41,7 +41,7 @@ export const fetchTrending = createAsyncThunk(
 
 const initialState: TrendInter = {
   trendingData: [],
-  trendingLoading: null
+  trendingLoading: null,
 };
 
 const trendingSlice = createSlice({
@@ -50,13 +50,13 @@ const trendingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(fetchTrending.pending,(state) => {
-      state.trendingLoading = true
-    })
-    .addCase(fetchTrending.fulfilled, (state, action) => {
-      state.trendingData = action.payload;
-      state.trendingLoading = false
-    });
+      .addCase(fetchTrending.pending, (state) => {
+        state.trendingLoading = true;
+      })
+      .addCase(fetchTrending.fulfilled, (state, action) => {
+        state.trendingData = action.payload;
+        state.trendingLoading = false;
+      });
   },
 });
 

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface MovieInfoInter {
-  info: any
+  info: any;
 }
 
 // Async thunk to fetch customers from the API
@@ -9,19 +9,18 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: import.meta.env.VITE_CINEMAX_API_KEY
+    Authorization: import.meta.env.VITE_CINEMAX_API_KEY,
   },
 };
 
 export const fetchDetail = createAsyncThunk(
   "movieInfo/fetchDetail",
-  async (url:string) => {
+  async (url: string) => {
     try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-        
-        return data;
+      const response = await fetch(url, options);
+      const data = await response.json();
 
+      return data;
     } catch (error) {
       console.error("Error fetching movies:", error);
       throw error;
@@ -30,7 +29,7 @@ export const fetchDetail = createAsyncThunk(
 );
 
 const initialState: MovieInfoInter = {
-  info: ''
+  info: "",
 };
 
 const movieDetailSlice = createSlice({
@@ -38,10 +37,9 @@ const movieDetailSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchDetail.fulfilled, (state, action) => {
-        state.info = action.payload;
-      });
+    builder.addCase(fetchDetail.fulfilled, (state, action) => {
+      state.info = action.payload;
+    });
   },
 });
 

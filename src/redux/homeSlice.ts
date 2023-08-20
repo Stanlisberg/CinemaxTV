@@ -1,16 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface MovieInter {
-  homeData: any
-  homeLoading: boolean | null
+  homeData: any;
+  homeLoading: boolean | null;
 }
 
 // Async thunk to fetch customers from the API
 const options = {
   method: "GET",
-  headers: { 
+  headers: {
     accept: "application/json",
-    Authorization: import.meta.env.VITE_CINEMAX_API_KEY
+    Authorization: import.meta.env.VITE_CINEMAX_API_KEY,
   },
 };
 
@@ -37,7 +37,6 @@ export const fetchDiscover = createAsyncThunk(
       const movies = allMovies.slice(0, 400);
       // console.log(movies);
       return movies;
-
     } catch (error) {
       console.error("Error fetching movies:", error);
       throw error;
@@ -57,12 +56,12 @@ const homeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDiscover.pending, (state) => { 
-        state.homeLoading = true
+      .addCase(fetchDiscover.pending, (state) => {
+        state.homeLoading = true;
       })
       .addCase(fetchDiscover.fulfilled, (state, action) => {
         state.homeData = action.payload;
-        state.homeLoading = false
+        state.homeLoading = false;
       });
     // .addCase(fetchDiscover.rejected, (state, action) => {
     //   state.status = 'failed'
