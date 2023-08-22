@@ -9,6 +9,7 @@ import movieDetailReducer from './movieDetailSlice'
 import mobileReducer from './mobileSlice'
 import toggleReducer from './toggleSlice';
 import changeIconReducer from './changeIconSlice';
+import darkModeReducer from './darkMode.Slice';
 
 export const store = configureStore({
   reducer: {
@@ -25,7 +26,8 @@ export const store = configureStore({
     modal: modalReducer,
     movieDetail: movieDetailReducer,
     toggle: toggleReducer,
-    icon: changeIconReducer
+    icon: changeIconReducer,
+    dark: darkModeReducer,
   },
 })
 

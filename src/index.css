@@ -11,7 +11,7 @@
 
   color-scheme: light dark;
   color: #111;
-  background-color: #dee2e6;
+  /* background-color: #dee2e6; */
   /* background-color: red; */
   /* font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,7 +24,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* background-color: blue; */
 }
+
+.app-dark {
+ background-color: #222;
+}
+
+.app-sun {
+  background: #dee2e6;
+}
+
+
+
 
 .modal-background {
   background:#dee2e6;

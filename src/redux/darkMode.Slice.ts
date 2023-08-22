@@ -10,7 +10,7 @@ const initialState: DarkInter = {
 }
 
 const darkModeSlice = createSlice ({
-    name: 'CgDarkMode',
+    name: 'dark',
     initialState, 
     reducers: {
         onDark : (state) => {

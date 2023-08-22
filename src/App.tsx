@@ -19,12 +19,20 @@ import { sideLeave } from "./redux/sidebarSlice";
 
 function App() {
   const modal = useSelector((state: RootState) => state.modal.value);
+  const dark = useSelector((state: RootState) => state.dark.value);
   const dispatch : AppDispatch = useDispatch()
+
+  console.log(dark)
 
   // console.log(modal);
   return (
     <>
-      <div className="app">
+     <div className='app'>
+      {/* <div className={
+        dark ?
+        'app-dark' :
+        'app-sun'
+      }> */}
         {modal === true && (
           <>
           <div className="modal-background"></div>
