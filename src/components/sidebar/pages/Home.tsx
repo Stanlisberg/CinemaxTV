@@ -77,10 +77,13 @@ function Home() {
               : "ml-auto mr-auto mt-6 lg:pl-20 lg:pr-20 lg:mt-4"
           }
         >
-          <nav className={ dark ? 
-              "fixed left-0 top-0 flex items-center justify-between w-full text-white bg-[#222] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-start lg:w-[100%] lg:pl-24 z-10"
-            : "fixed left-0 top-0 flex items-center justify-between w-full bg-[#dee2e6] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-start lg:w-[100%] lg:pl-24 z-10"
-          }>
+          <nav
+            className={
+              dark
+                ? "fixed left-0 top-0 flex items-center justify-between w-full text-white bg-[#222] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-between lg:w-[100%] lg:pl-24 lg:pr-[60px] z-10"
+                : "fixed left-0 top-0 flex items-center justify-between w-full bg-[#dee2e6] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-between lg:w-[100%] lg:pl-24 lg:pr-[60px] z-10"
+            }
+          >
             <div className="lg:justify-center lg:items-center lg:flex">
               <p className="text-3xl sm:text-3xl lg:text-4xl font-bold">
                 Discover Movies
@@ -94,22 +97,28 @@ function Home() {
               <div className="flex">
                 <>
                   {dark ? (
-                    <IoIosSunny
-                      className="cursor-pointer"
-                      size={34}
-                      color="#fff"
-                      onClick={() => dispatch(offDark())}
-                    />
+                    <div className="flex justify-center items-center text-[20px] font-[600]">
+                      <div className=" hidden lg:grid mr-2">Light Mode</div>
+                      <IoIosSunny
+                        className="cursor-pointer"
+                        size={34}
+                        color="#fff"
+                        onClick={() => dispatch(offDark())}
+                      />
+                    </div>
                   ) : (
-                    <WiMoonAltWaningGibbous6
-                      className="`cursor-pointer"
-                      size={34}
-                      color="#222"
-                      onClick={() => {
-                        dispatch(onDark())
-                        console.log('hey')
-                      }}
-                    />
+                    <div className="flex justify-center items-center text-[20px] font-[600]">
+                      <div className=" hidden lg:grid mr-2">Dark Mode</div>
+                      <WiMoonAltWaningGibbous6
+                        className="cursor-pointer"
+                        size={34}
+                        color="#222"
+                        onClick={() => {
+                          dispatch(onDark());
+                          console.log("hey");
+                        }}
+                      />
+                    </div>
                   )}
                 </>
                 <div className="flex cursor-pointer">
@@ -129,19 +138,25 @@ function Home() {
               <div className="flex">
                 <>
                   {dark ? (
-                    <IoIosSunny
-                      className="lg:hidden cursor-pointer"
-                      size={34}
-                      color="#fff"
-                      onClick={() => dispatch(offDark())}
-                    />
+                    <div className="flex justify-center items-center text-[20px] font-[600]">
+                      <div className=" hidden lg:grid mr-2">Dark Mode</div>
+                      <IoIosSunny
+                        className="lg:hidden cursor-pointer"
+                        size={34}
+                        color="#fff"
+                        onClick={() => dispatch(offDark())}
+                      />
+                    </div>
                   ) : (
-                    <WiMoonAltWaningGibbous6
-                      className="lg:hidden cursor-pointer"
-                      size={34}
-                      color="#222"
-                      onClick={() => dispatch(onDark())}
-                    />
+                    <div className="flex justify-center items-center text-[20px] font-[600]">
+                      <div className=" hidden lg:grid mr-2">Dark Mode</div>
+                      <WiMoonAltWaningGibbous6
+                        className="lg:hidden cursor-pointer"
+                        size={34}
+                        color="#222"
+                        onClick={() => dispatch(onDark())}
+                      />
+                    </div>
                   )}
                 </>
                 <div className="flex cursor-pointer">

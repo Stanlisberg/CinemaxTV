@@ -12,10 +12,10 @@ import { TbTriangleSquareCircle } from "react-icons/tb";
 // import logo from '../../assets/logo2.png'
 import "../../styles/sidebar.css";
 import type { AppDispatch, RootState } from "../../redux/store";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sideEnter, sideLeave } from "../../redux/sidebarSlice";
-import { modalShow } from '../../redux/modalSlice'
-import { mobileLeave } from '../../redux/mobileSlice'
+import { modalShow } from "../../redux/modalSlice";
+import { mobileLeave } from "../../redux/mobileSlice";
 import { removeMenu } from "../../redux/changeIconSlice";
 import { toggleEnter } from "../../redux/toggleSlice";
 
@@ -26,20 +26,19 @@ function Sidebar() {
   const toggle = useSelector((state: RootState) => state.toggle.value);
   const dark = useSelector((state: RootState) => state.dark.value);
 
-  console.log(mobile)
+  console.log(mobile);
 
   const navigate = useNavigate();
 
-  const handleMouseLeave = () => { 
+  const handleMouseLeave = () => {
     setOpenSidebar(false);
   };
 
- 
   const enterContainer = () => {
     if (modal === true) {
-      dispatch(sideEnter())
+      dispatch(sideEnter());
     }
-  }
+  };
   //-----------Open sidebar state
   const [openSidebar, setOpenSidebar] = useState(false);
   const [arrowHover, setArrowHover] = useState(false);
@@ -71,15 +70,15 @@ function Sidebar() {
 
   //--------For default active button---
   useEffect(() => {
-    if(window.location.pathname === '/') {
+    if (window.location.pathname === "/") {
       handleActiveButton(2);
-    } else if(window.location.pathname === '/trending') {
+    } else if (window.location.pathname === "/trending") {
       handleActiveButton(3);
-    } else if(window.location.pathname === '/movie') {
+    } else if (window.location.pathname === "/movie") {
       handleActiveButton(4);
-    } else if(window.location.pathname === '/tv') {
+    } else if (window.location.pathname === "/tv") {
       handleActiveButton(5);
-    } else if(window.location.pathname === '/bookmark') {
+    } else if (window.location.pathname === "/bookmark") {
       handleActiveButton(6);
     }
   }, []);
@@ -141,49 +140,376 @@ function Sidebar() {
     setSettingHover(false);
   };
 
-  return (  
+  return (
     <>
-    <div>
-      <div
-        onMouseLeave={() => {
-          handleMouseLeave()
-          dispatch(sideLeave());
-          enterContainer()
-        }}
-        onMouseEnter={() => dispatch(sideEnter())}
-        className={openSidebar === false ? 
-          (dark ? 'sidebar-close hidden lg:grid text-[#fff] bg-[#222]' : 'sidebar-close hidden lg:grid bg-[#dee2e6]')
-          :
-           (dark ? "sidebar-open hidden lg:grid text-[#fff] bg-[#222]" : "sidebar-open hidden lg:grid bg-[#dee2e6]")}
-      >
-        <div className="logo-div">
-          <TbTriangleSquareCircle
-            size={50}
-            color="#e91e63"
-            className={openSidebar ? "logo-open" : "logo-close"}
-          />
-          {openSidebar && <p className="logo-text"> CINEMAX-TV</p>}
-        </div>
+      <div>
         <div
-          className={openSidebar ? " side-wrapper-open" : "side-wrapper-close"}
+          onMouseLeave={() => {
+            handleMouseLeave();
+            dispatch(sideLeave());
+            enterContainer();
+          }}
+          onMouseEnter={() => dispatch(sideEnter())}
+          className={
+            openSidebar === false
+              ? dark
+                ? "sidebar-close hidden lg:grid text-[whitesmoke] bg-[#000000]"
+                : "sidebar-close hidden lg:grid bg-[#f1f3f5]"
+              : dark
+              ? "sidebar-open hidden lg:grid text-[whitesmoke] bg-[#000000]"
+              : "sidebar-open hidden lg:grid bg-[#f1f3f5]"
+          }
         >
+          <div className="logo-div">
+            <TbTriangleSquareCircle
+              size={50}
+              color="#e91e63"
+              className={openSidebar ? "logo-open" : "logo-close"}
+            />
+            {openSidebar && <p className="logo-text"> CINEMAX-TV</p>}
+          </div>
           <div
-            className={openSidebar ? "icon-open search-input" : "icon-close"}
-            onMouseOver={handleSearchHoverEnter}
-            onMouseLeave={handleSearchHoverLeave}
+            className={
+              openSidebar ? " side-wrapper-open" : "side-wrapper-close"
+            }
+          >
+            <div
+              className={
+                openSidebar
+                  ? dark
+                    ? "icon-open search-input search-icon icon-bg"
+                    : "icon-open"
+                  : dark
+                  ? "icon-close icon-bg"
+                  : "icon-close"
+              }
+              onMouseOver={handleSearchHoverEnter}
+              onMouseLeave={handleSearchHoverLeave}
+              onClick={() => {
+                handleActiveButton(1);
+                handleSidebar();
+              }}
+            >
+              <BiSearchAlt
+                size={25}
+                className={activeButton === 1 ? "active search" : "search"}
+              />
+              {searchHover && (
+                <p
+                  className={
+                    dark
+                      ? "icon-name-close icon-name-open mobile-color"
+                      : "icon-name-close icon-name-open"
+                  }
+                >
+                  Search
+                </p>
+              )}
+              {openSidebar && (
+                <div className="input-div">
+                  <input
+                    type="text"
+                    className="input"
+                    placeholder="Search Movies..."
+                  />
+                </div>
+              )}
+            </div>
+            <div
+              className={
+                openSidebar
+                  ? dark
+                    ? "icon-open arrow-open"
+                    : "icon-open arrow-open"
+                  : dark
+                  ? "icon-close icon-bg"
+                  : "icon-close"
+              }
+              onMouseOver={handleArrowHoverEnter}
+              onMouseLeave={handleArrowHoverLeave}
+              onClick={handleSidebar}
+            >
+              <MdOutlineKeyboardDoubleArrowRight size={25} className="icon" />
+              {arrowHover ? (
+                <p
+                  className={
+                    dark
+                      ? "icon-name-close icon-name-open mobile-color"
+                      : "icon-name-close icon-name-open"
+                  }
+                >
+                  Expand
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div
+              className={
+                openSidebar
+                  ? dark
+                    ? "icon-open icon-bg"
+                    : "icon-open"
+                  : dark
+                  ? "icon-close icon-bg"
+                  : "icon-close"
+              }
+              onMouseOver={handleHomeHoverEnter}
+              onMouseLeave={handleHomeHoverLeave}
+              onClick={() => {
+                handleActiveButton(2);
+                navigate("/");
+              }}
+            >
+              <BiHome
+                size={25}
+                className={activeButton === 2 ? "active" : ""}
+              />
+              {homeHover ? (
+                <div
+                  className={
+                    dark
+                      ? "icon-name-close icon-name-open mobile-color"
+                      : "icon-name-close icon-name-open"
+                  }
+                >
+                  Home
+                </div>
+              ) : (
+                ""
+              )}
+              {openSidebar && <p className="icon-open-text">Home</p>}
+            </div>
+            <div
+              className={
+                openSidebar
+                  ? dark
+                    ? "icon-open icon-bg"
+                    : "icon-open"
+                  : dark
+                  ? "icon-close icon-bg"
+                  : "icon-close"
+              }
+              onMouseOver={handleTrendingHoverEnter}
+              onMouseLeave={handleTrendingHoverLeave}
+              onClick={() => {
+                handleActiveButton(3);
+                navigate("/trending");
+              }}
+            >
+              <AiOutlineFire
+                size={25}
+                className={activeButton === 3 ? "active open-icon" : ""}
+              />
+              {trendingHover ? (
+                <p
+                  className={
+                    dark
+                      ? "icon-name-close icon-name-open mobile-color"
+                      : "icon-name-close icon-name-open"
+                  }
+                >
+                  Trending
+                </p>
+              ) : (
+                ""
+              )}
+              {openSidebar && <p className="icon-open-text">Trending</p>}
+            </div>
+            <div
+              className={
+                openSidebar
+                  ? dark
+                    ? "icon-open icon-bg"
+                    : "icon-open"
+                  : dark
+                  ? "icon-close icon-bg"
+                  : "icon-close"
+              }
+              onMouseOver={handleMovieHoverEnter}
+              onMouseLeave={handleMovieHoverLeave}
+              onClick={() => {
+                handleActiveButton(4);
+                navigate("/movie");
+              }}
+            >
+              <BiCameraMovie
+                size={25}
+                className={activeButton === 4 ? "active" : ""}
+              />
+              {movieHover ? (
+                <p
+                  className={
+                    dark
+                      ? "icon-name-close icon-name-open mobile-color"
+                      : "icon-name-close icon-name-open"
+                  }
+                >
+                  Movie_Actors
+                </p>
+              ) : (
+                ""
+              )}
+              {openSidebar && <p className="icon-open-text">Movie Actors</p>}
+            </div>
+            <div
+              className={
+                openSidebar
+                  ? dark
+                    ? "icon-open icon-bg"
+                    : "icon-open"
+                  : dark
+                  ? "icon-close icon-bg"
+                  : "icon-close"
+              }
+              onMouseOver={handleTvHoverEnter}
+              onMouseLeave={handleTvHoverLeave}
+              onClick={() => {
+                handleActiveButton(5);
+                navigate("/tv");
+              }}
+            >
+              <RiSlideshow3Line
+                size={25}
+                className={activeButton === 5 ? "active" : ""}
+              />
+              {tvHover ? (
+                <p
+                  className={
+                    dark
+                      ? "icon-name-close icon-name-open mobile-color"
+                      : "icon-name-close icon-name-open "
+                  }
+                >
+                  Tv_Shows
+                </p>
+              ) : (
+                ""
+              )}
+              {openSidebar && <p className="icon-open-text">Tv Shows</p>}
+            </div>
+            <div
+              className={
+                openSidebar
+                  ? dark
+                    ? "icon-open icon-bg"
+                    : "icon-open"
+                  : dark
+                  ? "icon-close icon-bg"
+                  : "icon-close"
+              }
+              onMouseOver={handleBookHoverEnter}
+              onMouseLeave={handleBookHoverLeave}
+              onClick={() => {
+                handleActiveButton(6);
+                navigate("/bookmark");
+              }}
+            >
+              <BiBookBookmark
+                size={25}
+                className={activeButton === 6 ? "active" : ""}
+              />
+              {bookHover ? (
+                <p
+                  className={
+                    dark
+                      ? "icon-name-close icon-name-open mobile-color"
+                      : "icon-name-close icon-name-open"
+                  }
+                >
+                  Bookmark
+                </p>
+              ) : (
+                ""
+              )}
+              {openSidebar && <p className="icon-open-text">Bookmarks</p>}
+            </div>
+          </div>
+          <div
+            className={
+              openSidebar
+                ? dark
+                  ? "setting-open icon-bg"
+                  : "setting-open"
+                : dark
+                ? "setting-close icon-bg"
+                : "setting-close"
+            }
+            onMouseOver={handleSettingHoverEnter}
+            onMouseLeave={handleSettingHoverLeave}
             onClick={() => {
-              handleActiveButton(1);
-              handleSidebar();
+              handleActiveButton(7);
+              dispatch(modalShow());
             }}
           >
-            <BiSearchAlt
+            <IoMdSettings
               size={25}
-              className={activeButton === 1 ? "active search" : "search"}
+              className={activeButton === 7 ? "active" : ""}
             />
-            {searchHover && (
-              <p className={dark ? "icon-name-close icon-name-open mobile-color" : "icon-name-close icon-name-open text-[#fff]"}>Search</p>
+            {}
+            {settingHover ? (
+              <p
+                className={
+                  dark
+                    ? "icon-setting-close icon-setting-open text-[whitesmoke]"
+                    : "icon-setting-close icon-setting-open"
+                }
+              >
+                Settings
+              </p>
+            ) : (
+              ""
             )}
-            {openSidebar && (
+            {openSidebar && <p className="setting-text">Settings</p>}
+          </div>
+        </div>
+      </div>
+
+      {/*------------ Mobile Menu section ------------------*/}
+      {mobile === true ? (
+        <div
+          onMouseLeave={() => {
+            handleMouseLeave();
+            dispatch(sideLeave());
+            enterContainer();
+          }}
+          onMouseEnter={() => dispatch(sideEnter())}
+          className={
+            toggle === true ? "hidden" : "sidebar-open lg:hidden fixed"
+          }
+        >
+          <div className="logo-div">
+            <TbTriangleSquareCircle
+              size={50}
+              color="#e91e63"
+              className="logo-open cursor-pointer"
+              onClick={() => {
+                navigate("/");
+                dispatch(toggleEnter());
+                dispatch(mobileLeave());
+                dispatch(sideLeave());
+                dispatch(removeMenu());
+              }}
+            />
+            <p className="logo-text"> CINEMAX-TV</p>
+          </div>
+          <div className=" side-wrapper-open">
+            <div
+              className="icon-open search-input"
+              onMouseOver={handleSearchHoverEnter}
+              onMouseLeave={handleSearchHoverLeave}
+              onClick={() => {
+                handleActiveButton(1);
+                handleSidebar();
+              }}
+            >
+              <BiSearchAlt
+                size={25}
+                className={activeButton === 1 ? "active search" : "search"}
+              />
+              {searchHover && (
+                <p className="icon-name-close icon-name-open">Search</p>
+              )}
               <div className="input-div">
                 <input
                   type="text"
@@ -191,356 +517,170 @@ function Sidebar() {
                   placeholder="Search Movies..."
                 />
               </div>
-            )}
+            </div>
+            <div
+              className="icon-open arrow-open"
+              onMouseOver={handleArrowHoverEnter}
+              onMouseLeave={handleArrowHoverLeave}
+              onClick={handleSidebar}
+            >
+              <MdOutlineKeyboardDoubleArrowRight size={25} className="icon" />
+              {arrowHover ? (
+                <p className="icon-name-close icon-name-open">Expand</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div
+              className="icon-open"
+              onMouseOver={handleHomeHoverEnter}
+              onMouseLeave={handleHomeHoverLeave}
+              onClick={() => {
+                handleActiveButton(2);
+                navigate("/");
+                dispatch(toggleEnter());
+                dispatch(mobileLeave());
+                dispatch(sideLeave());
+                dispatch(removeMenu());
+              }}
+            >
+              <BiHome
+                size={25}
+                className={activeButton === 2 ? "active" : ""}
+              />
+              {homeHover ? (
+                <div className="icon-name-close icon-name-open">Home</div>
+              ) : (
+                ""
+              )}
+              <p className="icon-open-text">Home</p>
+            </div>
+            <div
+              className="icon-open"
+              onMouseOver={handleTrendingHoverEnter}
+              onMouseLeave={handleTrendingHoverLeave}
+              onClick={() => {
+                handleActiveButton(3);
+                navigate("/trending");
+                dispatch(toggleEnter());
+                dispatch(mobileLeave());
+                dispatch(sideLeave());
+                dispatch(removeMenu());
+              }}
+            >
+              <AiOutlineFire
+                size={25}
+                className={activeButton === 3 ? "active open-icon" : ""}
+              />
+              {trendingHover ? (
+                <p className="icon-name-close icon-name-open">Trending</p>
+              ) : (
+                ""
+              )}
+              <p className="icon-open-text">Trending</p>
+            </div>
+            <div
+              className="icon-open"
+              onMouseOver={handleMovieHoverEnter}
+              onMouseLeave={handleMovieHoverLeave}
+              onClick={() => {
+                handleActiveButton(4);
+                navigate("/movie");
+                dispatch(toggleEnter());
+                dispatch(mobileLeave());
+                dispatch(sideLeave());
+                dispatch(removeMenu());
+              }}
+            >
+              <BiCameraMovie
+                size={25}
+                className={activeButton === 4 ? "active" : ""}
+              />
+              {movieHover ? (
+                <p className="icon-name-close icon-name-open">Movie_Actors</p>
+              ) : (
+                ""
+              )}
+              <p className="icon-open-text">Movie Actors</p>
+            </div>
+            <div
+              className="icon-open"
+              onMouseOver={handleTvHoverEnter}
+              onMouseLeave={handleTvHoverLeave}
+              onClick={() => {
+                handleActiveButton(5);
+                navigate("/tv");
+                dispatch(toggleEnter());
+                dispatch(mobileLeave());
+                dispatch(sideLeave());
+                dispatch(removeMenu());
+              }}
+            >
+              <RiSlideshow3Line
+                size={25}
+                className={activeButton === 5 ? "active" : ""}
+              />
+              {tvHover ? (
+                <p className="icon-name-close icon-name-open">Tv_Shows</p>
+              ) : (
+                ""
+              )}
+              <p className="icon-open-text">Tv Shows</p>
+            </div>
+            <div
+              className="icon-open"
+              onMouseOver={handleBookHoverEnter}
+              onMouseLeave={handleBookHoverLeave}
+              onClick={() => {
+                handleActiveButton(6);
+                navigate("/bookmark");
+                dispatch(toggleEnter());
+                dispatch(mobileLeave());
+                dispatch(sideLeave());
+                dispatch(removeMenu());
+              }}
+            >
+              <BiBookBookmark
+                size={25}
+                className={activeButton === 6 ? "active" : ""}
+              />
+              {bookHover ? (
+                <p className="icon-name-close icon-name-open">Bookmark</p>
+              ) : (
+                ""
+              )}
+              <p className="icon-open-text">Bookmarks</p>
+            </div>
           </div>
           <div
-            className={openSidebar ? "icon-open arrow-open" : "icon-close"}
-            onMouseOver={handleArrowHoverEnter}
-            onMouseLeave={handleArrowHoverLeave}
-            onClick={handleSidebar}
-          >
-            <MdOutlineKeyboardDoubleArrowRight size={25} className="icon" />
-            {arrowHover ? (
-              <p className="icon-name-close icon-name-open">Expand</p>
-            ) : (
-              ""
-            )}
-          </div>
-          <div
-            className={openSidebar ? "icon-open" : "icon-close"}
-            onMouseOver={handleHomeHoverEnter}
-            onMouseLeave={handleHomeHoverLeave}
+            className="setting-open hover:cursor-pointer"
+            onMouseOver={handleSettingHoverEnter}
+            onMouseLeave={handleSettingHoverLeave}
             onClick={() => {
-              handleActiveButton(2);
-              navigate("/");
+              handleActiveButton(7);
+              dispatch(modalShow());
+              dispatch(toggleEnter());
+              dispatch(mobileLeave());
+              dispatch(sideLeave());
+              dispatch(removeMenu());
             }}
           >
-            <BiHome size={25} className={activeButton === 2 ? "active" : ""} />
-            {homeHover ? (
-              <div className="icon-name-close icon-name-open">Home</div>
-            ) : (
-              ""
-            )}
-            {openSidebar && <p className="icon-open-text">Home</p>}
-          </div>
-          <div
-            className={openSidebar ? "icon-open" : "icon-close"}
-            onMouseOver={handleTrendingHoverEnter}
-            onMouseLeave={handleTrendingHoverLeave}
-            onClick={() => {
-              handleActiveButton(3);
-              navigate("/trending");
-            }}
-          >
-            <AiOutlineFire
+            <IoMdSettings
               size={25}
-              className={activeButton === 3 ? "active open-icon" : ""}
+              className={activeButton === 7 ? "active" : ""}
             />
-            {trendingHover ? (
-              <p className="icon-name-close icon-name-open">Trending</p>
+            {settingHover ? (
+              <p className="icon-setting-close icon-setting-open">Settings</p>
             ) : (
               ""
             )}
-            {openSidebar && <p className="icon-open-text">Trending</p>}
-          </div>
-          <div
-            className={openSidebar ? "icon-open" : "icon-close"}
-            onMouseOver={handleMovieHoverEnter}
-            onMouseLeave={handleMovieHoverLeave}
-            onClick={() => {
-              handleActiveButton(4);
-              navigate("/movie");
-            }}
-          >
-            <BiCameraMovie
-              size={25}
-              className={activeButton === 4 ? "active" : ""}
-            />
-            {movieHover ? (
-              <p className="icon-name-close icon-name-open">Movie_Actors</p>
-            ) : (
-              ""
-            )}
-            {openSidebar && <p className="icon-open-text">Movie Actors</p>}
-          </div>
-          <div
-            className={openSidebar ? "icon-open" : "icon-close"}
-            onMouseOver={handleTvHoverEnter}
-            onMouseLeave={handleTvHoverLeave}
-            onClick={() => {
-              handleActiveButton(5);
-              navigate("/tv");
-            }}
-          >
-            <RiSlideshow3Line
-              size={25}
-              className={activeButton === 5 ? "active" : ""}
-            />
-            {tvHover ? (
-              <p className="icon-name-close icon-name-open">Tv_Shows</p>
-            ) : (
-              ""
-            )}
-            {openSidebar && <p className="icon-open-text">Tv Shows</p>}
-          </div>
-          <div
-            className={openSidebar ? "icon-open" : "icon-close"}
-            onMouseOver={handleBookHoverEnter}
-            onMouseLeave={handleBookHoverLeave}
-            onClick={() => {
-              handleActiveButton(6);
-              navigate("/bookmark");
-            }}
-          >
-            <BiBookBookmark
-              size={25}
-              className={activeButton === 6 ? "active" : ""}
-            />
-            {bookHover ? (
-              <p className="icon-name-close icon-name-open">Bookmark</p>
-            ) : (
-              ""
-            )}
-            {openSidebar && <p className="icon-open-text">Bookmarks</p>}
+            <p className="setting-text">Settings</p>
           </div>
         </div>
-        <div
-          className={openSidebar ? "setting-open" : "setting-close"}
-          onMouseOver={handleSettingHoverEnter}
-          onMouseLeave={handleSettingHoverLeave}
-          onClick={() => {
-            handleActiveButton(7)
-            dispatch(modalShow())
-          }}
-        >
-          <IoMdSettings
-            size={25}
-            className={activeButton === 7 ? "active" : ""}
-          />
-          {}
-          {settingHover ? (
-            <p className="icon-setting-close icon-setting-open">Settings</p>
-          ) : (
-            ""
-          )}
-          {openSidebar && <p className="setting-text">Settings</p>}
-        </div>
-      </div>
-    </div>
-
-     {/*------------ Mobile Menu section ------------------*/}
-      { mobile === true ? ( 
-       <div
-       onMouseLeave={() => {
-         handleMouseLeave()
-         dispatch(sideLeave());
-         enterContainer()
-       }}
-       onMouseEnter={() => dispatch(sideEnter())}
-       className={toggle === true ? 'hidden' : 'sidebar-open lg:hidden fixed'}
-     >
-       <div className="logo-div">
-         <TbTriangleSquareCircle
-           size={50}
-           color="#e91e63"
-           className="logo-open cursor-pointer"
-           onClick={
-            () => {
-              navigate('/')
-              dispatch(toggleEnter())
-              dispatch(mobileLeave())
-              dispatch(sideLeave())
-              dispatch(removeMenu())
-            }}
-         />
-         <p className="logo-text"> CINEMAX-TV</p>
-       </div>
-       <div
-         className=" side-wrapper-open"
-       >
-         <div
-           className="icon-open search-input"
-           onMouseOver={handleSearchHoverEnter}
-           onMouseLeave={handleSearchHoverLeave}
-           onClick={() => {
-             handleActiveButton(1);
-             handleSidebar();
-           }}
-         >
-           <BiSearchAlt
-             size={25}
-             className={ activeButton === 1 ? "active search" : "search" }
-           />
-           {searchHover && (
-             <p className="icon-name-close icon-name-open">Search</p>
-           )}
-             <div className="input-div">
-               <input
-                 type="text"
-                 className="input"
-                 placeholder="Search Movies..."
-               />
-             </div>
-           
-         </div>
-         <div
-           className="icon-open arrow-open"
-           onMouseOver={handleArrowHoverEnter}
-           onMouseLeave={handleArrowHoverLeave}
-           onClick={handleSidebar}
-         >
-           <MdOutlineKeyboardDoubleArrowRight size={25} className="icon" />
-           {arrowHover ? (
-             <p className="icon-name-close icon-name-open">Expand</p>
-           ) : (
-             ""
-           )}
-         </div>
-         <div
-           className="icon-open"
-           onMouseOver={handleHomeHoverEnter}
-           onMouseLeave={handleHomeHoverLeave}
-           onClick={() => {
-             handleActiveButton(2);
-             navigate("/");
-             dispatch(toggleEnter())
-              dispatch(mobileLeave())
-              dispatch(sideLeave())
-              dispatch(removeMenu())
-           }}
-         >
-           <BiHome size={25} className={ activeButton === 2 ? "active" : "" } />
-           {homeHover ? (
-             <div className="icon-name-close icon-name-open">Home</div>
-           ) : (
-             ""
-           )}
-           <p className="icon-open-text">Home</p>
-         </div>
-         <div
-           className="icon-open"
-           onMouseOver={handleTrendingHoverEnter}
-           onMouseLeave={handleTrendingHoverLeave}
-           onClick={() => {
-             handleActiveButton(3);
-             navigate("/trending");
-              dispatch(toggleEnter())
-              dispatch(mobileLeave())
-              dispatch(sideLeave())
-              dispatch(removeMenu())
-           }}
-         >
-           <AiOutlineFire
-             size={25}
-             className={ activeButton === 3 ? "active open-icon" : "" }
-           />
-           {trendingHover ? (
-             <p className="icon-name-close icon-name-open">Trending</p>
-           ) : (
-             ""
-           )}
-           <p className="icon-open-text">Trending</p>
-         </div>
-         <div
-           className= "icon-open"
-           onMouseOver={handleMovieHoverEnter}
-           onMouseLeave={handleMovieHoverLeave}
-           onClick={() => {
-             handleActiveButton(4);
-             navigate("/movie");
-             dispatch(toggleEnter())
-             dispatch(mobileLeave())
-             dispatch(sideLeave())
-             dispatch(removeMenu())
-           }}
-         >
-           <BiCameraMovie
-             size={25}
-             className={ activeButton === 4 ? "active" : "" }
-           />
-           {movieHover ? (
-             <p className="icon-name-close icon-name-open">Movie_Actors</p>
-           ) : (
-             ""
-           )}
-           <p className="icon-open-text">Movie Actors</p>
-         </div>
-         <div
-           className= "icon-open"
-           onMouseOver={handleTvHoverEnter}
-           onMouseLeave={handleTvHoverLeave}
-           onClick={() => {
-             handleActiveButton(5);
-             navigate("/tv");
-             dispatch(toggleEnter())
-              dispatch(mobileLeave())
-              dispatch(sideLeave())
-              dispatch(removeMenu())
-           }}
-         >
-           <RiSlideshow3Line
-             size={25}
-             className={ activeButton === 5 ? "active" : "" }
-           />
-           {tvHover ? (
-             <p className="icon-name-close icon-name-open">Tv_Shows</p>
-           ) : (
-             ""
-           )}
-           <p className="icon-open-text">Tv Shows</p>
-         </div>
-         <div
-           className= "icon-open"
-           onMouseOver={handleBookHoverEnter}
-           onMouseLeave={handleBookHoverLeave}
-           onClick={() => {
-             handleActiveButton(6);
-             navigate("/bookmark");
-             dispatch(toggleEnter())
-              dispatch(mobileLeave())
-              dispatch(sideLeave())
-              dispatch(removeMenu())
-           }}
-         >
-           <BiBookBookmark
-             size={25}
-             className={ activeButton === 6 ? "active" : "" }
-           />
-           {bookHover ? (
-             <p className="icon-name-close icon-name-open">Bookmark</p>
-           ) : (
-             ""
-           )}
-           <p className="icon-open-text">Bookmarks</p>
-         </div>
-       </div>
-       <div
-         className="setting-open hover:cursor-pointer"
-         onMouseOver={handleSettingHoverEnter}
-         onMouseLeave={handleSettingHoverLeave}
-         onClick={() => {
-           handleActiveButton(7)
-           dispatch(modalShow())
-           dispatch(toggleEnter())
-            dispatch(mobileLeave())
-            dispatch(sideLeave())
-            dispatch(removeMenu())
-         }}
-       >
-         <IoMdSettings
-           size={25}
-           className={activeButton === 7 ? "active" : ""}
-         />
-         {settingHover ? (
-           <p className="icon-setting-close icon-setting-open">Settings</p>
-         ) : (
-           ""
-         )}
-         <p className="setting-text">Settings</p>
-       </div>
-     </div>
-      ) : ''}
-   </>
+      ) : (
+        ""
+      )}
+    </>
   );
 }
 

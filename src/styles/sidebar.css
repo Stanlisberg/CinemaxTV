@@ -82,10 +82,16 @@
 .sidebar-open .side-wrapper-open .icon-open .input-div .input::placeholder {
   font-size: 16px;
 }
+.sidebar-open .side-wrapper-open .icon-bg:hover {
+  background: #222;
+}
 .sidebar-open .side-wrapper-open .search-input {
   background: #dee2e6;
   outline: none;
   border-radius: 5px;
+}
+.sidebar-open .side-wrapper-open .search-icon {
+  background: #222;
 }
 .sidebar-open .side-wrapper-open .arrow-open {
   display: none;
@@ -114,6 +120,9 @@
   padding-left: 15px;
   font-size: 16px;
   font-weight: 500;
+}
+.sidebar-open .icon-bg:hover {
+  background: #222;
 }
 
 .sidebar-close {
@@ -168,7 +177,10 @@
   color: black;
 }
 .sidebar-close .side-wrapper-close .icon-close .mobile-color {
-  color: #fff;
+  color: whitesmoke;
+}
+.sidebar-close .side-wrapper-close .icon-bg:hover {
+  background: #222;
 }
 .sidebar-close .setting-close {
   display: flex;
@@ -193,4 +205,10 @@
   font-family: Poppins, sans-serif;
   font-weight: 700;
   font-size: 17px;
+}
+.sidebar-close .setting-close .mobile-color {
+  color: #fff;
+}
+.sidebar-close .icon-bg:hover {
+  background: #222;
 }/*# sourceMappingURL=sidebar.css.map */
