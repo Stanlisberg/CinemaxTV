@@ -5,6 +5,7 @@
   width: 248px;
   position: fixed;
   top: 0;
+  left: 0px;
   background-color: #f1f3f5;
   display: grid;
   justify-content: center;
@@ -120,6 +121,7 @@
   width: 80px;
   position: fixed;
   top: 0;
+  left: 0px;
   background-color: #f1f3f5;
   display: grid;
   justify-content: center;
@@ -164,6 +166,9 @@
   pointer-events: none;
   z-index: 1;
   color: black;
+}
+.sidebar-close .side-wrapper-close .icon-close .mobile-color {
+  color: #fff;
 }
 .sidebar-close .setting-close {
   display: flex;

@@ -27,12 +27,11 @@ function App() {
   // console.log(modal);
   return (
     <>
-     <div className='app'>
-      {/* <div className={
+      <div className={
         dark ?
         'app-dark' :
         'app-sun'
-      }> */}
+      }>
         {modal === true && (
           <>
           <div className="modal-background"></div>

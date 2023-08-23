@@ -27,12 +27,14 @@
   /* background-color: blue; */
 }
 
-.app-dark {
- background-color: #222;
-}
-
 .app-sun {
   background: #dee2e6;
+  border: 1px solid #dee2e6
+}
+
+.app-dark {
+ border: 1px solid #222;
+ background-color: #222;
 }
 
 

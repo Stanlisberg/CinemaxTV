@@ -24,6 +24,7 @@ function Sidebar() {
   const modal = useSelector((state: RootState) => state.modal.value);
   const mobile = useSelector((state: RootState) => state.mobile.value);
   const toggle = useSelector((state: RootState) => state.toggle.value);
+  const dark = useSelector((state: RootState) => state.dark.value);
 
   console.log(mobile)
 
@@ -150,7 +151,10 @@ function Sidebar() {
           enterContainer()
         }}
         onMouseEnter={() => dispatch(sideEnter())}
-        className={openSidebar === false ? "sidebar-close hidden lg:grid " : "sidebar-open hidden lg:grid"}
+        className={openSidebar === false ? 
+          (dark ? 'sidebar-close hidden lg:grid text-[#fff] bg-[#222]' : 'sidebar-close hidden lg:grid bg-[#dee2e6]')
+          :
+           (dark ? "sidebar-open hidden lg:grid text-[#fff] bg-[#222]" : "sidebar-open hidden lg:grid bg-[#dee2e6]")}
       >
         <div className="logo-div">
           <TbTriangleSquareCircle
@@ -177,7 +181,7 @@ function Sidebar() {
               className={activeButton === 1 ? "active search" : "search"}
             />
             {searchHover && (
-              <p className="icon-name-close icon-name-open">Search</p>
+              <p className={dark ? "icon-name-close icon-name-open mobile-color" : "icon-name-close icon-name-open text-[#fff]"}>Search</p>
             )}
             {openSidebar && (
               <div className="input-div">

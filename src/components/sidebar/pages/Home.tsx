@@ -95,14 +95,14 @@ function Home() {
                 <>
                   {dark ? (
                     <IoIosSunny
-                      className="lg:hidden"
+                      className="cursor-pointer"
                       size={34}
                       color="#fff"
                       onClick={() => dispatch(offDark())}
                     />
                   ) : (
                     <WiMoonAltWaningGibbous6
-                      className="lg:hidden"
+                      className="`cursor-pointer"
                       size={34}
                       color="#222"
                       onClick={() => {
@@ -130,14 +130,14 @@ function Home() {
                 <>
                   {dark ? (
                     <IoIosSunny
-                      className="lg:hidden"
+                      className="lg:hidden cursor-pointer"
                       size={34}
                       color="#fff"
                       onClick={() => dispatch(offDark())}
                     />
                   ) : (
                     <WiMoonAltWaningGibbous6
-                      className="lg:hidden"
+                      className="lg:hidden cursor-pointer"
                       size={34}
                       color="#222"
                       onClick={() => dispatch(onDark())}

@@ -11,6 +11,7 @@ $bg-color: #f1f3f5;
   width: 248px;
   position: fixed;
   top: 0;
+  left: 0px;
   background-color: $bg-color;
   display: grid;
   justify-content: center;
@@ -153,6 +154,7 @@ $bg-color: #f1f3f5;
   width: 80px;
   position: fixed;
   top: 0;
+  left: 0px;
   background-color: $bg-color;
   display: grid;
   justify-content: center;
@@ -203,7 +205,9 @@ $bg-color: #f1f3f5;
         pointer-events: none;
         z-index: 1;
         color: black;
-        // background: chocolate;
+      }
+      .mobile-color {
+        color: #fff;
       }
     }
   }
