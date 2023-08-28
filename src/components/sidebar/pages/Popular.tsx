@@ -120,18 +120,15 @@ function Popular() {
                   <Link to={`/popular/${item.id}`} key={index}>
                     <div
                       key={index}
-                      className="mx-auto xl:mx-4 w-[100%]  h-[100%]"
+                      className="mx-auto xl:mx-4 w-[95%] h-[95%]"
                     >
                       <img
                         className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image"
                         src={`${baseImgUrl}/${size}${item.profile_path}`}
                       />
                       {/* <div className={'absolute bottom-0 left-0 w-full h-full bg-black bg-opacity-60 text-white transition-bottom duration-300 ease-in-out'}>
-                        <div className="p-4">
-                          hey
-                        </div>
                       </div> */}
-                      <div className="flex justify-center text-[15px] mt-1 sm:text-[18px] font-mono">
+                      <div className="flex justify-center text-[15px] mt-3 sm:text-[18px] font-mono">
                         {item.name}
                       </div>
                     </div>

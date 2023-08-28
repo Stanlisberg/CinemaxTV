@@ -15,6 +15,7 @@ function TvInfo() {
   const { tvId } = useParams();
 
   const { info } = useSelector((state: RootState) => state.movieDetail);
+  const dark = useSelector((state: RootState) => state.dark.value);
   const dispatch: AppDispatch = useDispatch();
 
   console.log(info);
@@ -36,9 +37,15 @@ function TvInfo() {
   }, []);
 
   return (
-    <div className="mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh]">
-      <div className="px-3 mt-5">
-        <button className="flex justify-center items-center hover:bg-[#e91e63] hover:text-[#fff] text-[#e91e63] border border-[#e91e63] px-2 py-[0px] md:px-[14px] md:py-[3px] rounded-md">
+    <div
+      className={
+        dark
+          ? "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] text-[#fff] mb-10"
+          : "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] text-black mb-10"
+      }
+    >
+      <div className="px-3 mt-10">
+        <button className="flex justify-center items-center hover:bg-[#e91e63] hover:text-[#fff] text-[#e91e63] border border-[#e91e63] px-2 py-[4px] md:px-[14px] md:py-[4px] rounded-md">
           <MdOutlineKeyboardBackspace className="" />
           <p
             className="ml-[4px] font-mono text-lg drop-shadow-xl"
@@ -120,7 +127,7 @@ function TvInfo() {
         <div className="md:flex md:justify-between md:items-center mt-[20px] mx-[13px]">
           <div className="flex justify-start">
             <div className="border border-[#e91e63] flex flex-col justify-center items-center py-[28px] px-[25px] md:py-[35px] md:px-[30px] text-[#e91e63] text-2xl md:text-3xl rounded-md">
-              <div className="font-bold font-mono text-lg text-black md:text-xl ">
+              <div className="font-bold font-mono text-lg md:text-xl ">
                 Rating
               </div>
               {info.vote_average}
@@ -129,14 +136,21 @@ function TvInfo() {
               <div className="ml-[10px]">
                 <p className="text-[#e91e63]">
                   Realease Date:{" "}
-                  <span className="text-black">{info.last_air_date}</span>
+                  <span className={dark ? "text-[#fff]" : "text-black"}>
+                    {info.last_air_date}
+                  </span>
                 </p>
                 <p className="text-[#e91e63]">
                   Seasons:{" "}
-                  <span className="text-black">{info.number_of_seasons}</span>
+                  <span className={dark ? "text-[#fff]" : "text-black"}>
+                    {info.number_of_seasons}
+                  </span>
                 </p>
                 <p className="text-[#e91e63]">
-                  Status: <span className="text-black">{info.status}</span>
+                  Status:{" "}
+                  <span className={dark ? "text-[#fff]" : "text-black"}>
+                    {info.status}
+                  </span>
                 </p>
               </div>
             </div>
@@ -169,7 +183,7 @@ function TvInfo() {
             >
               <div
                 key={index}
-                className="rounded-lg w-full h-full overflow-hidden mx-auto px-[1px]"
+                className="rounded-lg w-[95%] h-[95%] overflow-hidden mx-auto px-[1px]"
               >
                 {item.profile_path ? (
                   <img
@@ -182,6 +196,9 @@ function TvInfo() {
                     <div className="text-xl">No Image</div>
                   </div>
                 )}
+              </div>
+              <div className={item.profile_path ? "text-center" : ""}>
+                {item.name}
               </div>
             </a>
           </>

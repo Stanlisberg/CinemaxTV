@@ -18,9 +18,7 @@ import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 import { onDark, offDark } from "../../../redux/darkMode.Slice";
 
 function Home() {
-  const { homeData, homeLoading } = useSelector(
-    (state: RootState) => state.home
-  );
+  const { homeData, homeLoading } = useSelector((state: RootState) => state.home);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dark = useSelector((state: RootState) => state.dark.value);

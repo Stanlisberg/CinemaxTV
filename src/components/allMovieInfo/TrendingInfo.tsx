@@ -15,6 +15,7 @@ function MovieInfo() {
   const { trendingId } = useParams();
 
   const { info } = useSelector((state: RootState) => state.movieDetail);
+  const dark = useSelector((state: RootState) => state.dark.value);
   const dispatch: AppDispatch = useDispatch();
 
   console.log(info);
@@ -36,9 +37,11 @@ function MovieInfo() {
   }, []);
 
   return (
-    <div className="mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh]">
-      <div className="px-3 mt-5">
-        <button className="flex justify-center items-center hover:bg-[#e91e63] hover:text-[#fff] text-[#e91e63] border border-[#e91e63] px-2 py-[0px] md:px-[14px] md:py-[3px] rounded-md">
+    <div className=
+      {dark ? "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] text-[#fff] mb-10" 
+      : "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] mb-10"} >
+      <div className="px-3 mt-10">
+        <button className="flex justify-center items-center hover:bg-[#e91e63] hover:text-[#fff] text-[#e91e63] border border-[#e91e63] px-2 py-[4px] md:px-[14px] md:py-[4px] rounded-md">
           <MdOutlineKeyboardBackspace className="" />
           <p
             className="ml-[4px] font-mono text-lg drop-shadow-xl"
@@ -47,11 +50,6 @@ function MovieInfo() {
             Back
           </p>
         </button>
-        {/* { info.success === false && 
-        <div className='border border-green-600 mt-4 h-[100%] max-w-[100%]'>
-          Hello
-        </div> 
-        } */}
         {showVideo === true ? (
           <>
             {loading === true ? (
@@ -124,7 +122,7 @@ function MovieInfo() {
       <div className="md:flex md:justify-between md:items-center mt-[20px] mx-[13px]">
         <div className="flex justify-start">
           <div className="border border-[#e91e63] flex flex-col justify-center items-center py-[28px] px-[25px] md:py-[35px] md:px-[30px] text-[#e91e63] text-2xl md:text-3xl rounded-md">
-            <div className="font-bold font-mono text-lg text-black md:text-xl ">
+            <div className="font-bold font-mono text-lg md:text-xl ">
               Rating
             </div>
             {info.vote_average}
@@ -133,13 +131,13 @@ function MovieInfo() {
             <div className="ml-[10px]">
               <p className="text-[#e91e63]">
                 Realease Date:{" "}
-                <span className="text-black">{info.release_date}</span>
+                <span className={dark ? 'text-[#fff]' : "text-black"}>{info.release_date}</span>
               </p>
               <p className="text-[#e91e63]">
-                Duration: <span className="text-black">{info.runtime}min</span>
+                Duration: <span className={dark ? 'text-[#fff]' : "text-black"}>{info.runtime}min</span>
               </p>
               <p className="text-[#e91e63]">
-                Status: <span className="text-black">{info.status}</span>
+                Status: <span className={dark ? 'text-[#fff]' : "text-black"}>{info.status}</span>
               </p>
             </div>
           </div>
@@ -159,7 +157,7 @@ function MovieInfo() {
         </div>
         {info.overview}
       </div>
-      <div className="text-black text-2xl font-mono font-bold mx-[13px] mt-8">
+      <div className="text-2xl font-mono font-bold mx-[13px] mt-8">
         Casts
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 w-[100%] gap-4 mx-auto px-3">
