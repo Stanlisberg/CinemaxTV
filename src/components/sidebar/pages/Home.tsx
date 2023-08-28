@@ -99,25 +99,29 @@ function Home() {
                   {dark ? (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Light Mode</div>
+                      <div className='hover:bg-[#111] hover:rounded-[50%]'>
                       <IoIosSunny
                         className="cursor-pointer"
                         size={34}
                         color="#fff"
                         onClick={() => dispatch(offDark())}
                       />
+                      </div>
                     </div>
                   ) : (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
-                      <WiMoonAltWaningGibbous6
-                        className="cursor-pointer"
-                        size={34}
-                        color="#222"
-                        onClick={() => {
-                          dispatch(onDark());
-                          console.log("hey");
-                        }}
-                      />
+                        <div className='hover:bg-[slategray] hover:rounded-[50%]'>
+                        <WiMoonAltWaningGibbous6
+                          className="cursor-pointer"
+                          size={34}
+                          color="#222"
+                          onClick={() => {
+                            dispatch(onDark());
+                            console.log("hey");
+                          }}
+                        />
+                      </div>
                     </div>
                   )}
                 </>
@@ -140,22 +144,26 @@ function Home() {
                   {dark ? (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
+                      <div className='hover:bg-[#111] hover:rounded-[50%]'>
                       <IoIosSunny
                         className="lg:hidden cursor-pointer"
                         size={34}
                         color="#fff"
                         onClick={() => dispatch(offDark())}
                       />
+                     </div>
                     </div>
                   ) : (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
+                      <div className='hover:bg-[slategrey]  hover:rounded-[50%]'>
                       <WiMoonAltWaningGibbous6
                         className="lg:hidden cursor-pointer"
                         size={34}
                         color="#222"
                         onClick={() => dispatch(onDark())}
                       />
+                      </div>
                     </div>
                   )}
                 </>

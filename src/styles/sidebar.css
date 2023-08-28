@@ -93,6 +93,9 @@
 .sidebar-open .side-wrapper-open .search-icon {
   background: #222;
 }
+.sidebar-open .side-wrapper-open .search-icon:hover {
+  background: #222;
+}
 .sidebar-open .side-wrapper-open .arrow-open {
   display: none;
 }

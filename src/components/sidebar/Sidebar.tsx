@@ -177,7 +177,7 @@ function Sidebar() {
               className={
                 openSidebar
                   ? dark
-                    ? "icon-open search-input search-icon icon-bg"
+                    ? "icon-open search-input search-icon"
                     : "icon-open"
                   : dark
                   ? "icon-close icon-bg"
@@ -475,7 +475,14 @@ function Sidebar() {
           }}
           onMouseEnter={() => dispatch(sideEnter())}
           className={
-            toggle === true ? "hidden" : "sidebar-open lg:hidden fixed"
+            toggle === true 
+            ? dark
+                ? "hidden"
+                : "hidden"
+              : dark
+              ? "sidebar-open lg:hidden fixed text-[whitesmoke] bg-[#000000]"
+              : "sidebar-open lg:hidden fixed bg-[#f1f3f5]"
+            // ? "hidden" : "sidebar-open lg:hidden fixed"
           }
         >
           <div className="logo-div">
@@ -495,7 +502,7 @@ function Sidebar() {
           </div>
           <div className=" side-wrapper-open">
             <div
-              className="icon-open search-input"
+              className={dark ? 'icon-open search-icon' : 'icon-open search-input'}
               onMouseOver={handleSearchHoverEnter}
               onMouseLeave={handleSearchHoverLeave}
               onClick={() => {
@@ -532,7 +539,7 @@ function Sidebar() {
               )}
             </div>
             <div
-              className="icon-open"
+              className={dark ? 'icon-open icon-bg' : 'icon-open'}
               onMouseOver={handleHomeHoverEnter}
               onMouseLeave={handleHomeHoverLeave}
               onClick={() => {
@@ -549,14 +556,18 @@ function Sidebar() {
                 className={activeButton === 2 ? "active" : ""}
               />
               {homeHover ? (
-                <div className="icon-name-close icon-name-open">Home</div>
+                <div className= {
+                  dark
+                    ? "icon-name-close icon-name-open bg-[#222]"
+                    : "icon-name-close icon-name-open"
+                }>Home</div>
               ) : (
                 ""
               )}
               <p className="icon-open-text">Home</p>
             </div>
             <div
-              className="icon-open"
+              className={dark ? 'icon-open icon-bg' : 'icon-open'}
               onMouseOver={handleTrendingHoverEnter}
               onMouseLeave={handleTrendingHoverLeave}
               onClick={() => {
@@ -580,7 +591,7 @@ function Sidebar() {
               <p className="icon-open-text">Trending</p>
             </div>
             <div
-              className="icon-open"
+              className={dark ? 'icon-open icon-bg' : 'icon-open'}
               onMouseOver={handleMovieHoverEnter}
               onMouseLeave={handleMovieHoverLeave}
               onClick={() => {
@@ -604,7 +615,7 @@ function Sidebar() {
               <p className="icon-open-text">Movie Actors</p>
             </div>
             <div
-              className="icon-open"
+              className={dark ? 'icon-open icon-bg' : 'icon-open'}
               onMouseOver={handleTvHoverEnter}
               onMouseLeave={handleTvHoverLeave}
               onClick={() => {
@@ -628,7 +639,7 @@ function Sidebar() {
               <p className="icon-open-text">Tv Shows</p>
             </div>
             <div
-              className="icon-open"
+              className={dark ? 'icon-open icon-bg' : 'icon-open'}
               onMouseOver={handleBookHoverEnter}
               onMouseLeave={handleBookHoverLeave}
               onClick={() => {
@@ -653,7 +664,7 @@ function Sidebar() {
             </div>
           </div>
           <div
-            className="setting-open hover:cursor-pointer"
+            className={dark ? 'setting-open icon-bg hover:cursor-pointer' : 'setting-open'}
             onMouseOver={handleSettingHoverEnter}
             onMouseLeave={handleSettingHoverLeave}
             onClick={() => {
