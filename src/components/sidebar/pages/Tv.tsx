@@ -119,10 +119,10 @@ function Tv() {
                 <Link to={`/tv/${item.id}`} key={index}>
                   <div
                     key={index}
-                    className="mx-auto xl:mx-4 w-[100%]  h-[100%]"
+                    className="mx-auto xl:mx-4 w-[98%]  h-[98%]"
                   >
                     <img
-                      className="object-cover rounded-lg border-[1.5px] border-[#e91e63]"
+                      className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image"
                       src={`${baseImgUrl}/${size}${item.poster_path}`}
                     />
                   </div>

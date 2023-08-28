@@ -197,7 +197,7 @@ function TvInfo() {
                   </div>
                 )}
               </div>
-              <div className={item.profile_path ? "text-center" : ""}>
+              <div className={item.profile_path ? "text-center" : "hidden"}>
                 {item.name}
               </div>
             </a>

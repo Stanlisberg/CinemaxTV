@@ -166,7 +166,7 @@ function MovieInfo() {
             >
               <div
                 key={index}
-                className="rounded-lg w-full h-full overflow-hidden mx-auto px-[1px]"
+                className="rounded-lg w-[95%] h-[95%] overflow-hidden mx-auto px-[1px]"
               >
                 {item.profile_path ? (
                   <img
@@ -179,6 +179,9 @@ function MovieInfo() {
                     <div className="text-xl">No Image</div>
                   </div>
                 )}
+              </div>
+              <div className={item.profile_path ? "text-center" : "hidden"}>
+                {item.name}
               </div>
             </a>
           </>
