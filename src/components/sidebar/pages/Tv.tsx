@@ -5,17 +5,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchTv } from "../../../redux/tvSlice";
 import { FaTimes } from "react-icons/fa";
 import { CgMenuGridO } from "react-icons/cg";
+import { WiMoonAltWaningGibbous6 } from "react-icons/wi";
+import { IoIosSunny } from "react-icons/io";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ReactPaginate from "react-paginate";
 import { mobileEnter, mobileLeave } from "../../../redux/mobileSlice";
 import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
 import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
+import { onDark, offDark } from "../../../redux/darkMode.Slice";
 
 function Tv() {
   const { tvData, tvLoading } = useSelector((state: RootState) => state.tv);
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
+  const dark = useSelector((state: RootState) => state.dark.value);
   const dispatch: AppDispatch = useDispatch();
 
   //-----Pagination States------
@@ -68,40 +72,107 @@ function Tv() {
               : "ml-auto mr-auto mt-6 lg:pl-20 lg:pr-20 lg:mt-4"
           }
         >
-          <nav className="fixed left-0 top-0 flex items-center justify-between w-full bg-[#dee2e6] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-start lg:w-[100%] lg:pl-24">
+          <nav
+            className={
+              dark
+                ? "fixed left-0 top-0 flex items-center justify-between w-full text-white bg-[#222] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-between lg:w-[100%] lg:pl-24 lg:pr-[60px] z-10"
+                : "fixed left-0 top-0 flex items-center justify-between w-full bg-[#dee2e6] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-between lg:w-[100%] lg:pl-24 lg:pr-[60px] z-10"
+            }
+          >
             <div className="lg:justify-center lg:items-center lg:flex">
               <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                Tv Shows
+                Movie Actors
               </p>
               <button className="text-white cursor-pointer h-8 text-sm rounded-md border-none mt-3 mb-3 ml-5 pt-1 pb-1 pl-3 pr-3 hidden lg:grid bg-[#e91e63]">
                 Genre
               </button>
             </div>
             {icon ? (
-              <div className="flex cursor-pointer">
-                <CgMenuGridO
-                  className="lg:hidden"
-                  size={34}
-                  color="#e91e63"
-                  onClick={() => {
-                    dispatch(mobileEnter());
-                    dispatch(toggleLeave());
-                    dispatch(showMenu());
-                  }}
-                />
+              <div className="flex">
+                <>
+                  {dark ? (
+                    <div className="flex justify-center items-center text-[20px] font-[600]">
+                      <div className=" hidden lg:grid mr-2">Light Mode</div>
+                      <div className="hover:bg-[#111] hover:rounded-[50%]">
+                        <IoIosSunny
+                          className="cursor-pointer"
+                          size={34}
+                          color="#fff"
+                          onClick={() => dispatch(offDark())}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex justify-center items-center text-[20px] font-[600]">
+                      <div className=" hidden lg:grid mr-2">Dark Mode</div>
+                      <div className="hover:bg-[slategray] hover:rounded-[50%]">
+                        <WiMoonAltWaningGibbous6
+                          className="cursor-pointer"
+                          size={34}
+                          color="#222"
+                          onClick={() => {
+                            dispatch(onDark());
+                            console.log("hey");
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </>
+                <div className="flex cursor-pointer">
+                  <CgMenuGridO
+                    className="lg:hidden"
+                    size={34}
+                    color="#e91e63"
+                    onClick={() => {
+                      dispatch(mobileEnter());
+                      dispatch(toggleLeave());
+                      dispatch(showMenu());
+                    }}
+                  />
+                </div>
               </div>
             ) : (
-              <div className="flex cursor-pointer">
-                <FaTimes
-                  className="lg:hidden"
-                  color="#e91e63"
-                  size={34}
-                  onClick={() => {
-                    dispatch(mobileLeave());
-                    dispatch(toggleEnter());
-                    dispatch(removeMenu());
-                  }}
-                />
+              <div className="flex">
+                <>
+                  {dark ? (
+                    <div className="flex justify-center items-center text-[20px] font-[600]">
+                      <div className=" hidden lg:grid mr-2">Dark Mode</div>
+                      <div className="hover:bg-[#111] hover:rounded-[50%]">
+                        <IoIosSunny
+                          className="lg:hidden cursor-pointer"
+                          size={34}
+                          color="#fff"
+                          onClick={() => dispatch(offDark())}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex justify-center items-center text-[20px] font-[600]">
+                      <div className=" hidden lg:grid mr-2">Dark Mode</div>
+                      <div className="hover:bg-[slategrey]  hover:rounded-[50%]">
+                        <WiMoonAltWaningGibbous6
+                          className="lg:hidden cursor-pointer"
+                          size={34}
+                          color="#222"
+                          onClick={() => dispatch(onDark())}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </>
+                <div className="flex cursor-pointer">
+                  <FaTimes
+                    className="lg:hidden"
+                    color="#e91e63"
+                    size={34}
+                    onClick={() => {
+                      dispatch(mobileLeave());
+                      dispatch(toggleEnter());
+                      dispatch(removeMenu());
+                    }}
+                  />
+                </div>
               </div>
             )}
           </nav>
@@ -117,12 +188,9 @@ function Tv() {
             {(currentItems && (currentItems as any[]))?.map((item, index) => (
               <>
                 <Link to={`/tv/${item.id}`} key={index}>
-                  <div
-                    key={index}
-                    className="mx-auto xl:mx-4 w-[98%]  h-[98%]"
-                  >
+                  <div key={index} className="mx-auto xl:mx-4 w-[98%] h-[98%]">
                     <img
-                      className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image"
+                      className="object-cover rounded-lg border-[1.5px] border-[#e91e63] w-[98%]  h-[98%] image"
                       src={`${baseImgUrl}/${size}${item.poster_path}`}
                     />
                   </div>

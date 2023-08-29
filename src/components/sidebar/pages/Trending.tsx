@@ -15,7 +15,6 @@ import { toggleEnter, toggleLeave } from "../../../redux/toggleSlice";
 import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 import { onDark, offDark } from "../../../redux/darkMode.Slice";
 
-
 function Trending() {
   const { trendingData, trendingLoading } = useSelector(
     (state: RootState) => state.trending
@@ -75,13 +74,13 @@ function Trending() {
               : "ml-auto mr-auto mt-6 lg:pl-20 lg:pr-20 lg:mt-4"
           }
         >
-          <nav 
+          <nav
             className={
               dark
                 ? "fixed left-0 top-0 flex items-center justify-between w-full text-white bg-[#222] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-between lg:w-[100%] lg:pl-24 lg:pr-[60px] z-10"
                 : "fixed left-0 top-0 flex items-center justify-between w-full bg-[#dee2e6] pt-4 pb-4 pl-4 pr-4 lg:pt-2 lg:pb-2 lg:justify-between lg:w-[100%] lg:pl-24 lg:pr-[60px] z-10"
             }
-            >
+          >
             <div className="lg:justify-center lg:items-center lg:flex">
               <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
                 Trending
@@ -96,19 +95,19 @@ function Trending() {
                   {dark ? (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Light Mode</div>
-                      <div className='hover:bg-[#111] hover:rounded-[50%]'>
-                      <IoIosSunny
-                        className="cursor-pointer"
-                        size={34}
-                        color="#fff"
-                        onClick={() => dispatch(offDark())}
-                      />
+                      <div className="hover:bg-[#111] hover:rounded-[50%]">
+                        <IoIosSunny
+                          className="cursor-pointer"
+                          size={34}
+                          color="#fff"
+                          onClick={() => dispatch(offDark())}
+                        />
                       </div>
                     </div>
                   ) : (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
-                        <div className='hover:bg-[slategray] hover:rounded-[50%]'>
+                      <div className="hover:bg-[slategray] hover:rounded-[50%]">
                         <WiMoonAltWaningGibbous6
                           className="cursor-pointer"
                           size={34}
@@ -141,25 +140,25 @@ function Trending() {
                   {dark ? (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
-                      <div className='hover:bg-[#111] hover:rounded-[50%]'>
-                      <IoIosSunny
-                        className="lg:hidden cursor-pointer"
-                        size={34}
-                        color="#fff"
-                        onClick={() => dispatch(offDark())}
-                      />
-                     </div>
+                      <div className="hover:bg-[#111] hover:rounded-[50%]">
+                        <IoIosSunny
+                          className="lg:hidden cursor-pointer"
+                          size={34}
+                          color="#fff"
+                          onClick={() => dispatch(offDark())}
+                        />
+                      </div>
                     </div>
                   ) : (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
-                      <div className='hover:bg-[slategrey]  hover:rounded-[50%]'>
-                      <WiMoonAltWaningGibbous6
-                        className="lg:hidden cursor-pointer"
-                        size={34}
-                        color="#222"
-                        onClick={() => dispatch(onDark())}
-                      />
+                      <div className="hover:bg-[slategrey]  hover:rounded-[50%]">
+                        <WiMoonAltWaningGibbous6
+                          className="lg:hidden cursor-pointer"
+                          size={34}
+                          color="#222"
+                          onClick={() => dispatch(onDark())}
+                        />
                       </div>
                     </div>
                   )}
@@ -189,10 +188,7 @@ function Trending() {
             {(currentItems && (currentItems as any[]))?.map((item, index) => (
               <>
                 <Link to={`/trending/${item.id}`} key={index}>
-                  <div
-                    key={index}
-                    className="mx-auto xl:mx-4 w-[98%]  h-[98%]"
-                  >
+                  <div key={index} className="mx-auto xl:mx-4 w-[98%]  h-[98%]">
                     <img
                       className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image"
                       src={`${baseImgUrl}/${size}${item.poster_path}`}

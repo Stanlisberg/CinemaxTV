@@ -18,7 +18,9 @@ import { removeMenu, showMenu } from "../../../redux/changeIconSlice";
 import { onDark, offDark } from "../../../redux/darkMode.Slice";
 
 function Home() {
-  const { homeData, homeLoading } = useSelector((state: RootState) => state.home);
+  const { homeData, homeLoading } = useSelector(
+    (state: RootState) => state.home
+  );
   const sidebar = useSelector((state: RootState) => state.sidebar.value);
   const icon = useSelector((state: RootState) => state.icon.value);
   const dark = useSelector((state: RootState) => state.dark.value);
@@ -97,19 +99,19 @@ function Home() {
                   {dark ? (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Light Mode</div>
-                      <div className='hover:bg-[#111] hover:rounded-[50%]'>
-                      <IoIosSunny
-                        className="cursor-pointer"
-                        size={34}
-                        color="#fff"
-                        onClick={() => dispatch(offDark())}
-                      />
+                      <div className="hover:bg-[#111] hover:rounded-[50%]">
+                        <IoIosSunny
+                          className="cursor-pointer"
+                          size={34}
+                          color="#fff"
+                          onClick={() => dispatch(offDark())}
+                        />
                       </div>
                     </div>
                   ) : (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
-                        <div className='hover:bg-[slategray] hover:rounded-[50%]'>
+                      <div className="hover:bg-[slategray] hover:rounded-[50%]">
                         <WiMoonAltWaningGibbous6
                           className="cursor-pointer"
                           size={34}
@@ -142,25 +144,25 @@ function Home() {
                   {dark ? (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
-                      <div className='hover:bg-[#111] hover:rounded-[50%]'>
-                      <IoIosSunny
-                        className="lg:hidden cursor-pointer"
-                        size={34}
-                        color="#fff"
-                        onClick={() => dispatch(offDark())}
-                      />
-                     </div>
+                      <div className="hover:bg-[#111] hover:rounded-[50%]">
+                        <IoIosSunny
+                          className="lg:hidden cursor-pointer"
+                          size={34}
+                          color="#fff"
+                          onClick={() => dispatch(offDark())}
+                        />
+                      </div>
                     </div>
                   ) : (
                     <div className="flex justify-center items-center text-[20px] font-[600]">
                       <div className=" hidden lg:grid mr-2">Dark Mode</div>
-                      <div className='hover:bg-[slategrey]  hover:rounded-[50%]'>
-                      <WiMoonAltWaningGibbous6
-                        className="lg:hidden cursor-pointer"
-                        size={34}
-                        color="#222"
-                        onClick={() => dispatch(onDark())}
-                      />
+                      <div className="hover:bg-[slategrey]  hover:rounded-[50%]">
+                        <WiMoonAltWaningGibbous6
+                          className="lg:hidden cursor-pointer"
+                          size={34}
+                          color="#222"
+                          onClick={() => dispatch(onDark())}
+                        />
                       </div>
                     </div>
                   )}

@@ -171,9 +171,7 @@ function TvInfo() {
           {info.overview}
         </div>
       </div>
-      <div className="text-black text-2xl font-mono font-bold mx-[13px] mt-8">
-        Casts
-      </div>
+      <div className="text-2xl font-mono font-bold mx-[13px] mt-8">Casts</div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 w-[100%] gap-4 mx-auto px-3">
         {credits?.cast?.map((item: any, index: any) => (
           <>
