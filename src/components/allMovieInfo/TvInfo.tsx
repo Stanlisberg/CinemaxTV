@@ -61,7 +61,7 @@ function TvInfo() {
                 <div className="border-4 bg-[#e91e63] border-[#e91e63] rounded-[20%] w-[80px] h-[80px] animate-spin duration-1000 linear infinite transform rotate-[(360deg)]"></div>
               </div>
             ) : (
-              <div className="relative w-[100%] mt-4 border">
+              <div className="relative w-[100%] mt-4">
                 <iframe
                   className="frame w-[100%] sm:w-[85%] h-[100px]"
                   src={youtubeUrl}
