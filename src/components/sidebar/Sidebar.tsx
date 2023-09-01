@@ -18,6 +18,7 @@ import { modalShow } from "../../redux/modalSlice";
 import { mobileLeave } from "../../redux/mobileSlice";
 import { removeMenu } from "../../redux/changeIconSlice";
 import { toggleEnter } from "../../redux/toggleSlice";
+import Search from "./pages/Search";
 
 function Sidebar() {
   const dispatch: AppDispatch = useDispatch();
@@ -26,7 +27,7 @@ function Sidebar() {
   const toggle = useSelector((state: RootState) => state.toggle.value);
   const dark = useSelector((state: RootState) => state.dark.value);
 
-  console.log(mobile);
+  // console.log(mobile);
 
   const navigate = useNavigate();
 
@@ -142,7 +143,8 @@ function Sidebar() {
 
   return (
     <>
-      <div>
+      <div className='relative'>
+        <Search />
         <div
           onMouseLeave={() => {
             handleMouseLeave();
@@ -154,10 +156,10 @@ function Sidebar() {
             openSidebar === false
               ? dark
                 ? "sidebar-close hidden lg:grid text-[whitesmoke] bg-[#000000]"
-                : "sidebar-close hidden lg:grid bg-[#f1f3f5]"
+                : "sidebar-close hidden lg:grid bg-[#f1f3f5] "
               : dark
-              ? "sidebar-open hidden lg:grid text-[whitesmoke] bg-[#000000]"
-              : "sidebar-open hidden lg:grid bg-[#f1f3f5]"
+              ? "sidebar-open hidden lg:grid text-[whitesmoke] bg-[#000000] "
+              : "sidebar-open hidden lg:grid bg-[#f1f3f5] "
           }
         >
           <div className="logo-div">
@@ -178,7 +180,7 @@ function Sidebar() {
                 openSidebar
                   ? dark
                     ? "icon-open search-input search-icon"
-                    : "icon-open"
+                    : "icon-open search-input"
                   : dark
                   ? "icon-close icon-bg"
                   : "icon-close"
@@ -207,11 +209,17 @@ function Sidebar() {
               )}
               {openSidebar && (
                 <div className="input-div">
+                  <form 
+                  onSubmit={(e) => {
+                    console.log('hey')
+                    e.preventDefault()
+                    }}>
                   <input
                     type="text"
                     className="input"
-                    placeholder="Search Movies..."
+                    placeholder="Search Movies..."                  
                   />
+                 </form>
                 </div>
               )}
             </div>

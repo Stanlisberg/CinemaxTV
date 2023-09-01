@@ -10,7 +10,7 @@ import PopularInfo from "./components/allMovieInfo/PopularInfo";
 import TrendingInfo from './components/allMovieInfo/TrendingInfo'
 import TvInfo from "./components/allMovieInfo/TvInfo";
 import { BiHome } from "react-icons/bi";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux"; 
 import type { RootState, AppDispatch } from "./redux/store";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { modalHide } from "./redux/modalSlice";
