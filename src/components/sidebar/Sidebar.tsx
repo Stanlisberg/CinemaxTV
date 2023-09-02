@@ -18,7 +18,8 @@ import { modalShow } from "../../redux/modalSlice";
 import { mobileLeave } from "../../redux/mobileSlice";
 import { removeMenu } from "../../redux/changeIconSlice";
 import { toggleEnter } from "../../redux/toggleSlice";
-import Search from "./pages/Search";
+// import Search from "./pages/Search";
+import { fetchSearch } from "../../redux/searchSlice";
 
 function Sidebar() {
   const dispatch: AppDispatch = useDispatch();
@@ -26,6 +27,7 @@ function Sidebar() {
   const mobile = useSelector((state: RootState) => state.mobile.value);
   const toggle = useSelector((state: RootState) => state.toggle.value);
   const dark = useSelector((state: RootState) => state.dark.value);
+  const { searchData } = useSelector((state: RootState) => state.search);
 
   // console.log(mobile);
 
@@ -82,6 +84,8 @@ function Sidebar() {
     } else if (window.location.pathname === "/bookmark") {
       handleActiveButton(6);
     }
+
+    fetchSearch()
   }, []);
 
   //-----------Hover Function
@@ -143,8 +147,7 @@ function Sidebar() {
 
   return (
     <>
-      <div className='relative'>
-        <Search />
+      <div className=''>
         <div
           onMouseLeave={() => {
             handleMouseLeave();

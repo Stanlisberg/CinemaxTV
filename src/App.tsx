@@ -5,6 +5,7 @@ import Trending from "./components/sidebar/pages/Trending";
 import Tv from "./components/sidebar/pages/Tv";
 import Bookmark from "./components/sidebar/pages/Bookmark"; 
 import Popular from "./components/sidebar/pages/Popular";
+import Search from "./components/sidebar/pages/Search";
 import MovieInfo from "./components/allMovieInfo/MovieInfo";
 import PopularInfo from "./components/allMovieInfo/PopularInfo";
 import TrendingInfo from './components/allMovieInfo/TrendingInfo'
@@ -22,8 +23,7 @@ function App() {
   const dark = useSelector((state: RootState) => state.dark.value);
   const dispatch : AppDispatch = useDispatch()
 
-  console.log(dark)
-
+  // console.log(dark)
   // console.log(modal);
   return (
     <>
@@ -80,6 +80,7 @@ function App() {
             <Route path="/movie" element={<Popular />} />
             <Route path="/tv" element={<Tv />} />
             <Route path="/bookmark" element={<Bookmark />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/movie/:movieId" element={<MovieInfo />} />
             <Route path="/popular/:popularId" element={<PopularInfo />} />
             <Route path="/trending/:trendingId" element={<TrendingInfo />} />

@@ -21,7 +21,7 @@ export const fetchDiscover = createAsyncThunk(
       const allMovies = [];
       const totalPages = 20;
 
-      // Fetch data from each page and concatenate the results into 'allMovies'
+      //----Fetch data from each page and concatenate the results into 'allMovies----------
       for (let page = 1; page <= totalPages; page++) {
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?page=${page}`,
@@ -33,7 +33,7 @@ export const fetchDiscover = createAsyncThunk(
         allMovies.push(...results);
       }
 
-      // Slice 'allMovies' to get the first 100 movies
+      //-------Slice 'allMovies' to get the first 100 movies----------
       const movies = allMovies.slice(0, 400);
       // console.log(movies);
       return movies;

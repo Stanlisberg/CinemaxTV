@@ -10,6 +10,7 @@ import mobileReducer from './mobileSlice'
 import toggleReducer from './toggleSlice';
 import changeIconReducer from './changeIconSlice';
 import darkModeReducer from './darkMode.Slice';
+import searchReducer from './searchSlice'
 
 export const store = configureStore({
   reducer: {
@@ -28,6 +29,8 @@ export const store = configureStore({
     toggle: toggleReducer,
     icon: changeIconReducer,
     dark: darkModeReducer,
+    search: searchReducer,
+    searchLoading: searchReducer,
   },
 })
 
