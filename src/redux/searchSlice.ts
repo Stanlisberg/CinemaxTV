@@ -25,7 +25,7 @@ const options = {
         for (let page = 1; page <= totalPages; page++) {
          console.log(page )
           const response = await fetch(
-            `https://api.themoviedb.org/3/search/movie?query=convenent&include_adult=false&language=en-US`,
+            `https://api.themoviedb.org/3/search/movie?query=equalizer&include_adult=false&language=en-US&page=${page}`,
             options
           );
           const data = await response.json()
@@ -36,8 +36,8 @@ const options = {
   
         // Slice 'allMovies' to get the first 100 movies
         const movies = allSearch.slice(0, 400);
-        console.log(movies);
-        // return movies;
+        // console.log(movies);
+        return movies;
       } catch (error) {
         // console.error("Error fetching movies:", error);
         // throw error;
