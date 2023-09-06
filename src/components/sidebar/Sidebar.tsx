@@ -18,8 +18,7 @@ import { modalShow } from "../../redux/modalSlice";
 import { mobileLeave } from "../../redux/mobileSlice";
 import { removeMenu } from "../../redux/changeIconSlice";
 import { toggleEnter } from "../../redux/toggleSlice";
-// import Search from "./pages/Search";
-import { fetchSearch } from "../../redux/searchSlice";
+import { setInputData } from "../../redux/inputSlice";
 
 function Sidebar() {
   const dispatch: AppDispatch = useDispatch();
@@ -27,9 +26,6 @@ function Sidebar() {
   const mobile = useSelector((state: RootState) => state.mobile.value);
   const toggle = useSelector((state: RootState) => state.toggle.value);
   const dark = useSelector((state: RootState) => state.dark.value);
-  const { searchData } = useSelector((state: RootState) => state.search);
-
-  // console.log(mobile);
 
   const navigate = useNavigate();
 
@@ -42,6 +38,28 @@ function Sidebar() {
       dispatch(sideEnter());
     }
   };
+
+  // ------Local Storage setup for stored search item--------
+  interface SearchInter {
+    searchInput: any;
+  }
+
+  let searchInput: SearchInter;
+  const inputReduxData = (e: any) => {
+    searchInput = e.target.value;
+    dispatch(setInputData(searchInput));
+    const storedData = localStorage.getItem("myData");
+    return storedData ? JSON.parse(storedData) : "";
+  };
+
+  const inputFormSubmit = (e: any) => {
+    navigate("/search");
+    window.location.reload();
+    localStorage.setItem("myData", JSON.stringify(searchInput));
+
+    e.preventDefault();
+  };
+
   //-----------Open sidebar state
   const [openSidebar, setOpenSidebar] = useState(false);
   const [arrowHover, setArrowHover] = useState(false);
@@ -84,8 +102,6 @@ function Sidebar() {
     } else if (window.location.pathname === "/bookmark") {
       handleActiveButton(6);
     }
-
-    fetchSearch()
   }, []);
 
   //-----------Hover Function
@@ -147,7 +163,7 @@ function Sidebar() {
 
   return (
     <>
-      <div className=''>
+      <div className="">
         <div
           onMouseLeave={() => {
             handleMouseLeave();
@@ -212,17 +228,15 @@ function Sidebar() {
               )}
               {openSidebar && (
                 <div className="input-div">
-                  <form 
-                  onSubmit={(e) => {
-                    console.log('hey')
-                    e.preventDefault()
-                    }}>
-                  <input
-                    type="text"
-                    className="input"
-                    placeholder="Search Movies..."                  
-                  />
-                 </form>
+                  {/* <form onSubmit={(e) => {e.preventDefault() navigate('/search')}}> */}
+                  <form onSubmit={inputFormSubmit}>
+                    <input
+                      type="text"
+                      className="input"
+                      placeholder="Search Movies..."
+                      onChange={inputReduxData}
+                    />
+                  </form>
                 </div>
               )}
             </div>
@@ -486,8 +500,8 @@ function Sidebar() {
           }}
           onMouseEnter={() => dispatch(sideEnter())}
           className={
-            toggle === true 
-            ? dark
+            toggle === true
+              ? dark
                 ? "hidden"
                 : "hidden"
               : dark
@@ -513,7 +527,9 @@ function Sidebar() {
           </div>
           <div className=" side-wrapper-open">
             <div
-              className={dark ? 'icon-open search-icon' : 'icon-open search-input'}
+              className={
+                dark ? "icon-open search-icon" : "icon-open search-input"
+              }
               onMouseOver={handleSearchHoverEnter}
               onMouseLeave={handleSearchHoverLeave}
               onClick={() => {
@@ -550,7 +566,7 @@ function Sidebar() {
               )}
             </div>
             <div
-              className={dark ? 'icon-open icon-bg' : 'icon-open'}
+              className={dark ? "icon-open icon-bg" : "icon-open"}
               onMouseOver={handleHomeHoverEnter}
               onMouseLeave={handleHomeHoverLeave}
               onClick={() => {
@@ -567,18 +583,22 @@ function Sidebar() {
                 className={activeButton === 2 ? "active" : ""}
               />
               {homeHover ? (
-                <div className= {
-                  dark
-                    ? "icon-name-close icon-name-open bg-[#222]"
-                    : "icon-name-close icon-name-open"
-                }>Home</div>
+                <div
+                  className={
+                    dark
+                      ? "icon-name-close icon-name-open bg-[#222]"
+                      : "icon-name-close icon-name-open"
+                  }
+                >
+                  Home
+                </div>
               ) : (
                 ""
               )}
               <p className="icon-open-text">Home</p>
             </div>
             <div
-              className={dark ? 'icon-open icon-bg' : 'icon-open'}
+              className={dark ? "icon-open icon-bg" : "icon-open"}
               onMouseOver={handleTrendingHoverEnter}
               onMouseLeave={handleTrendingHoverLeave}
               onClick={() => {
@@ -602,7 +622,7 @@ function Sidebar() {
               <p className="icon-open-text">Trending</p>
             </div>
             <div
-              className={dark ? 'icon-open icon-bg' : 'icon-open'}
+              className={dark ? "icon-open icon-bg" : "icon-open"}
               onMouseOver={handleMovieHoverEnter}
               onMouseLeave={handleMovieHoverLeave}
               onClick={() => {
@@ -626,7 +646,7 @@ function Sidebar() {
               <p className="icon-open-text">Movie Actors</p>
             </div>
             <div
-              className={dark ? 'icon-open icon-bg' : 'icon-open'}
+              className={dark ? "icon-open icon-bg" : "icon-open"}
               onMouseOver={handleTvHoverEnter}
               onMouseLeave={handleTvHoverLeave}
               onClick={() => {
@@ -650,7 +670,7 @@ function Sidebar() {
               <p className="icon-open-text">Tv Shows</p>
             </div>
             <div
-              className={dark ? 'icon-open icon-bg' : 'icon-open'}
+              className={dark ? "icon-open icon-bg" : "icon-open"}
               onMouseOver={handleBookHoverEnter}
               onMouseLeave={handleBookHoverLeave}
               onClick={() => {
@@ -675,7 +695,11 @@ function Sidebar() {
             </div>
           </div>
           <div
-            className={dark ? 'setting-open icon-bg hover:cursor-pointer' : 'setting-open'}
+            className={
+              dark
+                ? "setting-open icon-bg hover:cursor-pointer"
+                : "setting-open"
+            }
             onMouseOver={handleSettingHoverEnter}
             onMouseLeave={handleSettingHoverLeave}
             onClick={() => {

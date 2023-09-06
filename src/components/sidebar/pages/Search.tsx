@@ -24,6 +24,8 @@ function Search() {
   const dark = useSelector((state: RootState) => state.dark.value);
   const dispatch: AppDispatch = useDispatch();
 
+  const storedData = localStorage.getItem("myData");
+
   //-----Pagination States------
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
@@ -33,7 +35,7 @@ function Search() {
   //----Skeleton array fill up---
   const arrayList = Array(20).fill(0);
   const data = searchData;
-  console.log(data);
+  //   console.log(data);
 
   //----Pagination Function-----
   const handlePageClick = (event: any) => {
@@ -82,8 +84,8 @@ function Search() {
             }
           >
             <div className="lg:justify-center lg:items-center lg:flex">
-              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                Trending
+              <p className="text-2xl sm:text-2xl lg:text-3xl font-bold">
+                {storedData?.toUpperCase()}
               </p>
               <button className="text-white cursor-pointer h-8 text-sm rounded-md border-none mt-3 mb-3 ml-5 pt-1 pb-1 pl-3 pr-3 hidden lg:grid bg-[#e91e63]">
                 Genre
@@ -219,90 +221,13 @@ function Search() {
   );
 }
 
-export default Search
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Search;
 
 
 // import { useEffect } from 'react'
 // import { fetchSearch } from '../../../redux/searchSlice';
 // import type { RootState, AppDispatch } from '../../../redux/store';
 // import { useDispatch, useSelector } from "react-redux";
-
 
 // function Search() {
 //     const { searchData } = useSelector((state: RootState) => state.search);

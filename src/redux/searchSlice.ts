@@ -23,9 +23,11 @@ const options = {
   
         // Fetch data from each page and concatenate the results into 'allMovies'
         for (let page = 1; page <= totalPages; page++) {
-         console.log(page )
+          const storedData = localStorage.getItem('myData');
+          console.log(storedData)
+
           const response = await fetch(
-            `https://api.themoviedb.org/3/search/movie?query=equalizer&include_adult=false&language=en-US&page=${page}`,
+            `https://api.themoviedb.org/3/search/movie?query=${storedData}&include_adult=false&language=en-US&page=${page}`,
             options
           );
           const data = await response.json()
