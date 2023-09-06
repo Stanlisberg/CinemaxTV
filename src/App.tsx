@@ -10,6 +10,7 @@ import MovieInfo from "./components/allMovieInfo/MovieInfo";
 import PopularInfo from "./components/allMovieInfo/PopularInfo";
 import TrendingInfo from './components/allMovieInfo/TrendingInfo'
 import TvInfo from "./components/allMovieInfo/TvInfo";
+import SearchInfo from "./components/allMovieInfo/SearchInfo";
 import { BiHome } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux"; 
 import type { RootState, AppDispatch } from "./redux/store";
@@ -84,6 +85,7 @@ function App() {
             <Route path="/movie/:movieId" element={<MovieInfo />} />
             <Route path="/popular/:popularId" element={<PopularInfo />} />
             <Route path="/trending/:trendingId" element={<TrendingInfo />} />
+            <Route path="/search/:searchId" element={<SearchInfo />} />
             <Route path="/tv/:tvId" element={<TvInfo />} />
           </Routes>
         </Router>

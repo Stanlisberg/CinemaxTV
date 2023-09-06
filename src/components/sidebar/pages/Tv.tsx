@@ -81,7 +81,7 @@ function Tv() {
           >
             <div className="lg:justify-center lg:items-center lg:flex">
               <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                Movie Actors
+                Tv Shows
               </p>
               <button className="text-white cursor-pointer h-8 text-sm rounded-md border-none mt-3 mb-3 ml-5 pt-1 pb-1 pl-3 pr-3 hidden lg:grid bg-[#e91e63]">
                 Genre
@@ -190,7 +190,7 @@ function Tv() {
                 <Link to={`/tv/${item.id}`} key={index}>
                   <div key={index} className="mx-auto xl:mx-4 w-[98%] h-[98%]">
                     <img
-                      className="object-cover rounded-lg border-[1.5px] border-[#e91e63] w-[98%]  h-[98%] image"
+                      className="object-cover rounded-lg border-[1.5px] border-[#e91e63] w-[100%]  h-[100%] image"
                       src={`${baseImgUrl}/${size}${item.poster_path}`}
                     />
                   </div>

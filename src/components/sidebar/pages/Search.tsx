@@ -68,7 +68,7 @@ function Search() {
 
   return (
     <>
-      <div className="flex justify-between" onClick={backGroundRemoveMenu}>
+      <div className="flex justify-between min-h-screen" onClick={backGroundRemoveMenu}>
         <div
           className={
             sidebar === true
@@ -84,8 +84,8 @@ function Search() {
             }
           >
             <div className="lg:justify-center lg:items-center lg:flex">
-              <p className="text-2xl sm:text-2xl lg:text-3xl font-bold">
-                {storedData?.toUpperCase()}
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+                "{`${storedData?.charAt(0).toUpperCase()}${storedData?.slice(1)}`}"
               </p>
               <button className="text-white cursor-pointer h-8 text-sm rounded-md border-none mt-3 mb-3 ml-5 pt-1 pb-1 pl-3 pr-3 hidden lg:grid bg-[#e91e63]">
                 Genre
@@ -189,7 +189,7 @@ function Search() {
               ))}
             {(currentItems && (currentItems as any[]))?.map((item, index) => (
               <>
-                <Link to={`/trending/${item.id}`} key={index}>
+                <Link to={`/search/${item.id}`} key={index}>
                   <div key={index} className="mx-auto xl:mx-4 w-[98%]  h-[98%]">
                     <img
                       className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image w-[100%]  h-[100%]"

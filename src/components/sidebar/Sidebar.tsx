@@ -55,7 +55,7 @@ function Sidebar() {
   const inputFormSubmit = (e: any) => {
     navigate("/search");
     window.location.reload();
-    localStorage.setItem("myData", JSON.stringify(searchInput));
+    localStorage.setItem("myData", `${searchInput}`);
 
     e.preventDefault();
   };
