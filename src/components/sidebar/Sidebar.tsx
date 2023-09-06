@@ -228,7 +228,6 @@ function Sidebar() {
               )}
               {openSidebar && (
                 <div className="input-div">
-                  {/* <form onSubmit={(e) => {e.preventDefault() navigate('/search')}}> */}
                   <form onSubmit={inputFormSubmit}>
                     <input
                       type="text"
@@ -545,11 +544,14 @@ function Sidebar() {
                 <p className="icon-name-close icon-name-open">Search</p>
               )}
               <div className="input-div">
-                <input
-                  type="text"
-                  className="input"
-                  placeholder="Search Movies..."
-                />
+                <form onSubmit={inputFormSubmit}>
+                  <input
+                    type="text"
+                    className="input"
+                    placeholder="Search Movies..."
+                    onChange={inputReduxData}
+                  />
+                </form>
               </div>
             </div>
             <div

@@ -64,7 +64,7 @@ function Tv() {
 
   return (
     <>
-      <div className="flex" onClick={backGroundRemoveMenu}>
+      <div className="flex min-h-screen" onClick={backGroundRemoveMenu}>
         <div
           className={
             sidebar === true

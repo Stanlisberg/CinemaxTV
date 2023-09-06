@@ -49,7 +49,7 @@ function SearchInfo() {
           <MdOutlineKeyboardBackspace className="" />
           <p
             className="ml-[4px] font-mono text-lg drop-shadow-xl"
-            onClick={() => navigate("/trending")}
+            onClick={() => navigate("/search")}
           >
             Back
           </p>

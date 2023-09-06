@@ -85,7 +85,7 @@ function Search() {
           >
             <div className="lg:justify-center lg:items-center lg:flex">
               <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                "{`${storedData?.charAt(0).toUpperCase()}${storedData?.slice(1)}`}"
+                Search: "{`${storedData?.charAt(0).toUpperCase()}${storedData?.slice(1)}`}"
               </p>
               <button className="text-white cursor-pointer h-8 text-sm rounded-md border-none mt-3 mb-3 ml-5 pt-1 pb-1 pl-3 pr-3 hidden lg:grid bg-[#e91e63]">
                 Genre

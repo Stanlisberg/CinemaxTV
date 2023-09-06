@@ -66,7 +66,7 @@ function Trending() {
 
   return (
     <>
-      <div className="flex justify-between" onClick={backGroundRemoveMenu}>
+      <div className="flex justify-between min-h-screen" onClick={backGroundRemoveMenu}>
         <div
           className={
             sidebar === true
