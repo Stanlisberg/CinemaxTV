@@ -21,18 +21,18 @@ import { SkeletonTheme } from "react-loading-skeleton";
 
 function App() {
   // const modal = useSelector((state: RootState) => state.modal.value);
-  const dark = useSelector((state: RootState) => state.dark.value);
+  // const dark = useSelector((state: RootState) => state.dark.value);
   // const dispatch : AppDispatch = useDispatch()
 
   // console.log(dark)
   // console.log(modal);
   return (
     <>
-      <div className={
+      {/* <div className={
         dark ?
         'app-dark' :
         'app-sun'
-      }>
+      }> */}
         {/* {modal === true && (
           <>
           <div className="modal-background"></div>
@@ -90,7 +90,7 @@ function App() {
           </Routes>
         </Router>
       </SkeletonTheme>
-      </div>
+      {/* </div> */}
     </>
   );
 }
