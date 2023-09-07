@@ -65,7 +65,6 @@ function Home() {
       dispatch(removeMenu());
     }
   };
-  // #dee2e6
 
   return (
     <>
