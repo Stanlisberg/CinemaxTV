@@ -11,18 +11,18 @@ import PopularInfo from "./components/allMovieInfo/PopularInfo";
 import TrendingInfo from './components/allMovieInfo/TrendingInfo'
 import TvInfo from "./components/allMovieInfo/TvInfo";
 import SearchInfo from "./components/allMovieInfo/SearchInfo";
-import { BiHome } from "react-icons/bi";
+// import { BiHome } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux"; 
 import type { RootState, AppDispatch } from "./redux/store";
 import { SkeletonTheme } from "react-loading-skeleton";
-import { modalHide } from "./redux/modalSlice";
-import { sideLeave } from "./redux/sidebarSlice";
+// import { modalHide } from "./redux/modalSlice";
+// import { sideLeave } from "./redux/sidebarSlice";
  
 
 function App() {
-  const modal = useSelector((state: RootState) => state.modal.value);
+  // const modal = useSelector((state: RootState) => state.modal.value);
   const dark = useSelector((state: RootState) => state.dark.value);
-  const dispatch : AppDispatch = useDispatch()
+  // const dispatch : AppDispatch = useDispatch()
 
   // console.log(dark)
   // console.log(modal);
@@ -33,7 +33,7 @@ function App() {
         'app-dark' :
         'app-sun'
       }>
-        {modal === true && (
+        {/* {modal === true && (
           <>
           <div className="modal-background"></div>
             <div className="modal">
@@ -71,7 +71,7 @@ function App() {
               </button>
             </div> 
           </>
-        )}
+        )} */}
        <SkeletonTheme baseColor="lightgrey" highlightColor="#525252">
         <Router>
           <Sidebar />
