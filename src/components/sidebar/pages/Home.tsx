@@ -61,11 +61,10 @@ function Home() {
 
   const backGroundRemoveMenu = () => {
     if (icon === false) {
-      dispatch(toggleEnter());
+      dispatch(toggleEnter())
       dispatch(removeMenu());
     }
   };
-  // #dee2e6
 
   return (
     <>
