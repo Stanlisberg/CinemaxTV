@@ -12,8 +12,8 @@ import TrendingInfo from './components/allMovieInfo/TrendingInfo'
 import TvInfo from "./components/allMovieInfo/TvInfo";
 import SearchInfo from "./components/allMovieInfo/SearchInfo";
 // import { BiHome } from "react-icons/bi";
-import { useSelector, useDispatch } from "react-redux"; 
-import type { RootState, AppDispatch } from "./redux/store";
+// import { useSelector, useDispatch } from "react-redux"; 
+// import type { RootState, AppDispatch } from "./redux/store";
 import { SkeletonTheme } from "react-loading-skeleton";
 // import { modalHide } from "./redux/modalSlice";
 // import { sideLeave } from "./redux/sidebarSlice";
