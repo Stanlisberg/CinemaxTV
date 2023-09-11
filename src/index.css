@@ -20,11 +20,6 @@
   -webkit-text-size-adjust: 100%; */
 }
 
-/* {
-  "rewrites": [
-      {"source": "/(.*)", "destination": "/"}
-  ]
-} */
 
 * {
   box-sizing: border-box;
