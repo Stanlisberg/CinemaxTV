@@ -7,21 +7,25 @@ import { FaPlay } from "react-icons/fa";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { BiBookBookmark } from "react-icons/bi";
 import { BiSolidError } from "react-icons/bi";
+import useStore from "../custom-hooks/useStore";
 
 function MovieInfo() {
   const [showVideo, setShowVideo] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean | null>(null);
   const navigate = useNavigate();
   const { movieId } = useParams();
+  const {data} = useStore()
+  
+  console.log(data)
 
   const { info } = useSelector((state: RootState) => state.movieDetail);
+  console.log(info);
+  console.log(info.title);
   const dark = useSelector((state: RootState) => state.dark.value);
   const dispatch: AppDispatch = useDispatch();
 
   //-----Distructure for movie and video-------
   const { genres, videos, credits } = info;
-
-  console.log(info);
 
   const youtube = videos?.results?.find((item: any) => item.type === "Trailer");
   // console.log(youtube?.key)
@@ -36,12 +40,23 @@ function MovieInfo() {
     dispatch(fetchDetail(url));
   }, []);
 
+  // const LocalData = () => {
+  //   localStorage.setItem(`${info.title}`, `${baseImgUrl}/${size}${info.backdrop_path}`);
+  // }
+
+  // const useLocalStoredData = () => {
+  //   const [data, setData] = useState('')
+
+  //   setData(info.title)
+  // }
   return (
-    <div 
-       className =
-       {dark ? "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] text-[#fff] mb-10"
-        : "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] mb-10"}
-        >
+    <div
+      className={
+        dark
+          ? "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] text-[#fff] mb-10"
+          : "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] mb-10"
+      }
+    >
       <div className="px-3 mt-10">
         <button className="flex justify-center items-center hover:bg-[#e91e63] hover:text-[#fff] text-[#e91e63] border border-[#e91e63] px-2 py-[4px] md:px-[14px] md:py-[4px] rounded-md">
           <MdOutlineKeyboardBackspace className="" />
@@ -104,9 +119,9 @@ function MovieInfo() {
         )}
       </div>
       <div className="genre mx-[6px]">
-        {genres?.map((item: any) => (
+        {genres?.map((item: any, index: any) => (
           <button
-            key={item.id}
+            key={index}
             className="border border-[#e91e63] py-[2px] px-3 mt-3 ml-[5px] md:px-4 md:py-[4px] rounded-md text-center text-[#fff] font-medium text-md bg-[#e91e63]"
           >
             {item.name}
@@ -128,13 +143,21 @@ function MovieInfo() {
             <div className="ml-[10px]">
               <p className="text-[#e91e63]">
                 Realease Date:{" "}
-                <span className={dark ? "text-[#fff]" : 'text-black'}>{info.release_date}</span>
+                <span className={dark ? "text-[#fff]" : "text-black"}>
+                  {info.release_date}
+                </span>
               </p>
               <p className="text-[#e91e63]">
-                Duration: <span className={dark ? "text-[#fff]" : 'text-black'}>{info.runtime}min</span>
+                Duration:{" "}
+                <span className={dark ? "text-[#fff]" : "text-black"}>
+                  {info.runtime}min
+                </span>
               </p>
               <p className="text-[#e91e63]">
-                Status: <span className={dark ? "text-[#fff]" : 'text-black'}>{info.status}</span>
+                Status:{" "}
+                <span className={dark ? "text-[#fff]" : "text-black"}>
+                  {info.status}
+                </span>
               </p>
             </div>
           </div>
@@ -154,18 +177,15 @@ function MovieInfo() {
         </div>
         {info.overview}
       </div>
-      <div className=" text-2xl font-mono font-bold mx-[13px] mt-8">
-        Casts
-      </div>
+      <div className=" text-2xl font-mono font-bold mx-[13px] mt-8">Casts</div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 w-[100%] gap-4 mx-auto px-3">
         {credits?.cast?.map((item: any, index: any) => (
-          <>
+          <div key={index}>
             <a
               href={`https://www.google.com/search?q=${item.name}`}
               target="_blank"
             >
               <div
-                key={index}
                 className="rounded-lg w-[95%] h-[95%] overflow-hidden mx-auto px-[1px]"
               >
                 {item.profile_path ? (
@@ -184,7 +204,7 @@ function MovieInfo() {
                 {item.name}
               </div>
             </a>
-          </>
+          </div>
         ))}
       </div>
     </div>

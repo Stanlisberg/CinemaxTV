@@ -23,7 +23,6 @@ function Search() {
   const icon = useSelector((state: RootState) => state.icon.value);
   const dark = useSelector((state: RootState) => state.dark.value);
   const dispatch: AppDispatch = useDispatch();
-
   const storedData = localStorage.getItem("myData");
 
   //-----Pagination States------
@@ -35,7 +34,6 @@ function Search() {
   //----Skeleton array fill up---
   const arrayList = Array(20).fill(0);
   const data = searchData;
-  //   console.log(data);
 
   //----Pagination Function-----
   const handlePageClick = (event: any) => {
@@ -68,7 +66,10 @@ function Search() {
 
   return (
     <>
-      <div className="flex justify-between min-h-screen" onClick={backGroundRemoveMenu}>
+      <div
+        className="flex justify-between min-h-screen"
+        onClick={backGroundRemoveMenu}
+      >
         <div
           className={
             sidebar === true
@@ -85,7 +86,11 @@ function Search() {
           >
             <div className="lg:justify-center lg:items-center lg:flex">
               <p className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-                Search: "{`${storedData?.charAt(0).toUpperCase()}${storedData?.slice(1)}`}"
+                Search: "
+                {`${storedData?.charAt(0).toUpperCase()}${storedData?.slice(
+                  1
+                )}`}
+                "
               </p>
               <button className="text-white cursor-pointer h-8 text-sm rounded-md border-none mt-3 mb-3 ml-5 pt-1 pb-1 pl-3 pr-3 hidden lg:grid bg-[#e91e63]">
                 Genre
@@ -182,15 +187,15 @@ function Search() {
           </nav>
           <div className="lg:w-[100%] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-4 mt-16 md:px-4 md:mt-20 md:mb-16 lg:px-4 xl:px-0">
             {searchLoading &&
-              arrayList.map((_, index) => (
-                <div className="z-0 mx-auto xl:mx-4" key={index}>
+              arrayList.map((index) => (
+                <div className="z-0 mx-auto xl:mx-4" key={index.id}>
                   <Skeleton className="skeleton mx-auto w-[100px] h-[160px]" />
                 </div>
               ))}
             {(currentItems && (currentItems as any[]))?.map((item, index) => (
               <>
                 <Link to={`/search/${item.id}`} key={index}>
-                  <div key={index} className="mx-auto xl:mx-4 w-[98%]  h-[98%]">
+                  <div className="mx-auto xl:mx-4 w-[98%]  h-[98%]">
                     <img
                       className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image w-[100%]  h-[100%]"
                       src={`${baseImgUrl}/${size}${item.poster_path}`}
@@ -222,28 +227,3 @@ function Search() {
 }
 
 export default Search;
-
-
-// import { useEffect } from 'react'
-// import { fetchSearch } from '../../../redux/searchSlice';
-// import type { RootState, AppDispatch } from '../../../redux/store';
-// import { useDispatch, useSelector } from "react-redux";
-
-// function Search() {
-//     const { searchData } = useSelector((state: RootState) => state.search);
-//     const dispatch: AppDispatch = useDispatch()
-
-//     useEffect(() => {
-//         dispatch(fetchSearch())
-//     },[])
-
-//     console.log(searchData)
-
-//   return (
-//     <div className="text-[30px] font-bold border border-black fixed left-0 lg:left-[80px] h-screen w-[1170px] z-20 bg-[teal] ">
-//       Big Seven
-//     </div>
-//   );
-// }
-
-// export default Search;

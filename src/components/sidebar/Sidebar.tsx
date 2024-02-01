@@ -9,7 +9,6 @@ import { RiSlideshow3Line } from "react-icons/ri";
 import { BiBookBookmark } from "react-icons/bi";
 import { IoMdSettings } from "react-icons/io";
 import { TbTriangleSquareCircle } from "react-icons/tb";
-// import logo from '../../assets/logo2.png'
 import "../../styles/sidebar.css";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +17,7 @@ import { modalShow } from "../../redux/modalSlice";
 import { mobileLeave } from "../../redux/mobileSlice";
 import { removeMenu } from "../../redux/changeIconSlice";
 import { toggleEnter } from "../../redux/toggleSlice";
-import { setInputData } from "../../redux/inputSlice";
+// import { setInputData } from "../../redux/inputSlice";
 
 function Sidebar() {
   const dispatch: AppDispatch = useDispatch();
@@ -41,18 +40,15 @@ function Sidebar() {
 
   // ------Local Storage setup for stored search item--------
   interface SearchInter {
-    searchInput: any;
+    searchInput: string
   }
 
   let searchInput: SearchInter;
-  const inputReduxData = (e: any) => {
+  const searchInputData = (e: any) => {
     searchInput = e.target.value;
-    dispatch(setInputData(searchInput));
-    const storedData = localStorage.getItem("myData");
-    return storedData ? JSON.parse(storedData) : "";
   };
 
-  const inputFormSubmit = (e: any) => {
+  const searchFormSubmit = (e: any) => {
     navigate("/search");
     window.location.reload();
     localStorage.setItem("myData", `${searchInput}`);
@@ -60,7 +56,7 @@ function Sidebar() {
     e.preventDefault();
   };
 
-  //-----------Open sidebar state
+  //-----------Open sidebar state-------------
   const [openSidebar, setOpenSidebar] = useState(false);
   const [arrowHover, setArrowHover] = useState(false);
   const [searchHover, setSearchHover] = useState(false);
@@ -228,12 +224,12 @@ function Sidebar() {
               )}
               {openSidebar && (
                 <div className="input-div">
-                  <form onSubmit={inputFormSubmit}>
+                  <form onSubmit={searchFormSubmit}>
                     <input
                       type="text"
                       className="input"
                       placeholder="Search Movies..."
-                      onChange={inputReduxData}
+                      onChange={searchInputData}
                     />
                   </form>
                 </div>
@@ -544,12 +540,12 @@ function Sidebar() {
                 <p className="icon-name-close icon-name-open">Search</p>
               )}
               <div className="input-div">
-                <form onSubmit={inputFormSubmit}>
+                <form onSubmit={searchFormSubmit}>
                   <input
                     type="text"
                     className="input"
                     placeholder="Search Movies..."
-                    onChange={inputReduxData}
+                    onChange={searchInputData}
                   />
                 </form>
               </div>

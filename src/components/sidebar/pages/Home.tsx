@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../../../redux/store";
 import { fetchDiscover } from "../../../redux/homeSlice";
-// import { FiMenu } from "react-icons/fi";
 import { FaTimes } from "react-icons/fa";
 import { CgMenuGridO } from "react-icons/cg";
 import { WiMoonAltWaningGibbous6 } from "react-icons/wi";
@@ -193,7 +192,7 @@ function Home() {
               currentItems?.map((item: any, index: any) => (
                 <>
                   <Link to={`/movie/${item.id}`} key={index}>
-                    <div className="mx-auto xl:mx-4 w-[98%]  h-[98%]">
+                    <div  key={index} className="mx-auto xl:mx-4 w-[98%]  h-[98%]">
                       <img
                         className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image w-[100%]  h-[100%]"
                         src={`${baseImgUrl}/${size}${item.poster_path}`}

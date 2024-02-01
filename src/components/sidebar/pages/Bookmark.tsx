@@ -124,6 +124,9 @@ function Bookmark() {
       <div className="font-mono text-3xl lg:text-4xl text-center text-[#e91e63] font-[800] flex flex-col-reverse justify-center items-center">
         Sorry, Bookmarks Not Ready Yet!
         <BiSolidError size={60} color="#e91e63" className="" />
+        <div>
+
+        </div>
       </div>
     </div>
   );
