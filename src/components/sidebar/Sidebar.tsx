@@ -7,13 +7,13 @@ import { AiOutlineFire } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/bi";
 import { RiSlideshow3Line } from "react-icons/ri";
 import { BiBookBookmark } from "react-icons/bi";
-import { IoMdSettings } from "react-icons/io";
+// import { IoMdSettings } from "react-icons/io";
 import { TbTriangleSquareCircle } from "react-icons/tb";
 import "../../styles/sidebar.css";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { sideEnter, sideLeave } from "../../redux/sidebarSlice";
-import { modalShow } from "../../redux/modalSlice";
+// import { modalShow } from "../../redux/modalSlice";
 import { mobileLeave } from "../../redux/mobileSlice";
 import { removeMenu } from "../../redux/changeIconSlice";
 import { toggleEnter } from "../../redux/toggleSlice";
@@ -65,7 +65,7 @@ function Sidebar() {
   const [movieHover, setMovieHover] = useState(false);
   const [tvHover, setTvHover] = useState(false);
   const [bookHover, setBookHover] = useState(false);
-  const [settingHover, setSettingHover] = useState(false);
+  // const [settingHover, setSettingHover] = useState(false);
 
   //-----------Active  Button State
   const [activeButton, setActiveButton] = useState<number | null>(null);
@@ -150,12 +150,12 @@ function Sidebar() {
     setBookHover(false);
   };
 
-  const handleSettingHoverEnter = () => {
-    setSettingHover(true);
-  };
-  const handleSettingHoverLeave = () => {
-    setSettingHover(false);
-  };
+  // const handleSettingHoverEnter = () => {
+  //   setSettingHover(true);
+  // };
+  // const handleSettingHoverLeave = () => {
+  //   setSettingHover(false);
+  // };
 
   return (
     <>

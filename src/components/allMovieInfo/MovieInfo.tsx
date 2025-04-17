@@ -107,13 +107,13 @@ function MovieInfo() {
             <a
               href="#"
               className="absolute left-[25px] md:left-[40px] top-[75%] py-[4px] px-[10px] md:top-[90%] text-[#fff] border border-[#e91e63] rounded-md cursor-pointer flex justify-center items-center drop-shadow-[0.2] transform translate-x-[-30%] translate-y-[-30%] hover:bg-[#e91e63] hover:text-[#fff]"
-              // onClick={() => {
-              //   setShowVideo(true);
-              //   setLoading(true);
-              //   setTimeout(() => {
-              //     setLoading(false);
-              //   }, 2000);
-              // }}
+              onClick={() => {
+                setShowVideo(true);
+                setLoading(true);
+                setTimeout(() => {
+                  setLoading(false);
+                }, 2000);
+              }}
             >
               <FaPlay size={15} />
               <p className="ml-2 hidden md:grid font-mono text-lg"> Watch</p>
