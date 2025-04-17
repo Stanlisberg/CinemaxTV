@@ -14,9 +14,10 @@ function MovieInfo() {
   const [loading, setLoading] = useState<boolean | null>(null);
   const navigate = useNavigate();
   const { movieId } = useParams();
-  const {data} = useStore()
-  
-  console.log(data)
+  const { data } = useStore();
+
+  console.log(data);
+  console.log(movieId);
 
   const { info } = useSelector((state: RootState) => state.movieDetail);
   console.log(info);
@@ -35,6 +36,8 @@ function MovieInfo() {
   const size = "w500";
   const youtubeUrl = `https://www.youtube.com/embed/${youtube?.key}`;
   const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US&append_to_response=videos,credits`;
+
+  // 'https://api.themoviedb.org/3/movie/1045938?language=en-US'
 
   useEffect(() => {
     dispatch(fetchDetail(url));
@@ -104,13 +107,13 @@ function MovieInfo() {
             <a
               href="#"
               className="absolute left-[25px] md:left-[40px] top-[75%] py-[4px] px-[10px] md:top-[90%] text-[#fff] border border-[#e91e63] rounded-md cursor-pointer flex justify-center items-center drop-shadow-[0.2] transform translate-x-[-30%] translate-y-[-30%] hover:bg-[#e91e63] hover:text-[#fff]"
-              onClick={() => {
-                setShowVideo(true);
-                setLoading(true);
-                setTimeout(() => {
-                  setLoading(false);
-                }, 2000);
-              }}
+              // onClick={() => {
+              //   setShowVideo(true);
+              //   setLoading(true);
+              //   setTimeout(() => {
+              //     setLoading(false);
+              //   }, 2000);
+              // }}
             >
               <FaPlay size={15} />
               <p className="ml-2 hidden md:grid font-mono text-lg"> Watch</p>
@@ -185,9 +188,7 @@ function MovieInfo() {
               href={`https://www.google.com/search?q=${item.name}`}
               target="_blank"
             >
-              <div
-                className="rounded-lg w-[95%] h-[95%] overflow-hidden mx-auto px-[1px]"
-              >
+              <div className="rounded-lg w-[95%] h-[95%] overflow-hidden mx-auto px-[1px]">
                 {item.profile_path ? (
                   <img
                     className="object-cover rounded-lg border-2 border-[#e91e63] image w-full h-full"

@@ -32,14 +32,20 @@ function MovieInfo() {
   const youtubeUrl = `https://www.youtube.com/embed/${youtube?.key}`;
   const url = `https://api.themoviedb.org/3/movie/${trendingId}?language=en-US&append_to_response=videos,credits`;
 
+  console.log(youtube?.key);
+
   useEffect(() => {
     dispatch(fetchDetail(url));
   }, []);
 
   return (
-    <div className=
-      {dark ? "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] text-[#fff] mb-10" 
-      : "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] mb-10"} >
+    <div
+      className={
+        dark
+          ? "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] text-[#fff] mb-10"
+          : "mx-auto mt-0 lg:pl-20 lg:pr-20 lg:mt-0 z-50 min-h-[100vh] mb-10"
+      }
+    >
       <div className="px-3 mt-10">
         <button className="flex justify-center items-center hover:bg-[#e91e63] hover:text-[#fff] text-[#e91e63] border border-[#e91e63] px-2 py-[4px] md:px-[14px] md:py-[4px] rounded-md">
           <MdOutlineKeyboardBackspace className="" />
@@ -131,13 +137,21 @@ function MovieInfo() {
             <div className="ml-[10px]">
               <p className="text-[#e91e63]">
                 Realease Date:{" "}
-                <span className={dark ? 'text-[#fff]' : "text-black"}>{info.release_date}</span>
+                <span className={dark ? "text-[#fff]" : "text-black"}>
+                  {info.release_date}
+                </span>
               </p>
               <p className="text-[#e91e63]">
-                Duration: <span className={dark ? 'text-[#fff]' : "text-black"}>{info.runtime}min</span>
+                Duration:{" "}
+                <span className={dark ? "text-[#fff]" : "text-black"}>
+                  {info.runtime}min
+                </span>
               </p>
               <p className="text-[#e91e63]">
-                Status: <span className={dark ? 'text-[#fff]' : "text-black"}>{info.status}</span>
+                Status:{" "}
+                <span className={dark ? "text-[#fff]" : "text-black"}>
+                  {info.status}
+                </span>
               </p>
             </div>
           </div>
@@ -157,9 +171,7 @@ function MovieInfo() {
         </div>
         {info.overview}
       </div>
-      <div className="text-2xl font-mono font-bold mx-[13px] mt-8">
-        Casts
-      </div>
+      <div className="text-2xl font-mono font-bold mx-[13px] mt-8">Casts</div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 w-[100%] gap-4 mx-auto px-3">
         {credits?.cast?.map((item: any, index: any) => (
           <>

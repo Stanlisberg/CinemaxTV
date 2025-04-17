@@ -40,7 +40,7 @@ function Sidebar() {
 
   // ------Local Storage setup for stored search item--------
   interface SearchInter {
-    searchInput: string
+    searchInput: string;
   }
 
   let searchInput: SearchInter;
@@ -445,7 +445,7 @@ function Sidebar() {
               {openSidebar && <p className="icon-open-text">Bookmarks</p>}
             </div>
           </div>
-          <div
+          {/* <div
             className={
               openSidebar
                 ? dark
@@ -481,7 +481,7 @@ function Sidebar() {
               ""
             )}
             {openSidebar && <p className="setting-text">Settings</p>}
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -692,7 +692,7 @@ function Sidebar() {
               <p className="icon-open-text">Bookmarks</p>
             </div>
           </div>
-          <div
+          {/* <div
             className={
               dark
                 ? "setting-open icon-bg hover:cursor-pointer"
@@ -719,7 +719,7 @@ function Sidebar() {
               ""
             )}
             <p className="setting-text">Settings</p>
-          </div>
+          </div> */}
         </div>
       ) : (
         ""

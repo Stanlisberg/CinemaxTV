@@ -60,14 +60,17 @@ function Home() {
 
   const backGroundRemoveMenu = () => {
     if (icon === false) {
-      dispatch(toggleEnter())
+      dispatch(toggleEnter());
       dispatch(removeMenu());
     }
   };
 
   return (
     <>
-      <div className="flex justify-between min-h-screen" onClick={backGroundRemoveMenu}>
+      <div
+        className="flex justify-between min-h-screen"
+        onClick={backGroundRemoveMenu}
+      >
         <div
           className={
             sidebar === true
@@ -192,7 +195,10 @@ function Home() {
               currentItems?.map((item: any, index: any) => (
                 <>
                   <Link to={`/movie/${item.id}`} key={index}>
-                    <div  key={index} className="mx-auto xl:mx-4 w-[98%]  h-[98%]">
+                    <div
+                      key={index}
+                      className="mx-auto xl:mx-4 w-[98%]  h-[98%]"
+                    >
                       <img
                         className="object-cover rounded-lg border-[1.5px] border-[#e91e63] image w-[100%]  h-[100%]"
                         src={`${baseImgUrl}/${size}${item.poster_path}`}
